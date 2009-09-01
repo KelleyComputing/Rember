@@ -20,6 +20,33 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
+ Version History:
+	0.1b Initial Public Beta
+	0.1.04b Updated version online with newer memtest 4.0.4M
+		¥ Memtest 4.0.4M executable included
+		¥ Switched to spinning progress indicator (for better performance)
+	0.2.0b
+		¥ Total GUI overhaul.  
+		¥ Preferences added.  
+		¥ Verbose logging (filtering) function added
+		¥ Test progress in status field
+		¥ Loop counter
+		¥ Application/Finder quit functions
+	0.2.1b
+		¥ Preferences window is now a sheet
+		¥ Save option for log details
+		¥ Dock menu
+		¥ Icon added 
+	0.2.2b
+		¥ Performance enahncements
+		¥ Icon touch-up
+	0.2.3b
+		¥ Uses new version of memtest executable (4.05M)
+	0.3b
+		¥ Uses new version of memtest executable (4.11)
+		¥ Added "Continue on Error" preference
+ 
 */
 
 #import <Cocoa/Cocoa.h>
@@ -34,7 +61,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	
 	// NSButtons
 	IBOutlet id infiniteButton, allButton, mbButton, testButton, verboseButton, quitAllButton, 
-		quitFinderButton, verboseButton2, verboseButton3, quitAllButton2, quitFinderButton2, saveButton, okButton;
+		quitFinderButton, verboseButton2, verboseButton3, quitAllButton2, quitFinderButton2, 
+		saveButton, okButton, errorButton;
 	
 	// NSMatrix
     IBOutlet id memoryMatrix;
@@ -49,6 +77,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	TaskWrapper * remberTask;
 	// rember is running BOOL
 	BOOL remberRunning;
+	// stop on error BOOL
+	BOOL stopOnError;
 	// number of total loops, and loops completed
 	int totalLoops, loopsCompleted;
 }
@@ -70,4 +100,5 @@ void KillEveryone(Boolean KillFinderToo);
 - (IBAction) quitAllButtonAction:(id)sender;
 - (IBAction) quitFinderButtonAction:(id)sender;
 - (IBAction) saveButtonAction:(id)sender;
+- (IBAction) errorButtonAction:(id)sender;
 @end

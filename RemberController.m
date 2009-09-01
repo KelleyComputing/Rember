@@ -20,29 +20,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- 
- Version History:
-				0.1b Initial Public Beta
-				0.1.04b Updated version online with newer memtest 4.0.4M
-					¥ Memtest 4.0.4M executable included
-					¥ Switched to spinning progress indicator (for better performance)
-				0.2.0b
-					¥ Total GUI overhaul.  
-					¥ Preferences added.  
-					¥ Verbose logging (filtering) function added
-					¥ Test progress in status field
-					¥ Loop counter
-					¥ Application/Finder quit functions
-				0.2.1b
-					¥ Preferences window is now a sheet
-					¥ Save option for log details
-					¥ Dock menu
-					¥ Icon added 
-				0.2.2b
-					¥ Performance enahncements
-					¥ Icon touch-up
-				0.2.3b
-					¥ Uses new version of memtest executable (4.05M)
+
  */
 
 #import "RemberController.h"
@@ -54,6 +32,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	processID = 0;
 	terminationStatus = 0;
 	verbose = FALSE;
+	stopOnError = FALSE;
 	
 	// loop information
 	totalLoops = 1;
@@ -178,6 +157,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	}
 }
 
+
+- (IBAction) errorButtonAction:(id)sender
+{
+	if([sender state] == 1)
+	{
+		// if the user has chosen to stop testing upon error, set defaults
+		stopOnError = TRUE;
+	}
+	else
+	{
+		stopOnError = FALSE;
+	}
+}
 
 - (IBAction) saveButtonAction:(id)sender
 {
@@ -399,11 +391,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	// Get 'FAILURE' string. 
 	if([outputScanner scanString:@"FAILURE:" intoString:&temp])
 	{
-		if([infiniteButton state] != 1){
-			loopsCompleted++;
-			[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:loopsCompleted] stringValue]];
-		}
 		[statusTextField setStringValue:@"FAILURE - see log for more info"];
+		if([errorButton state] != 1){
+			[self killTask];
+			NSRunAlertPanel(@"Rember", @"Errors were detected.  See log for more details.", @"OK", @"", @"");
+		}
 	}
 	
 	

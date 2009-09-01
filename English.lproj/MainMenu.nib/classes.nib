@@ -5,6 +5,7 @@
             ACTIONS = {
                 allButtonAction = id; 
                 beginPreferencesPanel = id; 
+                errorButtonAction = id; 
                 infiniteButtonAction = id; 
                 loopTextFieldAction = id; 
                 mbButtonAction = id; 
@@ -21,6 +22,7 @@
                 Preferences = id; 
                 allButton = id; 
                 amountTextField = NSTextField; 
+                errorButton = id; 
                 infiniteButton = id; 
                 loopTextField = NSTextField; 
                 loopsCompletedTextField = id; 
