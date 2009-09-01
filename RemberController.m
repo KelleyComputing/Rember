@@ -592,18 +592,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		}
 	}
 	
-	
+	if(output != nil){
 	// none of the progress phrases were found, or we are in verbose mode.  Display output
 	// add the string (a chunk of the results from locate) to the NSTextView's
 	// backing store, in the form of an attributed string
-	if(output != nil)
+	
 		[[testLog textStorage] appendAttributedString: [[[NSAttributedString alloc]
 								initWithString: output] autorelease]];
 	// setup a selector to be called the next time through the event loop to scroll
 	// the view to the just pasted text.  We don't want to scroll right now,
 	// because of a bug in Mac OS X version 10.1 that causes scrolling in the context
 	// of a text storage update to starve the app of events
-	[self performSelector:@selector(scrollToVisible:) withObject:nil afterDelay:0.0];
+		[self performSelector:@selector(scrollToVisible:) withObject:nil afterDelay:0.0];
+	}
 }
 
 // This routine is called after adding new results to the text view's backing store.

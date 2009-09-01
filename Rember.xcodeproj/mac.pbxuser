@@ -1,0 +1,98 @@
+// !$*UTF8*$!
+{
+	04AA24060985FC6B005B2FC0 /* Rember */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Rember;
+		sourceDirectories = (
+		);
+	};
+	04AA242B0985FC8B005B2FC0 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	04AA242C0985FC8B005B2FC0 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	04AA243C0985FD2C005B2FC0 /* XCBreakpointsBucket */ = {
+		isa = XCBreakpointsBucket;
+		name = "Project Breakpoints";
+		objects = (
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Deployment;
+		activeBuildStyle = 4A9504CCFFE6A4B311CA0CBA /* Development */;
+		activeExecutable = 04AA24060985FC6B005B2FC0 /* Rember */;
+		activeTarget = 8D1107260486CEB800E47090 /* Rember */;
+		breakpointsGroup = 04AA243C0985FD2C005B2FC0 /* XCBreakpointsBucket */;
+		codeSenseManager = 04AA242C0985FC8B005B2FC0 /* Code sense */;
+		executables = (
+			04AA24060985FC6B005B2FC0 /* Rember */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					243,
+					20,
+					48.1626,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 159775851;
+			PBXWorkspaceStateSaveDate = 159775851;
+		};
+		sourceControlManager = 04AA242B0985FC8B005B2FC0 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	2C7C0B5106E6FB5000915CED /* RemberController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 9772}}";
+			sepNavSelRange = "{6471, 40}";
+			sepNavVisRect = "{{0, 3682}, {803, 154}}";
+		};
+	};
+	8D1107260486CEB800E47090 /* Rember */ = {
+		activeExec = 0;
+		executables = (
+			04AA24060985FC6B005B2FC0 /* Rember */,
+		);
+	};
+}

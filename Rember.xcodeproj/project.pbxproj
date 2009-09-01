@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C2A5CB2095C786700A0A13A /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 2C2A5CAB095C786700A0A13A /* Help */; };
 		2C7C0B3406E6F74300915CED /* TaskWrapper.h in Resources */ = {isa = PBXBuildFile; fileRef = 2C7C0B3206E6F74300915CED /* TaskWrapper.h */; };
 		2C7C0B3506E6F74300915CED /* TaskWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C0B3306E6F74300915CED /* TaskWrapper.m */; };
 		2C7C0B5206E6FB5000915CED /* RemberController.h in Resources */ = {isa = PBXBuildFile; fileRef = 2C7C0B5006E6FB5000915CED /* RemberController.h */; };
@@ -55,6 +56,7 @@
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2C2A5CAB095C786700A0A13A /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Help; sourceTree = "<group>"; };
 		2C7C0B3206E6F74300915CED /* TaskWrapper.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TaskWrapper.h; sourceTree = "<group>"; };
 		2C7C0B3306E6F74300915CED /* TaskWrapper.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TaskWrapper.m; sourceTree = "<group>"; };
 		2C7C0B5006E6FB5000915CED /* RemberController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RemberController.h; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2C2A5CAB095C786700A0A13A /* Help */,
 				2CDC4F1406EBEE0200874FAA /* memtest */,
 				2CFAF0380951279F0069DFC2 /* memtest-pre10_3_9 */,
 				2C7F12F806FE67E90042684E /* Rember.icns */,
@@ -232,6 +235,7 @@
 				2CD13A8C06F503BC00C527A3 /* killEveryoneButMe.h in Resources */,
 				2CB02EC006FBF7A800012D93 /* Info.plist in Resources */,
 				2C7F12F906FE67E90042684E /* Rember.icns in Resources */,
+				2C2A5CB2095C786700A0A13A /* Help in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,18 +325,30 @@
 		2C940DDD08B580DA00466A1D /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 			};
 			name = Development;
 		};
 		2C940DDE08B580DA00466A1D /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 			};
 			name = Deployment;
 		};
 		2C940DDF08B580DA00466A1D /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 			};
 			name = Default;
 		};
