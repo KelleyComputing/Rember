@@ -35,7 +35,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	
 	// set preferences
 	[self updatePreferencesPanel];
-	
 	// testList: these are test strings that we must scan the output for,
 	//		to determine which test is running.  This is fairly primitive, 
 	//		but it's easy not to have to link to memtest code.
@@ -83,13 +82,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 					   IONotificationPortGetRunLoopSource(notify), 
 					   kCFRunLoopDefaultMode);
 	
+	// Dictionary to store report information in
 	reportDict = [[NSMutableDictionary alloc] initWithCapacity:1];
 	
+	// Determine if the user has chosen to display memory info at program startup
 	if(showMemoryInfo)
 	{
 		NSTimer *timer;
-		timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self 
-											   selector:@selector(showMemoryInfoPanel) userInfo:nil repeats:NO];	
+		timer = [NSTimer scheduledTimerWithTimeInterval:1 
+												 target:self 
+											   selector:@selector(showMemoryInfoPanel) 
+											   userInfo:nil 
+												repeats:NO];	
 	}
 }
 
@@ -234,8 +238,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		[amountTextField setEnabled:FALSE];
 		[defaults setBool:allMemory forKey:@"allMemory"];
 	}
-
-
 	
 	if([defaults objectForKey:@"amount"] != nil)
 	{
@@ -255,29 +257,55 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 - (int) updateMemoryInfo
 {
 	NSString * infoPlistPath = [NSString stringWithString:[@"system_profiler SPMemoryDataType -xml > " stringByAppendingString:[NSHomeDirectory() stringByAppendingString:@"/Library/Preferences/net.kelleycomputing.Rember.memoryInfo.plist"]]];
-	NSString * builtInPlistPath = [NSString stringWithString:[@"system_profiler SPHardwareDataType | grep Memory | sed s/.*Memory..// > " stringByAppendingString:[NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Preferences/net.kelleycomputing.Rember.builtInMemory.plist"]]];	
+	NSString * builtInPlistPath = [NSString stringWithString:[@"system_profiler SPHardwareDataType | grep Memory | sed s/.*Memory..// > " stringByAppendingString:[NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Preferences/net.kelleycomputing.Rember.builtInMemory.txt"]]];	
 	int status = system([infoPlistPath cString]);
 	status += system([builtInPlistPath cString]);
 	return status;
 }
 
+
 - (NSArray *) memoryInfo
 {
 	NSFileManager * fileManager = [NSFileManager defaultManager];
 	NSString * infoPlistPath = [NSString stringWithString:[NSHomeDirectory() stringByAppendingString:@"/Library/Preferences/net.kelleycomputing.Rember.memoryInfo.plist"]];
-	NSString * builtInPlistPath = [NSString stringWithString:[NSHomeDirectory() stringByAppendingString:@"/Library/Preferences/net.kelleycomputing.Rember.builtInMemory.plist"]];
+	NSString * builtInPlistPath = [NSString stringWithString:[NSHomeDirectory() stringByAppendingString:@"/Library/Preferences/net.kelleycomputing.Rember.builtInMemory.txt"]];
 	[self updateMemoryInfo];
 	if([fileManager fileExistsAtPath:infoPlistPath])
 	{
-		NSArray *info = [NSArray arrayWithContentsOfFile:infoPlistPath];
-		NSDictionary *memoryDict = [NSDictionary dictionaryWithDictionary:[info objectAtIndex:0]];
-		NSArray *items = [memoryDict objectForKey:@"_items"];
-		return items;	
+		if(![self isSnowLeopard]){
+			NSArray *info = [NSArray arrayWithContentsOfFile:infoPlistPath];
+			NSDictionary *memoryDict = [NSDictionary dictionaryWithDictionary:[info objectAtIndex:0]];
+			NSArray *items = [memoryDict objectForKey:@"_items"];
+			return items;	
+		}
+		else{
+			NSArray *info = [NSArray arrayWithContentsOfFile:infoPlistPath];
+			NSDictionary *infoDict = [NSDictionary dictionaryWithDictionary:[info objectAtIndex:0]];
+			NSDictionary *memoryDict = [NSDictionary dictionaryWithDictionary:[[infoDict objectForKey:@"_items"] objectAtIndex:0]];
+			
+			NSArray *items = [memoryDict objectForKey:@"_items"];
+			
+			return items;	
+		}
 	}
 	else
 		return nil;
 }
 
+- (BOOL) isSnowLeopard{
+	NSString *operatingSystemVersion = [[NSProcessInfo processInfo] operatingSystemVersionString], *temp = [NSString stringWithString:@""];
+	NSScanner *versionScanner = [NSScanner scannerWithString:operatingSystemVersion];
+	
+	if([versionScanner scanUpToString:@"(" intoString:&temp]){
+		versionScanner = [NSScanner scannerWithString:temp];
+		if([versionScanner scanString:@"Version 10.6" intoString:&temp])
+			return TRUE;
+		else
+			return FALSE;
+	}
+	else
+		return FALSE;
+}
 
 - (void) showTestResults
 {
@@ -288,15 +316,24 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		NSMutableDictionary *reportAttrs = [NSMutableDictionary dictionaryWithCapacity:1];
 		NSMutableAttributedString * report = [[NSMutableAttributedString alloc] initWithPath:[[NSBundle mainBundle] pathForResource:@"Report.rtf" ofType:nil] documentAttributes:&reportAttrs];
 		[[report mutableString] replaceOccurrencesOfString:@"TEST_RESULTS" withString:[reportDict objectForKey:@"testResults"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
-		[[report mutableString] replaceOccurrencesOfString:@"AVAILABLE_MEMORY" withString:[reportDict objectForKey:@"availableAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
-		[[report mutableString] replaceOccurrencesOfString:@"BUILT_IN_MEMORY" withString:[reportDict objectForKey:@"builtInAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
-		[[report mutableString] replaceOccurrencesOfString:@"MEMORY_REQUESTED" withString:[reportDict objectForKey:@"requestedAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
-		[[report mutableString] replaceOccurrencesOfString:@"MEMORY_ALLOCATED" withString:[reportDict objectForKey:@"allocatedAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
-		[[report mutableString] replaceOccurrencesOfString:@"LOOPS_SELECTED" withString:[reportDict objectForKey:@"loops"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
-		[[report mutableString] replaceOccurrencesOfString:@"LOOPS_COMPLETED" withString:[reportDict objectForKey:@"loopsCompleted"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
-		[[report mutableString] replaceOccurrencesOfString:@"EXECUTION_TIME" withString:[reportDict objectForKey:@"executionTime"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
-		[[report mutableString] replaceOccurrencesOfString:@"TEST_START_TIME" withString:[reportDict objectForKey:@"startTime"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
-		[[report mutableString] replaceOccurrencesOfString:@"TEST_END_TIME" withString:[reportDict objectForKey:@"stopTime"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+		if([reportDict objectForKey:@"availableAmount"] != nil)
+			[[report mutableString] replaceOccurrencesOfString:@"AVAILABLE_MEMORY" withString:[reportDict objectForKey:@"availableAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+		if([reportDict objectForKey:@"builtInAmount"] != nil)
+			[[report mutableString] replaceOccurrencesOfString:@"BUILT_IN_MEMORY" withString:[reportDict objectForKey:@"builtInAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+		if([reportDict objectForKey:@"requestedAmount"] != nil)
+			[[report mutableString] replaceOccurrencesOfString:@"MEMORY_REQUESTED" withString:[reportDict objectForKey:@"requestedAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+		if([reportDict objectForKey:@"allocatedAmount"] != nil)
+			[[report mutableString] replaceOccurrencesOfString:@"MEMORY_ALLOCATED" withString:[reportDict objectForKey:@"allocatedAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+		if([reportDict objectForKey:@"loops"] != nil)
+			[[report mutableString] replaceOccurrencesOfString:@"LOOPS_SELECTED" withString:[reportDict objectForKey:@"loops"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+		if([reportDict objectForKey:@"loopsCompleted"] != nil)
+			[[report mutableString] replaceOccurrencesOfString:@"LOOPS_COMPLETED" withString:[reportDict objectForKey:@"loopsCompleted"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+		if([reportDict objectForKey:@"executionTime"] != nil)
+			[[report mutableString] replaceOccurrencesOfString:@"EXECUTION_TIME" withString:[reportDict objectForKey:@"executionTime"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+		if([reportDict objectForKey:@"startTime"] != nil)
+			[[report mutableString] replaceOccurrencesOfString:@"TEST_START_TIME" withString:[reportDict objectForKey:@"startTime"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+		if([reportDict objectForKey:@"stopTime"] != nil)
+			[[report mutableString] replaceOccurrencesOfString:@"TEST_END_TIME" withString:[reportDict objectForKey:@"stopTime"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
 		[[reportTextView textStorage] setAttributedString:[report autorelease]];
 		
 		[self beginReportPanel:self];
@@ -529,6 +566,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	if(![remberTask isRunning]){
 		[loopsTextField setStringValue:[loopTextField stringValue]];
 		totalLoops = [loopTextField intValue];
+		[testProgress setMaxValue:(totalLoops * ([testList count] + 1))];
 	}
 	
 	[defaults setObject:[NSNumber numberWithInt:totalLoops] forKey:@"totalLoops"];
@@ -601,6 +639,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		totalLoops = [loopTextField intValue];
 		loopsString = [NSString stringWithString:[loopTextField stringValue]];
 		[loopsTextField setStringValue:loopsString];
+		
+		// update progress indicator with new loop values
+		[testProgress setMaxValue:(totalLoops * ([testList count] + 1))];
 		
 		// determine amount of memory to test
 		if([allButton state] == 1)
@@ -678,14 +719,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	if(output != nil){
 		// variables
 		int i = 0;
+		BOOL display = YES;
 		NSMutableString *temp = [[NSMutableString alloc] init];
 		
-		// init a scanner with our output string
-		NSScanner *outputScanner = [NSScanner scannerWithString:output];
-		[outputScanner setCharactersToBeSkipped:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-		
-		// init outputScanner with the output from TaskWrapper
-		outputScanner = [NSScanner scannerWithString:output];
 		
 		// determine if we're in verbose mode
 		if(!verbose){
@@ -693,22 +729,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 			//
 			// if the string doesn't match progress junk strings, 
 			//		continue.
-			while (i < [progressList count])
+			NSEnumerator *enumerator = [progressList objectEnumerator];
+			id object;
+			while (object = [enumerator nextObject])
 			{
-				if([outputScanner scanString:[progressList objectAtIndex:i] intoString:&temp])
-				{
-					i = [progressList count];
-					return;		// if the output is junk, return without displaying
-				}
-				else{
-					i++;
-					temp = nil;
-				}
+				NSRange range = [output rangeOfString:object];
+				if(range.location != NSNotFound)
+					display = NO;		// if the output is junk, return without displaying
 			}
 		}
 		
-		if([outputScanner scanString:@"Memtest version" intoString:nil]){
-			
+		NSRange range = [output rangeOfString:@"Memtest version"];
+		if(range.location != NSNotFound){
+			display = YES;
 			temp = [NSString stringWithString:[[[[output componentsSeparatedByString:@"Allocated memory: "] objectAtIndex:1] componentsSeparatedByString:@"MB ("] objectAtIndex:0]];
 			[reportDict setObject:temp forKey:@"allocatedAmount"];
 			
@@ -718,70 +751,65 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		}
 	
 		// Get test sequence string, increase loopsCompleted number
-		if([outputScanner scanString:@"Test sequence" intoString:&temp])
-		{
+		range = [output rangeOfString:@"Test sequence"];
+		if(range.location != NSNotFound){
+			display = YES;
 			loopsCompleted++;
-			[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:loopsCompleted] stringValue]];
+			NSLog(@"Detected test sequence: %d", loopsCompleted);
+			[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:(loopsCompleted - 1)] stringValue]];
 		}
 		
 		// use scanner to determine which test is being run (if any),
 		//	and display information in statusTextField
-		i = 0;
-		while(i < [testList count]){
-			if([outputScanner scanString:[testList objectAtIndex:i] intoString:&temp])
-			{
-				NSLog(output);
-				
-				// this is a hack to display 'Running test' value correctly
-				// Rember takes the output as it gets it - this is one drawback
-				if([outputScanner scanUpToString:@"locked successfully" intoString:nil])
-				{
-					[statusTextField setStringValue:[NSLocalizedString(@"Running", @"Running test: ") stringByAppendingString:[testList objectAtIndex:i]]]; // We can't scan the output fast enough to catch the first test string -
-				}
-				else if((i < [testList count]) || (i > 0))
-				{
-					[statusTextField setStringValue:[NSLocalizedString(@"Running", @"Running test: ") stringByAppendingString:[testList objectAtIndex:i]]]; // 'normal' output (methinks earlier versions of memtest)
-				}
-				else{
-				}
-				
-				[testProgress setDoubleValue:(loopsCompleted * ([testList count] + 1) + (i + 1))];
-				
-				i = [testList count];
-				temp = nil;
+		
+		NSEnumerator *enumerator = [testList objectEnumerator];	
+		id object;
+		i = 1;
+		while(object = [enumerator nextObject]){
+			range = [output rangeOfString:object];
+			if(range.location != NSNotFound){
+				if(!maxLoops)
+					[testProgress setDoubleValue:((loopsCompleted - 1) * ([testList count] + 1) + i)];
+				[statusTextField setStringValue:[NSLocalizedString(@"Running", @"Running test: ") stringByAppendingString:[testList objectAtIndex:(i-1)]]];
+				//NSLog(@"Detected test: %@", [testList objectAtIndex:i]);
+				display = YES;
+				break;
 			}
-			else{
-				temp = nil;
+			else
 				i++;
-			}
 		}
-		
-		
+
 		// Get 'All tests passed' string.  Re-assure user of tests passing.
-		if([outputScanner scanString:@"All tests passed!" intoString:&temp])
+		range = [output rangeOfString:@"All tests passed!"];
+		if(range.location != NSNotFound)
 		{
+			display = YES;
 			if([maxButton state] != 1){
 				loopsCompleted++;
-				[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:loopsCompleted] stringValue]];
+				[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:(loopsCompleted - 1)] stringValue]];
 			}
-			[reportDict setObject:temp forKey:@"testResults"];
+			[reportDict setObject:@"All tests passed!" forKey:@"testResults"];
 			[statusTextField setStringValue:NSLocalizedString(@"Passed", @"All tests passed!")];
 		}
 		
-		// Get 'FAILED!' string for legacy versions of memtest. 
-		else if([outputScanner scanString:@"FAILURE!" intoString:&temp])
+		// Get 'FAILED!' string for legacy versions of memtest.
+		range = [output rangeOfString:@"FAILURE!"];
+		if(range.location != NSNotFound)
 		{
+			display = YES;
 			[statusTextField setStringValue:NSLocalizedString(@"Failure", @"FAILURE - see log for more info")];
 			if([errorButton state] != 1){
 				[remberTask stopProcess];
 				NSRunAlertPanel(@"Rember", NSLocalizedString(@"Errors", @"Errors were detected.  See log for more details."), @"OK", @"", @"");
 			}
-			[reportDict setObject:output forKey:@"testResults"];
+			[reportDict setObject:@"FAILURE!" forKey:@"testResults"];
 		}
 		
 		// Get '*** Address Test Failed ***' string for legacy versions of memtest. 
-		else if([outputScanner scanString:@"*** Address Test Failed ***" intoString:&temp])
+		range = [output rangeOfString:@"*** Address Test Failed ***"];
+		if(range.location != NSNotFound)
 		{
+			display = YES;
 			[statusTextField setStringValue:NSLocalizedString(@"Failure", @"FAILURE - see log for more info")];
 			if([errorButton state] != 1){
 				[remberTask stopProcess];
@@ -791,29 +819,35 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		}
 		
 		// Get '*** Memory Test Failed ***' string for newer versions of memtest. 
-		else if([outputScanner scanString:@"*** Memory Test Failed ***" intoString:&temp])
+		range = [output rangeOfString:@"*** Memory Test Failed ***"];
+		if(range.location != NSNotFound)
 		{
+			display = YES;
 			[statusTextField setStringValue:NSLocalizedString(@"Failure", @"FAILURE - see log for more info")];
 			if([errorButton state] != 1){
 				[remberTask stopProcess];
 				NSRunAlertPanel(@"Rember", NSLocalizedString(@"Errors", @"Errors were detected.  See log for more details."), @"OK", @"", @"");
 			}
-			[reportDict setObject:output forKey:@"testResults"];
+			[reportDict setObject:@"*** Memory Test Failed ***" forKey:@"testResults"];
 		}
 		
 		// Get 'Execution time:' string.
-		if([outputScanner scanString:@"Execution time:" intoString:&temp])
-		{
-			[outputScanner scanUpToString:@"seconds." intoString:&temp];
-			[reportDict setObject:temp forKey:@"executionTime"];
+		range = [output rangeOfString:@"Execution time:"];
+		if(range.location != NSNotFound){
+			display = YES;
+			NSScanner *outputScanner = [NSScanner scannerWithString:output];
+			if([outputScanner scanUpToString:@"seconds." intoString:&temp])
+				[reportDict setObject:temp forKey:@"executionTime"];
 			
 		}
+		
 		
 		// none of the progress phrases were found, or we are in verbose mode.  Display output
 		// add the string (a chunk of the results from locate) to the NSTextView's
 		// backing store, in the form of an attributed string
 		
-		[[testLog textStorage] appendAttributedString: [[[NSAttributedString alloc]
+		if(display)
+			[[testLog textStorage] appendAttributedString: [[[NSAttributedString alloc]
 								initWithString: output] autorelease]];
 		// setup a selector to be called the next time through the event loop to scroll
 		// the view to the just pasted text.  We don't want to scroll right now,
@@ -856,27 +890,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	
 	[testProgress setUsesThreadedAnimation:TRUE];
 	
-	if(maxLoops)
-	{
-		[testProgress setIndeterminate:TRUE];
-		[testProgress startAnimation:self];
-	}
-	else if(!maxLoops && ([loopsTextField doubleValue] >= 1) && ([loopsTextField doubleValue] < 256)){
-		[testProgress setIndeterminate:FALSE];
-		[testProgress setMinValue:0];
-		[testProgress setMaxValue:(16 * [loopTextField doubleValue])];
-		[testProgress setDoubleValue:loopsCompleted];
-	}
-	else
-	{
-		// there was a loop related error (set to 0 or higher than 255) - inform user
-	}
-	
+	[testProgress setIndeterminate:TRUE];
+	[testProgress startAnimation:self];
+		
     // change the "Test" button to say "Stop"
     [testButton setTitle:NSLocalizedString(@"Stop", @"Stop button value")];
 	
 	[reportDict setObject:[[NSDate date] description] forKey:@"startTime"];
 
+	if(!maxLoops && ([loopsTextField doubleValue] >= 1) && ([loopsTextField doubleValue] < 256)){
+			[testProgress setIndeterminate:FALSE];
+			[testProgress setMinValue:0];
+			[testProgress setMaxValue:([loopTextField doubleValue] * ([testList count] + 1))];
+			[testProgress setDoubleValue:1];
+	}
+	else
+	{
+		// there was a loop related error (set to 0 or higher than 255) - inform user?
+		
+	}
 	
 }
 
@@ -890,7 +922,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	
 	[testProgress setIndeterminate:YES];
 	[testProgress startAnimation:self];
-	[testProgress stopAnimation:self];
 	
 	//[statusTextField setStringValue:NSLocalizedString(@"Idle", @"Status Idle")];
     
@@ -923,13 +954,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	// set report values
 	[reportDict setObject:[[NSNumber numberWithInt:[loopsCompletedTextField intValue]] stringValue] forKey:@"loopsCompleted"];
 	[reportDict setObject:[[NSNumber numberWithInt:[loopsTextField intValue]] stringValue] forKey:@"loops"];
-	[reportDict setObject:[NSString stringWithContentsOfFile:[NSHomeDirectory() stringByAppendingString:@"/Library/Preferences/net.kelleycomputing.Rember.builtInMemory.plist"]] forKey:@"builtInAmount"];
+	[reportDict setObject:[NSString stringWithContentsOfFile:[NSHomeDirectory() stringByAppendingString:@"/Library/Preferences/net.kelleycomputing.Rember.builtInMemory.txt"]] forKey:@"builtInAmount"];
 
 	if([allButton state] == 1)
 		[reportDict setObject:@"All" forKey:@"requestedAmount"];
 	else
 		[reportDict setObject:[amountTextField stringValue] forKey:@"requestedAmount"];
 	[reportDict setObject:[[NSDate date] description] forKey:@"stopTime"];
+
+	[testProgress stopAnimation:self];
 
 	[self showTestResults];
 }

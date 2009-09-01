@@ -265,8 +265,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>26</integer>
-									<integer>11</integer>
+									<integer>5</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -308,7 +308,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Localizable.strings</string>
+								<string>RemberController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -316,11 +316,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Localizable.strings</string>
+										<string>RemberController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2CA794F00C9C522D00A99F13</string>
+										<string>2C9E965B0CBC7849008E4E4F</string>
 										<key>history</key>
 										<array>
 											<string>2C4FCA030B27507B0089867D</string>
@@ -337,12 +337,12 @@
 											<string>2C49DF9A0C3C044800555673</string>
 											<string>2C0978CC0C43296600D3B9DA</string>
 											<string>2CBC1B7F0C94676E00348879</string>
-											<string>2CA7946F0C98E46700A99F13</string>
 											<string>2CA794700C98E46700A99F13</string>
 											<string>2CA794EA0C9C522D00A99F13</string>
 											<string>2CA794EB0C9C522D00A99F13</string>
 											<string>2CA794EC0C9C522D00A99F13</string>
-											<string>2CCDB49F0BD0176600C9963C</string>
+											<string>2C0574F00CAC1CCE002A020E</string>
+											<string>2C0574F30CAC1CCE002A020E</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -366,9 +366,6 @@
 											<string>2C0978CD0C43296600D3B9DA</string>
 											<string>2C8C86430C94CA8B0024918B</string>
 											<string>2C8C86440C94CA8B0024918B</string>
-											<string>2CA794ED0C9C522D00A99F13</string>
-											<string>2CA794EE0C9C522D00A99F13</string>
-											<string>2CA794EF0C9C522D00A99F13</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -426,9 +423,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>2CA794F10C9C522D00A99F13</string>
+				<string>2C9E96590CBC752F008E4E4F</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>2CA794F20C9C522D00A99F13</string>
+				<string>2C9E965A0CBC752F008E4E4F</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -562,7 +559,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>/Users/eddie/Projects/Rember/Rember.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -1015,9 +1011,9 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C0AD2B3069F1EA900FABCE6</string>
-				<string>2CA794F30C9C522D00A99F13</string>
+				<string>2C0574EE0CAC1CCC002A020E</string>
 				<string>1CD0528B0623707200166675</string>
-				<string>2CA794F40C9C522D00A99F13</string>
+				<string>2C0574EF0CAC1CCC002A020E</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.run</string>
@@ -1026,7 +1022,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C0AD2B3069F1EA900FABCE6</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

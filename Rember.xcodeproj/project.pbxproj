@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		2C2A5CB2095C786700A0A13A /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 2C2A5CAB095C786700A0A13A /* Help */; };
 		2C2BC01C0B4EC8B5009BACB7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2BBF7C0B4EC8B5009BACB7 /* IOKit.framework */; };
+		2C2CE8BD104D8765007D4626 /* Rember_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C2CE8BC104D8765007D4626 /* Rember_64.png */; };
 		2C63BCF50B9222D400C1C461 /* memtest in Resources */ = {isa = PBXBuildFile; fileRef = 2C63BCF40B9222D400C1C461 /* memtest */; };
-		2C719CA60B9B632B00484D8C /* Rember_64.tif in Resources */ = {isa = PBXBuildFile; fileRef = 2C719CA50B9B632B00484D8C /* Rember_64.tif */; };
 		2C7C0B3406E6F74300915CED /* TaskWrapper.h in Resources */ = {isa = PBXBuildFile; fileRef = 2C7C0B3206E6F74300915CED /* TaskWrapper.h */; };
 		2C7C0B3506E6F74300915CED /* TaskWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C0B3306E6F74300915CED /* TaskWrapper.m */; };
 		2C7C0B5206E6FB5000915CED /* RemberController.h in Resources */ = {isa = PBXBuildFile; fileRef = 2C7C0B5006E6FB5000915CED /* RemberController.h */; };
@@ -42,11 +42,14 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2C2A5CAB095C786700A0A13A /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Help; sourceTree = "<group>"; };
 		2C2BBF7C0B4EC8B5009BACB7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		2C2CE8BC104D8765007D4626 /* Rember_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rember_64.png; sourceTree = "<group>"; };
+		2C462FFE0E8EAB9F0057F882 /* Russian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Russian; path = Russian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C462FFF0E8EABB50057F882 /* Russian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Russian; path = Russian.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C4630000E8EABCB0057F882 /* Russian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Russian; path = Russian.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		2C542ABF0C9C526B009F8634 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C542AC00C9C5279009F8634 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C542AC10C9C52AC009F8634 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		2C63BCF40B9222D400C1C461 /* memtest */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = memtest; sourceTree = "<group>"; };
-		2C719CA50B9B632B00484D8C /* Rember_64.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Rember_64.tif; sourceTree = "<group>"; };
 		2C7C0B3206E6F74300915CED /* TaskWrapper.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TaskWrapper.h; sourceTree = "<group>"; };
 		2C7C0B3306E6F74300915CED /* TaskWrapper.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TaskWrapper.m; sourceTree = "<group>"; };
 		2C7C0B5006E6FB5000915CED /* RemberController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RemberController.h; sourceTree = "<group>"; };
@@ -150,8 +153,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2C2CE8BC104D8765007D4626 /* Rember_64.png */,
 				2CBC1BF30C947F5500348879 /* Report.rtf */,
-				2C719CA50B9B632B00484D8C /* Rember_64.tif */,
 				2C9E4C8F0B9A5FD000B527DC /* greenStatus.tiff */,
 				2C9E4C900B9A5FD000B527DC /* redStatus.tiff */,
 				2C9E4C910B9A5FD000B527DC /* whiteStatus.tiff */,
@@ -203,6 +206,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 2C940DDC08B580DA00466A1D /* Build configuration list for PBXProject "Rember" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -211,9 +215,11 @@
 				German,
 				Italian,
 				RemberItalian,
+				Russian,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Rember */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Rember */,
 			);
@@ -239,8 +245,8 @@
 				2C9E4C940B9A5FD000B527DC /* redStatus.tiff in Resources */,
 				2C9E4C950B9A5FD000B527DC /* whiteStatus.tiff in Resources */,
 				2C9E4C960B9A5FD000B527DC /* yellowStatus.tiff in Resources */,
-				2C719CA60B9B632B00484D8C /* Rember_64.tif in Resources */,
 				2CBC1BF40C947F5500348879 /* Report.rtf in Resources */,
+				2C2CE8BD104D8765007D4626 /* Rember_64.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +273,7 @@
 				089C165DFE840E0CC02AAC07 /* English */,
 				2CF0D8420A8193B9007A5754 /* Japanese */,
 				2C542ABF0C9C526B009F8634 /* Italian */,
+				2C462FFE0E8EAB9F0057F882 /* Russian */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -277,6 +284,7 @@
 				29B97319FDCFA39411CA2CEA /* English */,
 				2CCDB4750BCF25F900C9963C /* Japanese */,
 				2C542AC10C9C52AC009F8634 /* Italian */,
+				2C4630000E8EABCB0057F882 /* Russian */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";
@@ -287,6 +295,7 @@
 				2CF0D8430A8193C6007A5754 /* English */,
 				2CF0D8460A8193FE007A5754 /* Japanese */,
 				2C542AC00C9C5279009F8634 /* Italian */,
+				2C462FFF0E8EABB50057F882 /* Russian */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -361,6 +370,7 @@
 					ppc,
 					i386,
 				);
+				GCC_VERSION = 4.0;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Deployment;
