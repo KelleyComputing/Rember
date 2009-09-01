@@ -28,17 +28,139 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 @implementation RemberController
 
 - (void) awakeFromNib
-{
-	processID = 0;
-	terminationStatus = 0;
-	verbose = FALSE;
-	stopOnError = FALSE;
-	
-	// loop information
-	totalLoops = 1;
+{	
+	// set temporary loop information
 	loopsCompleted = 0;
-	[loopsTextField setStringValue:[[NSNumber numberWithInt:totalLoops] stringValue]];
 	[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:loopsCompleted] stringValue]];
+	
+	// set preferences
+	[self updatePreferencesPanel];
+}
+
+- (id)updatePreferencesPanel
+{
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	
+	if([defaults objectForKey:@"stopOnError"] != nil)
+	{	
+		stopOnError = [defaults boolForKey:@"stopOnError"];
+		[errorButton setState:!stopOnError];
+	}
+	else
+	{
+		stopOnError = FALSE;
+		[errorButton setState:!stopOnError];
+		[defaults setBool:stopOnError forKey:@"stopOnError"];
+	}
+	
+	if([defaults objectForKey:@"verbose"] != nil)
+	{
+		verbose = [defaults boolForKey:@"verbose"];
+		[verboseButton setState:verbose];
+		[verboseButton2 setState:verbose];
+		[verboseButton3 setState:verbose];
+	}
+	else
+	{
+		verbose= FALSE;
+		[verboseButton setState:verbose];
+		[verboseButton2 setState:verbose];
+		[verboseButton3 setState:verbose];
+		[defaults setBool:verbose forKey:@"verbose"];
+	}
+	
+	if([defaults objectForKey:@"quitAll"] != nil)
+	{
+		quitAll = [defaults boolForKey:@"quitAll"];
+		[quitAllButton setState:quitAll];
+		[quitAllButton2 setState:quitAll];
+	}
+	else
+	{
+		quitAll = FALSE;
+		[quitAllButton setState:quitAll];
+		[quitAllButton2 setState:quitAll];
+		[defaults setBool:quitAll forKey:@"quitAll"];
+	}
+	
+	if([defaults objectForKey:@"quitFinder"] != nil)
+	{
+		quitFinder = [defaults boolForKey:@"quitFinder"];
+		[quitFinderButton setState:quitFinder];
+		[quitFinderButton2 setState:quitFinder];
+	}
+	else
+	{
+		quitFinder = FALSE;
+		[quitFinderButton setState:quitFinder];
+		[quitFinderButton2 setState:quitFinder];
+		[defaults setBool:quitFinder forKey:@"quitFinder"];
+	}
+	
+	if([defaults objectForKey:@"totalLoops"] != nil)
+	{
+		totalLoops = [[defaults objectForKey:@"totalLoops"] intValue];
+		[loopTextField setIntValue:totalLoops];
+		[loopsTextField setIntValue:totalLoops];
+	}
+	else
+	{
+		totalLoops = 1;
+		[loopTextField setIntValue:1];
+		[loopsTextField setIntValue:1];
+		[defaults setObject:[NSNumber numberWithInt:totalLoops] forKey:@"totalLoops"];
+	}
+	
+	if([defaults objectForKey:@"infiniteLoops"] != nil)
+	{
+		infiniteLoops = [defaults boolForKey:@"infiniteLoops"];
+		[infiniteButton setState:infiniteLoops];
+		
+		if(infiniteLoops)
+			[loopTextField setEnabled:FALSE];
+		else
+			[loopTextField setEnabled:TRUE];
+	}
+	else
+	{
+		infiniteLoops = FALSE;
+		[infiniteButton setState:infiniteLoops];
+		[defaults setBool:infiniteLoops forKey:@"infiniteLoops"];
+		[loopTextField setEnabled:TRUE];
+		
+	}
+	
+	if([defaults objectForKey:@"allMemory"] != nil)
+	{
+		allMemory = [defaults boolForKey:@"allMemory"];
+		[allButton setState:allMemory];
+		[mbButton setState:!allMemory];
+		[amountTextField setEnabled:FALSE];
+	}
+	else
+	{
+		allMemory = FALSE;
+		[allButton setState:allMemory];
+		[mbButton setState:!allMemory];
+		[amountTextField setEnabled:TRUE];
+		[defaults setBool:allMemory forKey:@"allMemory"];
+	}
+
+
+	
+	if([defaults objectForKey:@"amount"] != nil)
+	{
+		amount = [[defaults objectForKey:@"amount"] intValue];
+		[amountTextField setIntValue:amount];
+	}
+	else
+	{
+		amount = 1;
+		[amountTextField setIntValue:1];
+		[defaults setObject:[NSNumber numberWithInt:amount] forKey:@"amount"];
+	}
+	
+	[defaults synchronize];
 }
 
 #pragma mark UI actions
@@ -65,27 +187,38 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 - (IBAction) verboseButtonAction:(id)sender
 {
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	
 	if([sender state] == 1){
 		verbose = TRUE;
 		[verboseButton setState:1];
 		[verboseButton2 setState:1];
 		[verboseButton3 setState:1];
+		verbose = TRUE;
 	}
 	else if([sender state] == 0){
 		verbose = FALSE;
 		[verboseButton setState:0];
 		[verboseButton2 setState:0];
 		[verboseButton3 setState:0];
+		verbose = FALSE;
 	}
+	
+	[defaults setBool:verbose forKey:@"verbose"];
+	[defaults synchronize];
 }
 
 - (IBAction) quitAllButtonAction:(id)sender
 {
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	quitAll = FALSE;
+	
 	if ([sender state] == 1){
         [quitFinderButton setEnabled:YES];
         [quitFinderButton2 setEnabled:YES];
 		[quitAllButton setState:1];
 		[quitAllButton2 setState:1];
+		quitAll = TRUE;
 	}
 	else
 	{
@@ -95,80 +228,141 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		[quitAllButton2 setState:0];
 		[quitFinderButton setState:0];
 		[quitFinderButton2 setState:0];
+		quitAll = FALSE;
+		quitFinder = FALSE;
 	}
+	
+	[defaults setBool:quitAll forKey:@"quitAll"];
+	[defaults setBool:quitFinder forKey:@"quitFinder"];
+	[defaults synchronize];
 }
 
 - (IBAction) quitFinderButtonAction:(id)sender
 {
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	quitFinder = FALSE;
+	
 	if ([sender state] == 1){
 		[quitFinderButton setState:1];
 		[quitFinderButton2 setState:1];
+		quitFinder = TRUE;
 	}
 	else
 	{
 		[quitFinderButton setState:0];
 		[quitFinderButton2 setState:0];
+		quitFinder = FALSE;
 	}
+	
+	[defaults setBool:quitFinder forKey:@"quitFinder"];
+	[defaults synchronize];
 }
 
 
 - (IBAction) infiniteButtonAction:(id)sender
 {
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	infiniteLoops = FALSE;
+	
 	if ([infiniteButton state] == 1){
         [loopTextField setEnabled:NO];
 		[loopsTextField setStringValue:@"°"];
+		 infiniteLoops = TRUE;
 	}
 	else
 	{
         [loopTextField setEnabled:YES];
 		[loopsTextField setStringValue:[loopTextField stringValue]];
+		 infiniteLoops = FALSE;
 	}
+	
+	[defaults setBool:infiniteLoops forKey:@"infiniteLoops"];
+	[defaults synchronize];
 }
 
 - (IBAction) allButtonAction:(id)sender
 {
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	allMemory = TRUE;
+		
 	if ([allButton state] == 1){
         [memoryMatrix selectCellWithTag:0];
         [amountTextField setEnabled:NO];
+		allMemory = TRUE;
 	}
 	else{
 		[memoryMatrix selectCellWithTag:1]; 
 		[amountTextField setEnabled:YES];
+		allMemory = FALSE;
 	}
+	
+	[defaults setBool:allMemory forKey:@"allMemory"];
+	[defaults synchronize];
 }
 
 - (IBAction) mbButtonAction:(id)sender
 {
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	allMemory = FALSE;
+	
     if ([mbButton state] == 1){
         [memoryMatrix selectCellWithTag:1]; 
 		[amountTextField setEnabled:YES];
+		allMemory = FALSE;
 	} 
 	else{
 		[memoryMatrix selectCellWithTag:0];
 		[amountTextField setEnabled:NO];
+		allMemory = TRUE;
 	}
+	
+	[defaults setBool:allMemory forKey:@"allMemory"];
+	[defaults synchronize];
+}
+
+-(IBAction)amountTextFieldAction:(id)sender
+{
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	amount = 1;
+	
+	if(!remberRunning){
+		amount = [amountTextField intValue];
+	}
+	
+	[defaults setObject:[NSNumber numberWithInt:amount] forKey:@"amount"];
+	[defaults synchronize];
 }
 
 -(IBAction)loopTextFieldAction:(id)sender
 {
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+
 	if(!remberRunning){
 		[loopsTextField setStringValue:[loopTextField stringValue]];
 		totalLoops = [loopTextField intValue];
 	}
+	
+	[defaults setObject:[NSNumber numberWithInt:totalLoops] forKey:@"totalLoops"];
+	[defaults synchronize];
 }
 
 
 - (IBAction) errorButtonAction:(id)sender
 {
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	
 	if([sender state] == 1)
 	{
 		// if the user has chosen to stop testing upon error, set defaults
-		stopOnError = TRUE;
+		stopOnError = FALSE;
 	}
 	else
 	{
-		stopOnError = FALSE;
+		stopOnError = TRUE;
 	}
+	
+	[defaults setBool:stopOnError forKey:@"stopOnError"];
+	[defaults synchronize];
 }
 
 - (IBAction) saveButtonAction:(id)sender
@@ -188,7 +382,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 {
 	if(!remberRunning){
 		// variables
-		NSString *loopsString, *amount;
+		NSString *loopsString, *amountString;
 		
 		// if the user has chosen, quit Finder and all Apps
 		
@@ -217,13 +411,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		
 		// determine amount of memory to test
 		if([allButton state] == 1)
-			amount = [NSString stringWithString:@"all"];
+			amountString = [NSString stringWithString:@"all"];
 		else
-			amount = [NSString stringWithString:[amountTextField stringValue]];
+			amountString = [NSString stringWithString:[amountTextField stringValue]];
 		
 		// open the memtest task and capture it's processID
 		processID = [self openTask:[[NSBundle mainBundle] pathForResource:@"memtest" ofType:nil] 
-					 withArguments:[NSArray arrayWithObjects:amount, loopsString, nil]];
+					 withArguments:[NSArray arrayWithObjects:amountString, loopsString, nil]];
 		
 		// if the process has started, post status.
 		if(processID > 0)
@@ -402,7 +596,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	// none of the progress phrases were found, or we are in verbose mode.  Display output
 	// add the string (a chunk of the results from locate) to the NSTextView's
 	// backing store, in the form of an attributed string
-	[[testLog textStorage] appendAttributedString: [[[NSAttributedString alloc]
+	if(output != nil)
+		[[testLog textStorage] appendAttributedString: [[[NSAttributedString alloc]
 								initWithString: output] autorelease]];
 	// setup a selector to be called the next time through the event loop to scroll
 	// the view to the just pasted text.  We don't want to scroll right now,
@@ -483,12 +678,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 // If the user closes the window, let's just quit
 -(BOOL)windowShouldClose:(id)sender
 {
-    [NSApp terminate:nil];
-    return YES;
+	if(remberRunning)
+		if(NSRunAlertPanel(@"Rember", @"Memory tests are still in progress.  Are you sure you want to quit?", @"OK", @"Cancel", @"") == NSOKButton)
+			return YES;
+		else
+			return NO;
+	else
+		return YES;
 }
 
 -(void)windowWillClose:(id)sender
 {
+	[self killTask];
 	[NSApp terminate:nil];
 }
 

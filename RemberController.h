@@ -46,12 +46,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	0.3b
 		¥ Uses new version of memtest executable (4.11)
 		¥ Added "Continue on Error" preference
+	0.3.1b
+		¥ Uses new version of memtest executable (4.12)
+		¥ Utilizes User Defaults system to save preferences
  
 */
 
 #import <Cocoa/Cocoa.h>
 #import "TaskWrapper.h"
 #import "killEveryoneButMe.h"
+#include <mach-o/arch.h>
 
 @interface RemberController : NSObject <TaskWrapperController>
 {
@@ -75,12 +79,24 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	IBOutlet NSProgressIndicator *testProgress;
 	// TaskWrapper for memtest task calls
 	TaskWrapper * remberTask;
+	
+	// Preferences
+	
 	// rember is running BOOL
 	BOOL remberRunning;
 	// stop on error BOOL
 	BOOL stopOnError;
+	// quit all before launching BOOL
+	BOOL quitAll;
+	// quit finder before launching BOOL (quitAll must be TRUE for quitFinder to be TRUE)
+	BOOL quitFinder;
+	// infinite test loops BOOL
+	BOOL infiniteLoops;
+	// test all memory BOOL
+	BOOL allMemory;
+	
 	// number of total loops, and loops completed
-	int totalLoops, loopsCompleted;
+	int totalLoops, loopsCompleted, amount;
 }
 
 NSArray * testList, * progressList;
@@ -89,8 +105,12 @@ int terminationStatus;
 int processID;
 
 void KillEveryone(Boolean KillFinderToo);
+
+- (id) updatePreferencesPanel;
 - (void) killTask;
 - (int) openTask:(NSString*)path withArguments:(NSArray*)arguments;
+
+- (IBAction)amountTextFieldAction:(id)sender;
 - (IBAction)loopTextFieldAction:(id)sender;
 - (IBAction)testButtonAction:(id)sender;
 - (IBAction) infiniteButtonAction:(id)sender;
@@ -101,4 +121,5 @@ void KillEveryone(Boolean KillFinderToo);
 - (IBAction) quitFinderButtonAction:(id)sender;
 - (IBAction) saveButtonAction:(id)sender;
 - (IBAction) errorButtonAction:(id)sender;
+
 @end
