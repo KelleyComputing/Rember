@@ -5,8 +5,12 @@
             ACTIONS = {
                 allButtonAction = id; 
                 infiniteButtonAction = id; 
+                loopTextFieldAction = id; 
                 mbButtonAction = id; 
+                quitAllButtonAction = id; 
+                quitFinderButtonAction = id; 
                 testButtonAction = id; 
+                verboseButtonAction = id; 
             }; 
             CLASS = RemberController; 
             LANGUAGE = ObjC; 
@@ -15,12 +19,20 @@
                 amountTextField = NSTextField; 
                 infiniteButton = id; 
                 loopTextField = NSTextField; 
+                loopsCompletedTextField = id; 
+                loopsTextField = id; 
                 mbButton = id; 
                 memoryMatrix = id; 
+                quitAllButton = id; 
+                quitAllButton2 = id; 
+                quitFinderButton = id; 
+                quitFinderButton2 = id; 
                 statusTextField = id; 
                 testButton = id; 
                 testLog = id; 
-                testProgress = NSProgressIndicator; 
+                verboseButton = id; 
+                verboseButton2 = id; 
+                verboseButton3 = id; 
             }; 
             SUPERCLASS = NSObject; 
         }

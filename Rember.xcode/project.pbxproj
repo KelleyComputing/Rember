@@ -47,7 +47,8 @@
 //104
 		1058C7A0FEA54F0111CA2CBB = {
 			children = (
-				1058C7A1FEA54F0111CA2CBB,
+				2CB364E406F2A45500D763CC,
+				2CB362BC06F2A30D00D763CC,
 			);
 			isa = PBXGroup;
 			name = "Linked Frameworks";
@@ -64,6 +65,7 @@
 		};
 		1058C7A2FEA54F0111CA2CBB = {
 			children = (
+				1058C7A1FEA54F0111CA2CBB,
 				29B97325FDCFA39411CA2CEA,
 				29B97324FDCFA39411CA2CEA,
 			);
@@ -85,7 +87,6 @@
 		19C28FACFE9D520D11CA2CBB = {
 			children = (
 				8D1107320486CEB800E47090,
-				2C7C0B0806E6F45E00915CED,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -115,12 +116,11 @@
 			projectDirPath = "";
 			targets = (
 				8D1107260486CEB800E47090,
-				2C7C0B0706E6F45E00915CED,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
 			children = (
-				2C7C0AF406E6F22200915CED,
+				2C32742106ECF97800FA9AF2,
 				080E96DDFE201D6D7F000001,
 				29B97315FDCFA39411CA2CEA,
 				29B97317FDCFA39411CA2CEA,
@@ -154,6 +154,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				2CDC4F1406EBEE0200874FAA,
 				8D1107310486CEB800E47090,
 				089C165CFE840E0CC02AAC07,
 				29B97318FDCFA39411CA2CEA,
@@ -219,45 +220,7 @@
 //2C2
 //2C3
 //2C4
-		2C7C0AF406E6F22200915CED = {
-			children = (
-				2C7C0AF506E6F23300915CED,
-				2C7C0AF706E6F23300915CED,
-				2C7C0AF606E6F23300915CED,
-				2C7C0AF906E6F23300915CED,
-				2C7C0AF806E6F23300915CED,
-				2C7C0AFA06E6F23300915CED,
-			);
-			isa = PBXGroup;
-			name = memtest;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		2C7C0AF506E6F23300915CED = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = types.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		2C7C0AF606E6F23300915CED = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.c;
-			path = trycpp.c;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		2C7C0AF706E6F23300915CED = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = sizes.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		2C7C0AF806E6F23300915CED = {
+		2C32741306ECF97400FA9AF2 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.c;
@@ -265,7 +228,7 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		2C7C0AF906E6F23300915CED = {
+		2C32741406ECF97400FA9AF2 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -273,7 +236,31 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		2C7C0AFA06E6F23300915CED = {
+		2C32741506ECF97400FA9AF2 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = sizes.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		2C32741606ECF97400FA9AF2 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = types.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		2C32741706ECF97400FA9AF2 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.c;
+			path = trycpp.c;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		2C32741806ECF97400FA9AF2 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.c;
@@ -281,83 +268,19 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		2C7C0AFB06E6F23300915CED = {
-			fileRef = 2C7C0AF506E6F23300915CED;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		2C7C0AFD06E6F23300915CED = {
-			fileRef = 2C7C0AF706E6F23300915CED;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		2C7C0AFF06E6F23300915CED = {
-			fileRef = 2C7C0AF906E6F23300915CED;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		2C7C0B0506E6F45E00915CED = {
-			buildActionMask = 2147483647;
-			files = (
-				2C7C0B0D06E6F4A700915CED,
-				2C7C0B0E06E6F4A700915CED,
+		2C32742106ECF97800FA9AF2 = {
+			children = (
+				2C32741306ECF97400FA9AF2,
+				2C32741406ECF97400FA9AF2,
+				2C32741506ECF97400FA9AF2,
+				2C32741606ECF97400FA9AF2,
+				2C32741706ECF97400FA9AF2,
+				2C32741806ECF97400FA9AF2,
 			);
-			isa = PBXSourcesBuildPhase;
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C7C0B0606E6F45E00915CED = {
-			buildActionMask = 2147483647;
-			files = (
-			);
-			isa = PBXFrameworksBuildPhase;
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C7C0B0706E6F45E00915CED = {
-			buildPhases = (
-				2C7C0B0506E6F45E00915CED,
-				2C7C0B0606E6F45E00915CED,
-			);
-			buildRules = (
-			);
-			buildSettings = {
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = memtest;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
-			};
-			dependencies = (
-			);
-			isa = PBXNativeTarget;
+			isa = PBXGroup;
 			name = memtest;
-			productName = memtest;
-			productReference = 2C7C0B0806E6F45E00915CED;
-			productType = "com.apple.product-type.tool";
-		};
-		2C7C0B0806E6F45E00915CED = {
-			explicitFileType = "compiled.mach-o.executable";
-			includeInIndex = 0;
-			isa = PBXFileReference;
-			path = memtest;
-			refType = 3;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2C7C0B0D06E6F4A700915CED = {
-			fileRef = 2C7C0AF806E6F23300915CED;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		2C7C0B0E06E6F4A700915CED = {
-			fileRef = 2C7C0AFA06E6F23300915CED;
-			isa = PBXBuildFile;
-			settings = {
-			};
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		2C7C0B3206E6F74300915CED = {
 			fileEncoding = 30;
@@ -415,8 +338,44 @@
 			settings = {
 			};
 		};
-		2C7C0C8906E84ECE00915CED = {
-			fileRef = 2C7C0B0806E6F45E00915CED;
+		2CB362BC06F2A30D00D763CC = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = CoreServices.framework;
+			path = /System/Library/Frameworks/CoreServices.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		2CB362BD06F2A30D00D763CC = {
+			fileRef = 2CB362BC06F2A30D00D763CC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		2CB364E406F2A45500D763CC = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = Carbon.framework;
+			path = /System/Library/Frameworks/Carbon.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		2CB364E506F2A45500D763CC = {
+			fileRef = 2CB364E406F2A45500D763CC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		2CDC4F1406EBEE0200874FAA = {
+			comments = "memtest-4.04M\n";
+			isa = PBXFileReference;
+			lastKnownFileType = "compiled.mach-o.executable";
+			path = memtest;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		2CDC4F1506EBEE0200874FAA = {
+			fileRef = 2CDC4F1406EBEE0200874FAA;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -511,12 +470,9 @@
 			files = (
 				8D11072A0486CEB800E47090,
 				8D11072B0486CEB800E47090,
-				2C7C0AFB06E6F23300915CED,
-				2C7C0AFD06E6F23300915CED,
-				2C7C0AFF06E6F23300915CED,
 				2C7C0B3406E6F74300915CED,
 				2C7C0B5206E6FB5000915CED,
-				2C7C0C8906E84ECE00915CED,
+				2CDC4F1506EBEE0200874FAA,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,6 +511,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090,
+				2CB362BD06F2A30D00D763CC,
+				2CB364E506F2A45500D763CC,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
