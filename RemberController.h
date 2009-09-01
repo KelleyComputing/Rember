@@ -49,6 +49,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	0.3.1b
 		¥ Uses new version of memtest executable (4.12)
 		¥ Utilizes User Defaults system to save preferences
+	0.3.2b
+		¥ Uses new version of memtest executable (4.13)
+		¥ Universal Binary
+	0.3.3b
+		¥ Now displays determinate progress
+		¥ Bug fixes
+		¥ First localized version.  Includes Japanese, Italian, and English languages.
  
 */
 
@@ -71,12 +78,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	// NSMatrix
     IBOutlet id memoryMatrix;
 	
+	// NSProgressIndicator
+	IBOutlet id testProgress;
+	
 	//Log
 	IBOutlet id testLog;
 	// preferences window
 	IBOutlet id Preferences;
-    // test progress indicator
-	IBOutlet NSProgressIndicator *testProgress;
 	// TaskWrapper for memtest task calls
 	TaskWrapper * remberTask;
 	
@@ -107,7 +115,6 @@ int processID;
 void KillEveryone(Boolean KillFinderToo);
 
 - (id) updatePreferencesPanel;
-- (void) killTask;
 - (int) openTask:(NSString*)path withArguments:(NSArray*)arguments;
 
 - (IBAction)amountTextFieldAction:(id)sender;
@@ -121,5 +128,7 @@ void KillEveryone(Boolean KillFinderToo);
 - (IBAction) quitFinderButtonAction:(id)sender;
 - (IBAction) saveButtonAction:(id)sender;
 - (IBAction) errorButtonAction:(id)sender;
+
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)app;
 
 @end

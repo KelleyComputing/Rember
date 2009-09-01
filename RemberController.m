@@ -35,6 +35,42 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	
 	// set preferences
 	[self updatePreferencesPanel];
+	
+	// testList: these are test strings that we must scan the output for,
+	//		to determine which test is running.  This is fairly primitive, 
+	//		but it's easy not to have to link to memtest code.
+	testList = [[NSArray alloc] initWithObjects:	
+		@"Stuck Address",
+		@"ok\n  Random Value",
+		@"Compare XOR", 
+		@"Compare SUB", 
+		@"Compare MUL", 
+		@"Compare DIV", 
+		@"Compare OR", 
+		@"Compare AND",
+		@"Sequential Increment",
+		@"Solid Bits",
+		@"Block Sequential",
+		@"Checkerboard",
+		@"Bit Spread",
+		@"Bit Flip",
+		@"Walking Ones",
+		@"Walking Zeroes", nil];
+	
+	// these are strings that i have deemed the "verbose" information, 
+	//		that if a users pleases, can be with-held.
+	progressList =[[NSArray alloc] initWithObjects: 
+		@"\b\b\b\b\b\b\b\b\b\b\b           \b\b\b\b\b\b\b\b\b\b\b",
+		@"\b\b\b\b\b\b\b\b\b\b\b", 
+		@"\b-", 
+		@"\b|", 
+		@"\b/", 
+		@"\b\\", 
+		@"\b\b\b\b\b\b\b\b\b\b\btesting", 
+		@"\b\b\b\b\b\b\b\b\b\b\bsetting",
+		@"setting",
+		@"testing", nil];
+	
 }
 
 - (id)updatePreferencesPanel
@@ -135,7 +171,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		allMemory = [defaults boolForKey:@"allMemory"];
 		[allButton setState:allMemory];
 		[mbButton setState:!allMemory];
-		[amountTextField setEnabled:FALSE];
+		if(allMemory)
+			[amountTextField setEnabled:FALSE];
+		else
+			[amountTextField setEnabled:TRUE];
 	}
 	else
 	{
@@ -325,7 +364,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	amount = 1;
 	
-	if(!remberRunning){
+	if(![remberTask isRunning]){
 		amount = [amountTextField intValue];
 	}
 	
@@ -337,7 +376,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 {
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 
-	if(!remberRunning){
+	if(![remberTask isRunning]){
 		[loopsTextField setStringValue:[loopTextField stringValue]];
 		totalLoops = [loopTextField intValue];
 	}
@@ -380,7 +419,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 - (IBAction)testButtonAction:(id)sender
 {
-	if(!remberRunning){
+	if(![remberTask isRunning]){
 		// variables
 		NSString *loopsString, *amountString;
 		
@@ -422,7 +461,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		// if the process has started, post status.
 		if(processID > 0)
 		{
-			[statusTextField setStringValue:@"Testing..."];
+			[statusTextField setStringValue:NSLocalizedString(@"Testing", @"Testing...")];
 		}
 		else
 		{
@@ -432,17 +471,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	else
 	{
 		// the 'stop' button was clicked.  terminate task.
-		[self killTask];
+		[remberTask stopProcess];
 	}
 }
 
 #pragma mark TaskWrapper Controller tasks
-
--(void) killTask
-{
-	if (remberRunning!=nil)
-		[remberTask release];
-}
 
 -(int) openTask:(NSString*)path withArguments:(NSArray*)arguments
 {
@@ -455,8 +488,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	[args addObjectsFromArray:arguments];
 	
 	// If the task is already running, release
-	if (remberRunning!=nil)
+	if ([remberTask isRunning]){
+		[remberTask stopProcess];
         [remberTask release];
+	}
 	// Let's allocate memory for and initialize a new TaskWrapper object, passing
 	// in ourselves as the controller for this TaskWrapper object, the path
 	// to the command-line tool, and the contents of the text field that 
@@ -474,41 +509,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 - (void)appendOutput:(NSString *)output
 {
 	// variables
-	
-	// testList: these are test strings that we must scan the output for,
-	//		to determine which test is running.  This is fairly primitive, 
-	//		but it's easy not to have to link to memtest code.
-	NSArray * testList = [NSArray arrayWithObjects:	
-		@"Stuck Address",
-		@"ok\n  Random Value",
-		@"Compare XOR", 
-		@"Compare SUB", 
-		@"Compare MUL", 
-		@"Compare DIV", 
-		@"Compare OR", 
-		@"Compare AND",
-		@"Sequential Increment",
-		@"Solid Bits",
-		@"Block Sequential",
-		@"Checkerboard",
-		@"Bit Spread",
-		@"Bit Flip",
-		@"Walking Ones",
-		@"Walking Zeroes", nil];
-	
-	// these are strings that i have deemed the "verbose" information, 
-	//		that if a users pleases, can be with-held.
-	NSArray * progressList = [NSArray arrayWithObjects: 
-		@"\b\b\b\b\b\b\b\b\b\b\b           \b\b\b\b\b\b\b\b\b\b\b",
-		@"\b\b\b\b\b\b\b\b\b\b\b", 
-		@"\b-", 
-		@"\b|", 
-		@"\b/", 
-		@"\b\\", 
-		@"\b\b\b\b\b\b\b\b\b\b\btesting", 
-		@"\b\b\b\b\b\b\b\b\b\b\bsetting",
-		@"setting",
-		@"testing", nil];
 	int i = 0;
 	NSString *temp = nil;
 	
@@ -539,6 +539,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		}
 	}
 	
+	// Get test sequence string, increase loopsCompleted number
+	if([outputScanner scanString:@"Test sequence" intoString:&temp])
+	{
+		loopsCompleted++;
+		[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:loopsCompleted] stringValue]];
+	}
+	
 	// use scanner to determine which test is being run (if any),
 	//	and display information in statusTextField
 	i = 0;
@@ -551,11 +558,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 			// Rember takes the output as it gets it - this is one drawback
 			if(i != 1)
 			{
-				[statusTextField setStringValue:[@"Running test: " stringByAppendingString:[testList objectAtIndex:i]]]; // 'normal' output (methinks earlier versions of memtest)
+				[statusTextField setStringValue:[NSLocalizedString(@"Running", @"Running test: ") stringByAppendingString:[testList objectAtIndex:i]]]; // 'normal' output (methinks earlier versions of memtest)
 			}
 			else{
-				[statusTextField setStringValue:@"Running test: Random Value"]; // hack pretty string in here for inconsistent output strings
+				[statusTextField setStringValue:[NSLocalizedString(@"Running", @"Running test: Random Value") stringByAppendingString:@"Random Value"]]; // hack pretty string in here for inconsistent output strings
 			}
+			
+			[testProgress setDoubleValue:((loopsCompleted * 16) + i)];
+		
 			i = [testList count];
 			temp = nil;
 		}
@@ -565,12 +575,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		}
 	}
 	
-	// Get test sequence string, increase loopsCompleted number
-	if([outputScanner scanString:@"Test sequence" intoString:&temp])
-	{
-		loopsCompleted++;
-		[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:loopsCompleted] stringValue]];
-	}
+	
 	
 	// Get 'All tests passed' string.  Re-assure user of tests passing.
 	if([outputScanner scanString:@"All tests passed.\n\n" intoString:&temp])
@@ -579,16 +584,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 			loopsCompleted++;
 			[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:loopsCompleted] stringValue]];
 		}
-		[statusTextField setStringValue:@"All tests passed"];
+		[statusTextField setStringValue:NSLocalizedString(@"Passed", @"All tests passed")];
 	}
 	
 	// Get 'FAILURE' string. 
 	if([outputScanner scanString:@"FAILURE:" intoString:&temp])
 	{
-		[statusTextField setStringValue:@"FAILURE - see log for more info"];
+		[statusTextField setStringValue:NSLocalizedString(@"Failure", @"FAILURE - see log for more info")];
 		if([errorButton state] != 1){
-			[self killTask];
-			NSRunAlertPanel(@"Rember", @"Errors were detected.  See log for more details.", @"OK", @"", @"");
+			[remberTask stopProcess];
+			NSRunAlertPanel(@"Rember", NSLocalizedString(@"Errors", @"Errors were detected.  See log for more details."), @"OK", @"", @"");
 		}
 	}
 	
@@ -621,16 +626,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 {
 	loopsCompleted = 0; 
     remberRunning = YES;
-	
-    // clear the results
-    [testLog setString:@""];
-	[statusTextField setStringValue:@"Initializing..."];
-	[testProgress setUsesThreadedAnimation:TRUE];
-	[testProgress startAnimation:self];
-	
-    // change the "Test" button to say "Stop"
-    [testButton setTitle:@"Stop"];
-	
+
 	// disable other user controls while testing
 	[loopTextField setEnabled:NO];
 	[amountTextField setEnabled:NO];
@@ -639,6 +635,29 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	[quitAllButton setEnabled:NO];
 	[quitFinderButton setEnabled:NO];
 	
+    // clear the results
+    [testLog setString:@""];
+	[statusTextField setStringValue:NSLocalizedString(@"Initializing", @"Initializing status")];
+	
+	[testProgress setUsesThreadedAnimation:TRUE];
+	
+	if(infiniteLoops)
+	{
+		[testProgress setIndeterminate:TRUE];
+		[testProgress startAnimation:self];
+	}
+	else
+		[testProgress setIndeterminate:FALSE];
+
+	if(([loopsTextField doubleValue] >= 1) || !infiniteLoops){
+		[testProgress setMinValue:0];
+		[testProgress setMaxValue:(16 * [loopTextField doubleValue])];
+		[testProgress setDoubleValue:loopsCompleted];
+	}
+	
+    // change the "Test" button to say "Stop"
+    [testButton setTitle:NSLocalizedString(@"Stop", @"Stop button value")];
+	
 }
 
 // A callback that gets called when a TaskWrapper is completed, allowing us to do any cleanup
@@ -646,13 +665,17 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 // to the ProcessController protocol.
 - (void)processFinished
 {
+
     remberRunning=NO;
+	
+	[testProgress setIndeterminate:YES];
+	[testProgress startAnimation:self];
 	[testProgress stopAnimation:self];
 	
-	[statusTextField setStringValue:@"Idle"];
+	[statusTextField setStringValue:NSLocalizedString(@"Idle", @"Status Idle")];
     
 	// change the button's title back for the next search
-    [testButton setTitle:@"Test"];
+    [testButton setTitle:NSLocalizedString(@"Test", @"Test button value")];
 	
 	//re-enable user controls (to pre-test state)
 	if([infiniteButton state] == 1)
@@ -666,32 +689,60 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	[infiniteButton setEnabled:YES];
 	[memoryMatrix setEnabled:YES];
 	[quitAllButton setEnabled:YES];
-	if([quitAllButton state] == 1)
+	if([quitAllButton state] == 1){
 		[quitFinderButton setEnabled:YES];
-	terminationStatus = [remberTask terminationStatus];
-	if((terminationStatus != 0) && (terminationStatus != 15))
-	{
-		NSRunAlertPanel(@"Rember", @"Errors were detected.  See log for more details.", @"OK", @"", @"");
 	}
 	
+	terminationStatus = [remberTask terminationStatus];
+	
+	if((terminationStatus != 0) && (terminationStatus != 15))
+	{
+		NSRunAlertPanel(@"Rember", NSLocalizedString(@"Errors", @"Errors detected dialog box"), @"OK", @"", @"");
+	}
 }
 
-// If the user closes the window, let's just quit
+// If the user attempts to close the window, 
 -(BOOL)windowShouldClose:(id)sender
 {
-	if(remberRunning)
-		if(NSRunAlertPanel(@"Rember", @"Memory tests are still in progress.  Are you sure you want to quit?", @"OK", @"Cancel", @"") == NSOKButton)
-			return YES;
-		else
-			return NO;
-	else
+	// quit when idle
+	if(!remberRunning){
+		[NSApp terminate:self];
 		return YES;
+	}
+	else
+	{
+		int choice = NSAlertDefaultReturn;
+		
+		choice = NSRunAlertPanel(@"Rember",	NSLocalizedString(@"InProgress", @"Memory tests in progress"),NSLocalizedString(@"Cancel", @"Cancel button"), NSLocalizedString(@"OK", @"OK Button"), @"");
+        if (choice == NSAlertDefaultReturn) { 
+			/* Cancel termination */
+            return NO;
+        }
+		else
+		{
+			[remberTask stopProcess];
+			[NSApp terminate:self];
+			return YES;
+		}
+	}
 }
 
--(void)windowWillClose:(id)sender
-{
-	[self killTask];
-	[NSApp terminate:nil];
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)app {
+	// Determine if task is running...
+    if ([remberTask isRunning]) {
+        int choice = NSAlertDefaultReturn;
+		
+		choice = NSRunAlertPanel(@"Rember",	NSLocalizedString(@"InProgress", @"Memory tests in progress"),NSLocalizedString(@"Cancel", @"Cancel button"), NSLocalizedString(@"OK", @"OK Button"), @"");
+        if (choice == NSAlertDefaultReturn) { 
+			/* Cancel termination */
+            return NSTerminateCancel;
+        }
+		else
+		{
+			[remberTask stopProcess];
+		}
+    }
+    return NSTerminateNow;
 }
 
 @end

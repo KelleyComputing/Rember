@@ -1,0 +1,36 @@
+/* Test button value */
+"Test" = "Test";
+
+/* Stop button value */
+"Stop" = "Stop";
+
+/* Errors detected dialog box */
+"Errors" = "Errors were detected.  See log for more details.";
+
+/* Failure dialog box */
+"Failure" = "FAILURE - see log for more info";
+
+/* Tests passed status */
+"Passed" = "All tests passed";
+
+/* Initializing status*/
+"Initializing" = "Initializing...";
+
+/* Testing status*/
+"Testing" = "Testing";
+
+/* Idle status*/
+"Idle" = "Idle";
+
+/* OK button value*/
+"OK" = "OK";
+
+/* Cancel button value*/
+"Cancel" = "Cancel";
+
+/* Memory tests in progress dialogd */
+"InProgress" = "Memory tests are still in progress.  Are you sure you want to quit?";
+
+/* */
+"Running" = "Running test: ";
+

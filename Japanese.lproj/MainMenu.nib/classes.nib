@@ -39,7 +39,6 @@
                 statusTextField = id; 
                 testButton = id; 
                 testLog = id; 
-                testProgress = id; 
                 verboseButton = id; 
                 verboseButton2 = id; 
                 verboseButton3 = id; 

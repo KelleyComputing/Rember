@@ -4,7 +4,6 @@
         {
             ACTIONS = {
                 allButtonAction = id; 
-                amountTextFieldAction = id; 
                 beginPreferencesPanel = id; 
                 errorButtonAction = id; 
                 infiniteButtonAction = id; 

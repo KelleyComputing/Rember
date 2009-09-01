@@ -19,35 +19,15 @@
 		2CD13A8C06F503BC00C527A3 /* killEveryoneButMe.h in Resources */ = {isa = PBXBuildFile; fileRef = 2CD13A8A06F503BC00C527A3 /* killEveryoneButMe.h */; };
 		2CD13A8D06F503BC00C527A3 /* killEveryoneButMe.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CD13A8B06F503BC00C527A3 /* killEveryoneButMe.c */; };
 		2CDC4F1506EBEE0200874FAA /* memtest in Resources */ = {isa = PBXBuildFile; fileRef = 2CDC4F1406EBEE0200874FAA /* memtest */; };
+		2CF0D6310A818633007A5754 /* Italian.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0D62D0A818633007A5754 /* Italian.lproj */; };
+		2CF0D6370A818644007A5754 /* English.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0D6320A818644007A5754 /* English.lproj */; };
+		2CF0D63C0A818656007A5754 /* Japanese.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0D6380A818656007A5754 /* Japanese.lproj */; };
+		2CF0D8410A8193A7007A5754 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0D83F0A8193A7007A5754 /* Localizable.strings */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXBuildStyle section */
-		4A9504CCFFE6A4B311CA0CBA /* Development */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				ZERO_LINK = YES;
-			};
-			name = Development;
-		};
-		4A9504CDFFE6A4B311CA0CBA /* Deployment */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
-		};
-/* End PBXBuildStyle section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -67,7 +47,14 @@
 		2CD13A8A06F503BC00C527A3 /* killEveryoneButMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = killEveryoneButMe.h; sourceTree = "<group>"; };
 		2CD13A8B06F503BC00C527A3 /* killEveryoneButMe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = killEveryoneButMe.c; sourceTree = "<group>"; };
 		2CDC4F1406EBEE0200874FAA /* memtest */ = {isa = PBXFileReference; comments = "memtest-4.04M\n"; lastKnownFileType = "compiled.mach-o.executable"; path = memtest; sourceTree = "<group>"; };
-		2CFAF0380951279F0069DFC2 /* memtest-pre10_3_9 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "memtest-pre10_3_9"; sourceTree = "<group>"; };
+		2CF0D62D0A818633007A5754 /* Italian.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Italian.lproj; sourceTree = "<group>"; };
+		2CF0D6320A818644007A5754 /* English.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = English.lproj; sourceTree = "<group>"; };
+		2CF0D6380A818656007A5754 /* Japanese.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Japanese.lproj; sourceTree = "<group>"; };
+		2CF0D8400A8193A7007A5754 /* Italian */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2CF0D8420A8193B9007A5754 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2CF0D8430A8193C6007A5754 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2CF0D8460A8193FE007A5754 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2CF0D8470A819414007A5754 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Rember_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rember_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Rember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rember.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,12 +138,15 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2C2A5CAB095C786700A0A13A /* Help */,
 				2CDC4F1406EBEE0200874FAA /* memtest */,
-				2CFAF0380951279F0069DFC2 /* memtest-pre10_3_9 */,
 				2C7F12F806FE67E90042684E /* Rember.icns */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				2CF0D83F0A8193A7007A5754 /* Localizable.strings */,
+				2CF0D6320A818644007A5754 /* English.lproj */,
+				2C2A5CAB095C786700A0A13A /* Help */,
+				2CF0D62D0A818633007A5754 /* Italian.lproj */,
+				2CF0D6380A818656007A5754 /* Japanese.lproj */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 			);
 			name = Resources;
@@ -184,15 +174,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Rember_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = Rember;
-				WRAPPER_EXTENSION = app;
-			};
 			dependencies = (
 			);
 			name = Rember;
@@ -207,13 +188,14 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 2C940DDC08B580DA00466A1D /* Build configuration list for PBXProject "Rember" */;
-			buildSettings = {
-			};
-			buildStyles = (
-				4A9504CCFFE6A4B311CA0CBA /* Development */,
-				4A9504CDFFE6A4B311CA0CBA /* Deployment */,
-			);
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				Italian,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Rember */;
 			projectDirPath = "";
 			targets = (
@@ -236,6 +218,10 @@
 				2CB02EC006FBF7A800012D93 /* Info.plist in Resources */,
 				2C7F12F906FE67E90042684E /* Rember.icns in Resources */,
 				2C2A5CB2095C786700A0A13A /* Help in Resources */,
+				2CF0D6310A818633007A5754 /* Italian.lproj in Resources */,
+				2CF0D6370A818644007A5754 /* English.lproj in Resources */,
+				2CF0D63C0A818656007A5754 /* Japanese.lproj in Resources */,
+				2CF0D8410A8193A7007A5754 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +246,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				089C165DFE840E0CC02AAC07 /* English */,
+				2CF0D8420A8193B9007A5754 /* Japanese */,
+				2CF0D8470A819414007A5754 /* Italian */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -270,6 +258,16 @@
 				29B97319FDCFA39411CA2CEA /* English */,
 			);
 			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+		2CF0D83F0A8193A7007A5754 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2CF0D8430A8193C6007A5754 /* English */,
+				2CF0D8400A8193A7007A5754 /* Italian */,
+				2CF0D8460A8193FE007A5754 /* Japanese */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -329,6 +327,9 @@
 					ppc,
 					i386,
 				);
+				GCC_ENABLE_OBJC_GC = YES;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				VALID_ARCHS = "ppc7400 ppc64 ppc970 x86_64 ppc i386";
 			};
 			name = Development;
 		};
@@ -339,6 +340,7 @@
 					ppc,
 					i386,
 				);
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Deployment;
 		};
@@ -349,6 +351,7 @@
 					ppc,
 					i386,
 				);
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Default;
 		};
