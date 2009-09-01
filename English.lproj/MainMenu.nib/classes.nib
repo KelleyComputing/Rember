@@ -4,17 +4,21 @@
         {
             ACTIONS = {
                 allButtonAction = id; 
+                beginPreferencesPanel = id; 
                 infiniteButtonAction = id; 
                 loopTextFieldAction = id; 
                 mbButtonAction = id; 
+                okButtonAction = id; 
                 quitAllButtonAction = id; 
                 quitFinderButtonAction = id; 
+                saveButtonAction = id; 
                 testButtonAction = id; 
                 verboseButtonAction = id; 
             }; 
             CLASS = RemberController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
+                Preferences = id; 
                 allButton = id; 
                 amountTextField = NSTextField; 
                 infiniteButton = id; 
@@ -23,10 +27,12 @@
                 loopsTextField = id; 
                 mbButton = id; 
                 memoryMatrix = id; 
+                okButton = id; 
                 quitAllButton = id; 
                 quitAllButton2 = id; 
                 quitFinderButton = id; 
                 quitFinderButton2 = id; 
+                saveButton = id; 
                 statusTextField = id; 
                 testButton = id; 
                 testLog = id; 

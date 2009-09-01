@@ -24,15 +24,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  Version History:
 				0.1b Initial Public Beta
 				0.1.04b Updated version online with newer memtest 4.0.4M
-					¥ memtest 4.0.4M executable included
-					¥ switched to spinning progress indicator
+					¥ Memtest 4.0.4M executable included
+					¥ Switched to spinning progress indicator (for better performance)
 				0.2.0b
-					¥ total GUI overhaul.  
+					¥ Total GUI overhaul.  
 					¥ Preferences added.  
 					¥ Verbose logging (filtering) function added
 					¥ Test progress in status field
-					¥ loop counter
-					¥ application/Finder quit functions
+					¥ Loop counter
+					¥ Application/Finder quit functions
+				0.2.1b
+					¥ Preferences window is now a sheet
+					¥ Save option for log details
+					¥ Dock menu
+					¥ Icon added 
  */
 
 #import "RemberController.h"
@@ -46,17 +51,36 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	verbose = FALSE;
 	
 	// loop information
-	loops = 1;
+	totalLoops = 1;
 	loopsCompleted = 0;
-	[loopsTextField setStringValue:[[NSNumber numberWithInt:loops] stringValue]];
+	[loopsTextField setStringValue:[[NSNumber numberWithInt:totalLoops] stringValue]];
 	[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:loopsCompleted] stringValue]];
 }
 
 #pragma mark UI actions
 
+-(IBAction) beginPreferencesPanel:(id)sender
+{
+	[NSApp beginSheet:Preferences
+	   modalForWindow:[NSApp mainWindow]
+		modalDelegate:self
+	   didEndSelector:NULL
+		  contextInfo:nil];
+}
+
+-(void) endPreferencesPanel
+{
+	[Preferences orderOut:self];
+    [NSApp endSheet:Preferences];
+}
+
+-(IBAction) okButtonAction:(id)sender
+{
+	[self endPreferencesPanel];
+}
+
 - (IBAction) verboseButtonAction:(id)sender
 {
-	//if(([verboseButton state] == 1) || ([verboseButton2 state] == 1) || ([verboseButton3 state] == 1)){
 	if([sender state] == 1){
 		verbose = TRUE;
 		[verboseButton setState:1];
@@ -145,7 +169,21 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 {
 	if(!remberRunning){
 		[loopsTextField setStringValue:[loopTextField stringValue]];
-		loops = [loopTextField intValue];
+		totalLoops = [loopTextField intValue];
+	}
+}
+
+
+- (IBAction) saveButtonAction:(id)sender
+{
+	NSString* filename;
+	NSSavePanel *panel = [NSSavePanel savePanel];
+	[panel setRequiredFileType:@"txt"];
+	[panel setCanSelectHiddenExtension:YES];
+	[panel setExtensionHidden:NO];
+    if ([panel runModal] == NSOKButton) {
+		filename = [NSString stringWithString:[panel filename]];
+		[[[testLog textStorage] string] writeToFile:filename atomically:YES];
 	}
 }
 
@@ -175,7 +213,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		else
 		{
 			// if we aren't looping infinitely, set the loopsString to the loopTextField string
-			loops = [loopTextField intValue];
+			totalLoops = [loopTextField intValue];
 			loopsString = [NSString stringWithString:[loopTextField stringValue]];
 			[loopsTextField setStringValue:loopsString];
 		}
@@ -190,6 +228,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		processID = [self openTask:[[NSBundle mainBundle] pathForResource:@"memtest" ofType:nil] 
 					 withArguments:[NSArray arrayWithObjects:amount, loopsString, nil]];
 		
+		// if the process has started, post status.
 		if(processID > 0)
 		{
 			[statusTextField setStringValue:@"Testing..."];
@@ -201,6 +240,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	}
 	else
 	{
+		// the 'stop' button was clicked.  terminate task.
 		[self killTask];
 	}
 }
@@ -351,6 +391,17 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		[statusTextField setStringValue:@"All tests passed"];
 	}
 	
+	// Get 'FAILURE' string. 
+	if([outputScanner scanString:@"FAILURE:" intoString:&temp])
+	{
+		if([infiniteButton state] != 1){
+			loopsCompleted++;
+			[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:loopsCompleted] stringValue]];
+		}
+		[statusTextField setStringValue:@"FAILURE - see log for more info"];
+	}
+	
+	
 	// none of the progress phrases were found, or we are in verbose mode.  Display output
 	// add the string (a chunk of the results from locate) to the NSTextView's
 	// backing store, in the form of an attributed string
@@ -388,6 +439,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	[amountTextField setEnabled:NO];
 	[infiniteButton setEnabled:NO];
 	[memoryMatrix setEnabled:NO];
+	[quitAllButton setEnabled:NO];
+	[quitFinderButton setEnabled:NO];
 	
 }
 
@@ -415,6 +468,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		[amountTextField setEnabled:YES];
 	[infiniteButton setEnabled:YES];
 	[memoryMatrix setEnabled:YES];
+	[quitAllButton setEnabled:YES];
+	if([quitAllButton state] == 1)
+		[quitFinderButton setEnabled:YES];
+	terminationStatus = [remberTask terminationStatus];
+	if((terminationStatus != 0) && (terminationStatus != 15))
+	{
+		NSRunAlertPanel(@"Rember", @"Errors were detected.  See log for more details.", @"OK", @"", @"");
+	}
 	
 }
 
@@ -425,156 +486,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     return YES;
 }
 
-#pragma mark killEveryOneButMe
-
-OSErr SendQuitAppleEventToApplication(ProcessSerialNumber ProcessToQuit)
+-(void)windowWillClose:(id)sender
 {
-    OSErr errorToReturn;
-    AEDesc targetProcess;
-    AppleEvent theEvent;
-    AppleEvent eventReply = {typeNull, NULL}; 
-	
-    errorToReturn = AECreateDesc(typeProcessSerialNumber, &ProcessToQuit, 
-								 sizeof(ProcessToQuit), &targetProcess);
-	
-    if (errorToReturn != noErr)
-	{return(errorToReturn);}
-    
-    errorToReturn = AECreateAppleEvent(kCoreEventClass, kAEQuitApplication, &targetProcess, 
-									   kAutoGenerateReturnID, kAnyTransactionID, &theEvent);
-	
-    AEDisposeDesc(&targetProcess); //done with target process descriptor so dispose
-	
-    if (errorToReturn != noErr)
-	{return(errorToReturn);}
-    
-    errorToReturn = AESend(&theEvent, &eventReply, kAENoReply + kAEAlwaysInteract, kAENormalPriority, kAEDefaultTimeout, NULL, NULL);
-	
-    AEDisposeDesc(&theEvent); //done with event so dispose
-    AEDisposeDesc(&eventReply); 
-    
-    return(errorToReturn);
+	[NSApp terminate:nil];
 }
-
-
-/* This is the killer code.  It finds and kills every other  */
-/* application on your machine (quitting them using quit apple events) */
-void KillEveryone(Boolean KillFinderToo)
-{
-    ProcessSerialNumber nextProcessToKill = {kNoProcess, kNoProcess};
-    ProcessSerialNumber finderPSN; //we need to record this since finder must be quit last.
-    ProcessSerialNumber ourPSN;
-    OSErr error, otherError;
-    ProcessInfoRec infoRec;
-    Str31 processName;
-	
-    Boolean processIsFinder;
-    Boolean processIsUs;
-    Boolean specialMacOSXProcessWhichWeShouldNotKill;
-    Boolean finderFound = false;
-    Boolean thisIsMacOSX, weAreRunningInClassic;
-    long	response;
-	
-    GetCurrentProcess(&ourPSN);
-	
-    //before we start we need to see if this is Mac OS X.  On Mac OS X certain applications shouldn't be quit by processes.
-    //such as loginwindow and the dock
-    error = Gestalt(gestaltMenuMgrAttr, &response);
-    if ((error == noErr) && ((response & gestaltMenuMgrAquaLayoutMask) != 0))
-	{thisIsMacOSX = TRUE;}
-    else
-	{thisIsMacOSX = FALSE;}
-	
-    //Check to see if we are running in classic on MacOSX
-    error = Gestalt(gestaltMacOSCompatibilityBoxAttr, &response);
-    if ((error == noErr) && (response == gestaltMacOSCompatibilityBoxPresent))
-	{weAreRunningInClassic = TRUE;}
-    else
-	{weAreRunningInClassic = FALSE;}
-    
-    do
-    {
-        error = GetNextProcess(&nextProcessToKill);
-        
-        if (error == noErr)
-        {
-            //First check if its us
-            SameProcess(&ourPSN, &nextProcessToKill, &processIsUs);
-            
-            if (processIsUs == FALSE)
-            {
-                infoRec.processInfoLength = sizeof(ProcessInfoRec);
-                infoRec.processName = processName;
-                infoRec.processAppSpec = NULL;
-				
-                otherError = GetProcessInformation(&nextProcessToKill, &infoRec);
-				
-                if (otherError == noErr)
-                {
-                    processIsFinder = FALSE;
-					
-                    // First check to see if it's the Finder, we have to kill the finder LAST on classic MacOS (MacOS9 and previous
-                    // Reason is because the Finder must be around to pass on the AppleEvent.
-                    if (finderFound == FALSE)
-                    {
-                        if (infoRec.processSignature == 'MACS' && infoRec.processType == 'FNDR') 
-                        {
-                            // save finder PSN for later
-                            finderPSN = nextProcessToKill;
-                            finderFound = TRUE;
-                            processIsFinder = TRUE;
-                        }
-                    }
-                    
-                    //since this is MacOSX we need to make sure we don't quit certain applications 
-                    if ((thisIsMacOSX == TRUE) || (weAreRunningInClassic == TRUE))
-                    {
-                        if (infoRec.processSignature == 'lgnw' && infoRec.processType == 'APPL')
-                        {
-                            //don't want to quit loginwindow on MacOSX or system will logout
-                            specialMacOSXProcessWhichWeShouldNotKill = TRUE;
-                        }
-                        else if (infoRec.processSignature == 'dock' && infoRec.processType == 'APPL')
-                        {
-                            //don't want to quit Dock on MacOSX it provides important support (for example Command+Tab switching)
-                            specialMacOSXProcessWhichWeShouldNotKill = TRUE;
-                        }
-                        else if (infoRec.processSignature == 'syui' && infoRec.processType == 'APPL')
-                        {
-                            //don't want to quit the SystemUI server on MacOSX this offers important system support
-                            specialMacOSXProcessWhichWeShouldNotKill = TRUE;
-                        }
-                        else if (infoRec.processSignature == 'bbox' && infoRec.processType == 'APPL')
-                        {
-                            //don't want to quit the "special" bluebox envionment process directly (as it can cause havoc).  
-                            //Instead this process will quit indirectly when the "real" Classic envonment gets its quit event
-                            specialMacOSXProcessWhichWeShouldNotKill = TRUE;
-                        }
-                        else
-                        {
-                            specialMacOSXProcessWhichWeShouldNotKill = FALSE; //this isn't a special process
-                        }
-                    }
-                    else //this is MacOS9 or previous
-					{specialMacOSXProcessWhichWeShouldNotKill = FALSE;}
-                    
-                    if ((processIsFinder == FALSE) && (specialMacOSXProcessWhichWeShouldNotKill == FALSE))
-                    {
-                        //ignore return value
-                        (void)SendQuitAppleEventToApplication(nextProcessToKill);
-                    }
-                }
-            }
-        }
-    }
-    while (error == noErr);
-	
-    /* Now, if the finder was running (and we want to quit it) then it's safe to kill it */
-    if ((finderFound == TRUE) && (KillFinderToo == TRUE))
-    {
-        //ignore return value
-        (void)SendQuitAppleEventToApplication(finderPSN);
-    }
-}   
 
 @end

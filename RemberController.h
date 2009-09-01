@@ -23,25 +23,34 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 #import <Cocoa/Cocoa.h>
-#import <CoreServices/CoreServices.h>
 #import "TaskWrapper.h"
+#import "killEveryoneButMe.h"
 
 @interface RemberController : NSObject <TaskWrapperController>
 {
-	// Text Fields
+	// NSTextFields
     IBOutlet NSTextField *amountTextField, *loopTextField, *loopsTextField, *loopsCompletedTextField;
     IBOutlet id statusTextField;
 	
-	// Buttons
-	IBOutlet id infiniteButton, allButton, mbButton, testButton, verboseButton, quitAllButton, quitFinderButton, verboseButton2, verboseButton3, quitAllButton2, quitFinderButton2;
+	// NSButtons
+	IBOutlet id infiniteButton, allButton, mbButton, testButton, verboseButton, quitAllButton, 
+		quitFinderButton, verboseButton2, verboseButton3, quitAllButton2, quitFinderButton2, saveButton, okButton;
 	
-	// Matrix
+	// NSMatrix
     IBOutlet id memoryMatrix;
+	
+	//Log
 	IBOutlet id testLog;
-    IBOutlet NSProgressIndicator *testProgress;
+	// preferences window
+	IBOutlet id Preferences;
+    // test progress indicator
+	IBOutlet NSProgressIndicator *testProgress;
+	// TaskWrapper for memtest task calls
 	TaskWrapper * remberTask;
+	// rember is running BOOL
 	BOOL remberRunning;
-	int loops, loopsCompleted;
+	// number of total loops, and loops completed
+	int totalLoops, loopsCompleted;
 }
 
 NSArray * testList, * progressList;
@@ -60,4 +69,5 @@ void KillEveryone(Boolean KillFinderToo);
 - (IBAction) verboseButtonAction:(id)sender;
 - (IBAction) quitAllButtonAction:(id)sender;
 - (IBAction) quitFinderButtonAction:(id)sender;
+- (IBAction) saveButtonAction:(id)sender;
 @end

@@ -7,6 +7,8 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				2CD13A8A06F503BC00C527A3,
+				2CD13A8B06F503BC00C527A3,
 				2C7C0B5006E6FB5000915CED,
 				2C7C0B5106E6FB5000915CED,
 				2C7C0B3206E6F74300915CED,
@@ -120,7 +122,6 @@
 		};
 		29B97314FDCFA39411CA2CEA = {
 			children = (
-				2C32742106ECF97800FA9AF2,
 				080E96DDFE201D6D7F000001,
 				29B97315FDCFA39411CA2CEA,
 				29B97317FDCFA39411CA2CEA,
@@ -154,6 +155,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				2C7F12F806FE67E90042684E,
 				2CDC4F1406EBEE0200874FAA,
 				8D1107310486CEB800E47090,
 				089C165CFE840E0CC02AAC07,
@@ -220,68 +222,6 @@
 //2C2
 //2C3
 //2C4
-		2C32741306ECF97400FA9AF2 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.c;
-			path = tests.c;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		2C32741406ECF97400FA9AF2 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = tests.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		2C32741506ECF97400FA9AF2 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = sizes.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		2C32741606ECF97400FA9AF2 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = types.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		2C32741706ECF97400FA9AF2 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.c;
-			path = trycpp.c;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		2C32741806ECF97400FA9AF2 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.c;
-			path = memtest.c;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		2C32742106ECF97800FA9AF2 = {
-			children = (
-				2C32741306ECF97400FA9AF2,
-				2C32741406ECF97400FA9AF2,
-				2C32741506ECF97400FA9AF2,
-				2C32741606ECF97400FA9AF2,
-				2C32741706ECF97400FA9AF2,
-				2C32741806ECF97400FA9AF2,
-			);
-			isa = PBXGroup;
-			name = memtest;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		2C7C0B3206E6F74300915CED = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -338,6 +278,25 @@
 			settings = {
 			};
 		};
+		2C7F12F806FE67E90042684E = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.icns;
+			path = Rember.icns;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		2C7F12F906FE67E90042684E = {
+			fileRef = 2C7F12F806FE67E90042684E;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		2CB02EC006FBF7A800012D93 = {
+			fileRef = 8D1107310486CEB800E47090;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		2CB362BC06F2A30D00D763CC = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -362,6 +321,34 @@
 		};
 		2CB364E506F2A45500D763CC = {
 			fileRef = 2CB364E406F2A45500D763CC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		2CD13A8A06F503BC00C527A3 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = killEveryoneButMe.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		2CD13A8B06F503BC00C527A3 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.c;
+			path = killEveryoneButMe.c;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		2CD13A8C06F503BC00C527A3 = {
+			fileRef = 2CD13A8A06F503BC00C527A3;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		2CD13A8D06F503BC00C527A3 = {
+			fileRef = 2CD13A8B06F503BC00C527A3;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -473,6 +460,9 @@
 				2C7C0B3406E6F74300915CED,
 				2C7C0B5206E6FB5000915CED,
 				2CDC4F1506EBEE0200874FAA,
+				2CD13A8C06F503BC00C527A3,
+				2CB02EC006FBF7A800012D93,
+				2C7F12F906FE67E90042684E,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +485,7 @@
 				8D11072D0486CEB800E47090,
 				2C7C0B3506E6F74300915CED,
 				2C7C0B5306E6FB5000915CED,
+				2CD13A8D06F503BC00C527A3,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
