@@ -38,6 +38,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 					¥ Save option for log details
 					¥ Dock menu
 					¥ Icon added 
+				0.2.2b
+					¥ Performance enahncements
+					¥ Icon touch-up
+				0.2.3b
+					¥ Uses new version of memtest executable (4.05M)
  */
 
 #import "RemberController.h"
@@ -428,13 +433,17 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 {
 	loopsCompleted = 0; 
     remberRunning = YES;
+	
     // clear the results
     [testLog setString:@""];
 	[statusTextField setStringValue:@"Initializing..."];
+	[testProgress setUsesThreadedAnimation:TRUE];
 	[testProgress startAnimation:self];
+	
     // change the "Test" button to say "Stop"
     [testButton setTitle:@"Stop"];
-	// disable other user controls
+	
+	// disable other user controls while testing
 	[loopTextField setEnabled:NO];
 	[amountTextField setEnabled:NO];
 	[infiniteButton setEnabled:NO];
