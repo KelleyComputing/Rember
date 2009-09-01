@@ -1,0 +1,229 @@
+{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica-Bold;\f1\fswiss\fcharset77 Helvetica-BoldOblique;\f2\fswiss\fcharset77 Helvetica;
+\f3\fswiss\fcharset77 Helvetica-Oblique;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww15660\viewh13560\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc
+
+\f0\b\fs24 \cf0 VERSION 4.0x RELEASE NOTES\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+
+\f1\i \cf0 Version 4.04M - 9/5/2004
+\f2\i0\b0 \
+
+\f1\i\b \
+
+\f2\i0\b0 Changed the memory reduction algorithm for single-user mode to be more robust. Rather than subtracting off a fixed number of MB in single-user mode, I'm now subtracting off a fixed percentage (2.3%) of the available free memory. This percentage is slightly above the necessary reductions reported by a number of users running 4.03M and hopefully will prevent kernel lock-ups in single-user mode.\
+\
+Changes implemented in memtester 4.0.4 have been incorporated into this release.
+\f1\i\b \
+\
+Version 4.03M - 8/28/2004
+\f2\i0\b0 \
+
+\f1\i\b \
+
+\f2\i0\b0 This is a complete rewrite of the memtest application by the original author, Charles Cazabon. Thanks to his efforts, and coupled with my MacOS X-specific modifications and enhancements, memtest now runs in MacOS X's single-user mode where nearly all of the installed ram is available for testing. Operation in single-user mode is a feature that I've wanted to add for a long time and thanks to Charles's efforts to improve the commonality of the source code across multiple platforms, OS X users can finally test nearly all of the installed memory in their machines. Typically, all but about 60M of the installed ram can be tested in single-user mode.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc
+
+\f0\b \cf0 INSTALLATION
+\f2\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+\cf0 \
+There has been some confusion about where to install the memtest folder and how to invoke memtest from the command line. I suggest that after expanding the Stuffit archive, move the memtest folder into your regular Applications directory on the boot volume. Unix-savvy users will have no problem invoking the application when installed elsewhere but for those of you who aren't particularly comfortable with the command line, placing the memtest folder in your Applications directory is both safe and makes it easy to invoke the program in either the full operating system mode or in single-user mode. 
+\f1\i\b DO NOT copy the memtest folder into a reserved unix directory (e.g. /usr/bin, /usr/sbin, etc.) as these directories may be changed or even completely replaced during an update of MacOS X.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc
+
+\f0\i0 \cf0 RUNNING MEMTEST VERSIONS 4.0x
+\f1\i \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+\cf0 \
+
+\f2\i0\b0 Memtest 4.0x is invoked in exactly the same manner as in the earlier 2.9x releases.
+\f1\i\b  
+\f2\i0\b0 Assuming that the memtest folder resides in your Applications folder, open a terminal window and type the following command at the bash prompt:\
+\
+PowerMacG4:~ tony$
+\f0\b   /Applications/memtest-4.03M/memtest all 1
+\f2\b0 \
+\
+Alternatively, you can 
+\f1\i\b cd  
+\f2\i0\b0 into the memtest folder and run the program using the command 
+\f0\b ./memtest all 1
+\f2\b0 . Either way, memtest will test all of the available free memory using a single pass of the test suite. As always, I recommend running with at least 3 or 4 passes rather than just a single pass to obtain better test coverage of marginal DIMMs.\
+\
+To test less than all of the available free memory, simply replace the 
+\f0\b all 
+\f2\b0 option with the number of megabytes to test (e.g. 10, 100, 512, etc.) Don't put an M after the number as was done in the older 2.9x releases
+\f1\i\b .
+\f2\i0\b0  The number entered is assumed to be in MB so the use of the M is no longer required.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc
+
+\f0\b \cf0 KNOWN LIMITATIONS
+\f2\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+\cf0 \
+There appears to be an upper limit of 2GB of memory that can be tested by a single run of memtest. The limitation is in the MacOS X version of the 
+\f0\b malloc
+\f2\b0  function which allocates the physical memory to be tested. I'm unable to run tests on this limit because none of my machines have more than 768M of installed ram. Memtest now has the capability to support 64-bit systems which I assume will have a higher 
+\f0\b malloc
+\f2\b0  limit than 2GB. Until the release of Tiger, further progress on this issue will not be possible. In the meantime, please see Useful Tips below for a workaround to the 2GB limit.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc
+
+\f0\b \cf0 USEFUL TIPS
+\f2\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+\cf0 \
+When running MacOS X in its normal (full OS) mode, you can launch multiple copies of memtest in different terminal windows to test more memory than a single copy of the program can test. This can be useful, for example, if you have a system with more than 2GB of installed ram. Start memtest in one window using a number less than 2000 (2GB). Once memtest reports that it has successfully locked the physical memory, start a second copy of memtest in another terminal window using either the 
+\f0\b all
+\f2\b0  option or a number less than 2000. If there might still be some free memory left to test, you can always launch a third memtest run in a third terminal window. There's theoretically no limit to the number of copies of the program that can be running simultaneously in multiple terminal windows. Just be aware that the more copies you launch, the more inactive memory you may cause to be paged out, which can result in multiple swap files being created and a slowdown of the system until you reboot. Use common sense when launching more than a few copies at the same time.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc
+
+\f0\b \cf0 NOTES FOR RUNNING IN SINGLE-USER MODE
+\f1\i \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+\cf0 \
+
+\f2\i0\b0 Version 4.04M runs in single-user mode but there are a few things to know about this environment. Single-user mode was 
+\f1\i\b not
+\f2\i0\b0  meant by Apple to be a user application environment. Consequently, most features that exist in the full operating system are either missing, only partially work, or may even work somewhat differently. Virtual memory is one of those strangely-behaved features that directly affects the operation of memtest. MacOS X's gestalt manager reports that VM exists and is enabled in single-user mode, yet the default memory manager is not available. This can result in unpredictable behavior of the OS under certain conditions, particularly when memtest attempts to allocate all of the free memory for testing. Any such attempt causes the program to become unresponsive at some point after it allocates the memory but before it locks the physical ram for its own use. The OS also becomes unresponsive and a hard reset is the only way to regain control of the machine.\
+\
+After a considerable amount of testing, I've found that by slightly reducing the requested memory below the available free memory, memtest can be made to work reliably in single-user mode. In Panther (10.3.5) on an AGP G4 machine, reducing the requested memory by 2.3% below the total free memory produces a reliable test run with no system lock-ups. Of course, the size of the required reduction might vary from machine to machine and between different versions of MacOS X but I have no way to test all of these possibilities. That's where you come in:-)\
+\
+In single-user mode, memtest will automatically lower the amount of memory to be tested whenever the 'all' option is used or whenever the user manually requests too much memory to be tested. The goal is to eliminate the need for the user to determine the correct amount of the reduction. However, it's possible that certain machines won't be happy with the reduction percentage I've chosen. If your system locks up when requesting 
+\f0\b all
+\f2\b0  memory in single-user mode, you can invoke 
+\f0\b top
+\f2\b0 , check the amount of free memory reported, manually subtract off more than the 2.3% that I'm automatically subtracting, and you'll get the program to run reliably. I'd appreciate any reports of lock-ups in single-user mode along with how much you needed to reduce the free memory below the amount reported by 
+\f0\b top
+\f2\b0  in order to get memtest to work reliably. I'll update the reduction algorithm as required. Thanks in advance for your help in making memtest even better for the Macintosh community!\
+\
+\
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\
+
+\f1\i\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc
+
+\f0\i0 \cf0 VERSION 2.9x RELEASE NOTES
+\f1\i \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+\cf0 \
+Version 2.95 - 2/15/2004
+\f2\i0\b0 \
+
+\f1\i\b \
+
+\f2\i0\b0 Corrected problem with a missing _strsignal function under Jaguar:\
+	- added missing prototype for strsignal function in memtest.c\
+	- recompiled using "make bsd"
+\f1\i\b \
+\
+Version 2.94 - 1/31/2004
+\f2\i0\b0 \
+
+\f1\i\b \
+
+\f2\i0\b0 This release implements a major bug fix and enhances the performance of memtest.\
+\
+The option to test all available memory (e.g. 
+\f3\i ./memtest all
+\f2\i0 ) now works correctly, reserving all available real memory for testing. The user no longer needs to run "top" to determine the amount of free memory that is available for testing. In version 2.93-1, use of the "all" option caused both real and virtual memory locking to be attempted, resulting in excessive paging, and rendering the machine nearly unusable. This was an unfortunate consequence of a feature that worked correctly under linux but does not work properly under the Darwin kernel which comprises MacOS X.\
+\
+Runtime performance has been improved by 20-30% over that of version 2.93-1 through the use of a compiler optimization in the Makefile.
+\f1\i\b \
+\
+\
+Version 2.93-1\
+
+\f2\i0\b0 \
+This is my re-release of Charles Cazabon's original distribution for various Unix systems. I was unable to build his source code under Jaguar because the files 
+\f3\i strsignal.c
+\f2\i0  and 
+\f3\i snprintf.c
+\f2\i0  aren't part of Apple's BSD distribution. I pulled down these two files from a BSD site and made a few minor modifications to the function calls in 
+\f3\i strsignal.c 
+\f2\i0 in order to build the release. The compiled utility, 
+\f3\i \ul memtest,\ulnone  
+\f2\i0 is included in the release directory and is ready to use.
+\f0\b \
+
+\f2\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc
+
+\f0\b \cf0 \
+RUNNING MEMTEST 2.9x RELEASES
+\f2\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+\cf0 \
+Memtest is invoked by typing "./
+\f3\i memtest <MemorySize> <NumberOfPasses>
+\f2\i0 " in a MacOS X terminal window. 
+\f3\i MemorySize 
+\f2\i0 is the number of megabytes to test followed by an
+\f3\i  M 
+\f2\i0 (e.g.
+\f3\i  512M
+\f2\i0 ) and 
+\f3\i NumberOfPasses
+\f2\i0  is the number of times the entire sequence of 16 tests will run. Starting with version 2.94, I now recommend using the "all" option in place of 
+\f3\i <MemorySize>, 
+\f2\i0 e.g.
+\f3\i  "./memtest all 1" 
+\f2\i0 will run one pass on all available free memory in your system. The 16-test sequence takes a few hours to run on a 450 MHz PowerMac with 768M of memory, so I recommend setting the number of passes to 1 if you're looking for the fastest test completion. However, I have found that setting the number of passes to 3 or 4 can help to isolate some intermittent memory failures that a single pass may not catch. If you can run the test overnight or over a weekend, this option can help build increased confidence that your DIMMs are truly OK, or may find a problem that a single-pass run didn't. Either way, you'll get a more reliable test of your system's memory.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+
+\f3\i \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+
+\f2\i0 \cf0 In order to test as much of your system memory as possible, I recommend starting this program following a fresh reboot while holding down the Shift key (OS X's Safe Mode) and prior to launching any other applications. 
+\f3\i Memtest 
+\f2\i0 will want to lock the memory it's testing, so the more that's free, the more it can test. By booting into Safe Mode, I've been able to test all but about 100M of the installed memory. You can add another 30M or so to the testable amount of memory by logging in as user ">console" without a password. This will drop you into console mode and turn off the window manager, freeing up the additional memory for testing. Now you should be able to test all except the approximately 70M of memory that OS X requires to run in this mode.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+
+\f0\b \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc
+\cf0 \
+COMPILING THE SOURCE CODE\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+
+\f2\b0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+\cf0 If for some reason you would like to recompile the source code, you can do this by typing 
+\f1\i\b make
+\f2\i0\b0  in a terminal window prompt. Be sure to 
+\f1\i\b cd  
+\f2\i0\b0 into the memtest folder before typing the 
+\f1\i\b make 
+\f2\i0\b0 command. Also, you must have MacOS X's BSD subsystem installed and either the Jaguar or Panther version of Apple's Developer Tools installed in order to successfully compile the program.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc
+
+\f0\b \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc
+
+\fs26 \cf0 WARNING - READ THIS!
+\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qj
+
+\f2\b0 \cf0 Memtest versions earlier than 4.03M will 
+\f0\b NOT
+\f2\b0  run properly when booted into single-user mode. The program makes calls to the default memory manager which are unavailable in this environment. I strongly recommend upgrading to version 4.03M (or later) which supports running memtest in single-user mode.\
+\
+\
+Tony Scaminaci\
+Email:
+\f3\i   friskythecat@sbcglobal.net\
+
+\f2\i0 Web:  
+\f3\i   http://friskythecat.tripod.com}
