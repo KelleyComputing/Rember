@@ -1,0 +1,29 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                allButtonAction = id; 
+                infiniteButtonAction = id; 
+                mbButtonAction = id; 
+                testButtonAction = id; 
+            }; 
+            CLASS = RemberController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                allButton = id; 
+                amountTextField = NSTextField; 
+                infiniteButton = id; 
+                loopTextField = NSTextField; 
+                mbButton = id; 
+                memoryMatrix = id; 
+                statusTextField = id; 
+                testButton = id; 
+                testLog = id; 
+                testProgress = NSProgressIndicator; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

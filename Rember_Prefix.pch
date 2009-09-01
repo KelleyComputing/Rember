@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Rember' target in the 'Rember' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
