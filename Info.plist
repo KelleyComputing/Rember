@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string>Rember.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.kelleycomputing.rember</string>
+	<string>net.kelleycomputing.Rember</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -17,7 +17,7 @@
 	<key>CFBundleSignature</key>
 	<string>RMBR</string>
 	<key>CFBundleVersion</key>
-	<string>0.3.3b</string>
+	<string>0.3.4b</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		2C2A5CB2095C786700A0A13A /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 2C2A5CAB095C786700A0A13A /* Help */; };
+		2C2BC01C0B4EC8B5009BACB7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2BBF7C0B4EC8B5009BACB7 /* IOKit.framework */; };
+		2C63BCF50B9222D400C1C461 /* memtest in Resources */ = {isa = PBXBuildFile; fileRef = 2C63BCF40B9222D400C1C461 /* memtest */; };
+		2C719CA60B9B632B00484D8C /* Rember_64.tif in Resources */ = {isa = PBXBuildFile; fileRef = 2C719CA50B9B632B00484D8C /* Rember_64.tif */; };
 		2C7C0B3406E6F74300915CED /* TaskWrapper.h in Resources */ = {isa = PBXBuildFile; fileRef = 2C7C0B3206E6F74300915CED /* TaskWrapper.h */; };
 		2C7C0B3506E6F74300915CED /* TaskWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C0B3306E6F74300915CED /* TaskWrapper.m */; };
 		2C7C0B5206E6FB5000915CED /* RemberController.h in Resources */ = {isa = PBXBuildFile; fileRef = 2C7C0B5006E6FB5000915CED /* RemberController.h */; };
 		2C7C0B5306E6FB5000915CED /* RemberController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C0B5106E6FB5000915CED /* RemberController.m */; };
 		2C7F12F906FE67E90042684E /* Rember.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F12F806FE67E90042684E /* Rember.icns */; };
+		2C9E4C930B9A5FD000B527DC /* greenStatus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C9E4C8F0B9A5FD000B527DC /* greenStatus.tiff */; };
+		2C9E4C940B9A5FD000B527DC /* redStatus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C9E4C900B9A5FD000B527DC /* redStatus.tiff */; };
+		2C9E4C950B9A5FD000B527DC /* whiteStatus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C9E4C910B9A5FD000B527DC /* whiteStatus.tiff */; };
+		2C9E4C960B9A5FD000B527DC /* yellowStatus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C9E4C920B9A5FD000B527DC /* yellowStatus.tiff */; };
 		2CB02EC006FBF7A800012D93 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* Info.plist */; };
 		2CB362BD06F2A30D00D763CC /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB362BC06F2A30D00D763CC /* CoreServices.framework */; };
 		2CB364E506F2A45500D763CC /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB364E406F2A45500D763CC /* Carbon.framework */; };
+		2CBC1BF40C947F5500348879 /* Report.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBC1BF30C947F5500348879 /* Report.rtf */; };
 		2CD13A8C06F503BC00C527A3 /* killEveryoneButMe.h in Resources */ = {isa = PBXBuildFile; fileRef = 2CD13A8A06F503BC00C527A3 /* killEveryoneButMe.h */; };
 		2CD13A8D06F503BC00C527A3 /* killEveryoneButMe.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CD13A8B06F503BC00C527A3 /* killEveryoneButMe.c */; };
-		2CDC4F1506EBEE0200874FAA /* memtest in Resources */ = {isa = PBXBuildFile; fileRef = 2CDC4F1406EBEE0200874FAA /* memtest */; };
-		2CF0D6310A818633007A5754 /* Italian.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0D62D0A818633007A5754 /* Italian.lproj */; };
-		2CF0D6370A818644007A5754 /* English.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0D6320A818644007A5754 /* English.lproj */; };
-		2CF0D63C0A818656007A5754 /* Japanese.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0D6380A818656007A5754 /* Japanese.lproj */; };
 		2CF0D8410A8193A7007A5754 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0D83F0A8193A7007A5754 /* Localizable.strings */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -37,24 +41,30 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2C2A5CAB095C786700A0A13A /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Help; sourceTree = "<group>"; };
+		2C2BBF7C0B4EC8B5009BACB7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		2C542ABF0C9C526B009F8634 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C542AC00C9C5279009F8634 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C542AC10C9C52AC009F8634 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		2C63BCF40B9222D400C1C461 /* memtest */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = memtest; sourceTree = "<group>"; };
+		2C719CA50B9B632B00484D8C /* Rember_64.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Rember_64.tif; sourceTree = "<group>"; };
 		2C7C0B3206E6F74300915CED /* TaskWrapper.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TaskWrapper.h; sourceTree = "<group>"; };
 		2C7C0B3306E6F74300915CED /* TaskWrapper.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TaskWrapper.m; sourceTree = "<group>"; };
 		2C7C0B5006E6FB5000915CED /* RemberController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RemberController.h; sourceTree = "<group>"; };
 		2C7C0B5106E6FB5000915CED /* RemberController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RemberController.m; sourceTree = "<group>"; };
 		2C7F12F806FE67E90042684E /* Rember.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Rember.icns; sourceTree = "<group>"; };
+		2C9E4C8F0B9A5FD000B527DC /* greenStatus.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = greenStatus.tiff; sourceTree = "<group>"; };
+		2C9E4C900B9A5FD000B527DC /* redStatus.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = redStatus.tiff; sourceTree = "<group>"; };
+		2C9E4C910B9A5FD000B527DC /* whiteStatus.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = whiteStatus.tiff; sourceTree = "<group>"; };
+		2C9E4C920B9A5FD000B527DC /* yellowStatus.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = yellowStatus.tiff; sourceTree = "<group>"; };
 		2CB362BC06F2A30D00D763CC /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		2CB364E406F2A45500D763CC /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		2CBC1BF30C947F5500348879 /* Report.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Report.rtf; sourceTree = "<group>"; };
+		2CCDB4750BCF25F900C9963C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		2CD13A8A06F503BC00C527A3 /* killEveryoneButMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = killEveryoneButMe.h; sourceTree = "<group>"; };
 		2CD13A8B06F503BC00C527A3 /* killEveryoneButMe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = killEveryoneButMe.c; sourceTree = "<group>"; };
-		2CDC4F1406EBEE0200874FAA /* memtest */ = {isa = PBXFileReference; comments = "memtest-4.04M\n"; lastKnownFileType = "compiled.mach-o.executable"; path = memtest; sourceTree = "<group>"; };
-		2CF0D62D0A818633007A5754 /* Italian.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Italian.lproj; sourceTree = "<group>"; };
-		2CF0D6320A818644007A5754 /* English.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = English.lproj; sourceTree = "<group>"; };
-		2CF0D6380A818656007A5754 /* Japanese.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Japanese.lproj; sourceTree = "<group>"; };
-		2CF0D8400A8193A7007A5754 /* Italian */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2CF0D8420A8193B9007A5754 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2CF0D8430A8193C6007A5754 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2CF0D8460A8193FE007A5754 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
-		2CF0D8470A819414007A5754 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Rember_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rember_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Rember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rember.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +78,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2CB362BD06F2A30D00D763CC /* CoreServices.framework in Frameworks */,
 				2CB364E506F2A45500D763CC /* Carbon.framework in Frameworks */,
+				2C2BC01C0B4EC8B5009BACB7 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +101,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C2BBF7C0B4EC8B5009BACB7 /* IOKit.framework */,
 				2CB364E406F2A45500D763CC /* Carbon.framework */,
 				2CB362BC06F2A30D00D763CC /* CoreServices.framework */,
 			);
@@ -138,15 +150,18 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2CDC4F1406EBEE0200874FAA /* memtest */,
+				2CBC1BF30C947F5500348879 /* Report.rtf */,
+				2C719CA50B9B632B00484D8C /* Rember_64.tif */,
+				2C9E4C8F0B9A5FD000B527DC /* greenStatus.tiff */,
+				2C9E4C900B9A5FD000B527DC /* redStatus.tiff */,
+				2C9E4C910B9A5FD000B527DC /* whiteStatus.tiff */,
+				2C9E4C920B9A5FD000B527DC /* yellowStatus.tiff */,
+				2C63BCF40B9222D400C1C461 /* memtest */,
 				2C7F12F806FE67E90042684E /* Rember.icns */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				2CF0D83F0A8193A7007A5754 /* Localizable.strings */,
-				2CF0D6320A818644007A5754 /* English.lproj */,
 				2C2A5CAB095C786700A0A13A /* Help */,
-				2CF0D62D0A818633007A5754 /* Italian.lproj */,
-				2CF0D6380A818656007A5754 /* Japanese.lproj */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 			);
 			name = Resources;
@@ -195,6 +210,7 @@
 				French,
 				German,
 				Italian,
+				RemberItalian,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Rember */;
 			projectDirPath = "";
@@ -213,15 +229,18 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				2C7C0B3406E6F74300915CED /* TaskWrapper.h in Resources */,
 				2C7C0B5206E6FB5000915CED /* RemberController.h in Resources */,
-				2CDC4F1506EBEE0200874FAA /* memtest in Resources */,
 				2CD13A8C06F503BC00C527A3 /* killEveryoneButMe.h in Resources */,
 				2CB02EC006FBF7A800012D93 /* Info.plist in Resources */,
 				2C7F12F906FE67E90042684E /* Rember.icns in Resources */,
 				2C2A5CB2095C786700A0A13A /* Help in Resources */,
-				2CF0D6310A818633007A5754 /* Italian.lproj in Resources */,
-				2CF0D6370A818644007A5754 /* English.lproj in Resources */,
-				2CF0D63C0A818656007A5754 /* Japanese.lproj in Resources */,
 				2CF0D8410A8193A7007A5754 /* Localizable.strings in Resources */,
+				2C63BCF50B9222D400C1C461 /* memtest in Resources */,
+				2C9E4C930B9A5FD000B527DC /* greenStatus.tiff in Resources */,
+				2C9E4C940B9A5FD000B527DC /* redStatus.tiff in Resources */,
+				2C9E4C950B9A5FD000B527DC /* whiteStatus.tiff in Resources */,
+				2C9E4C960B9A5FD000B527DC /* yellowStatus.tiff in Resources */,
+				2C719CA60B9B632B00484D8C /* Rember_64.tif in Resources */,
+				2CBC1BF40C947F5500348879 /* Report.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,7 +266,7 @@
 			children = (
 				089C165DFE840E0CC02AAC07 /* English */,
 				2CF0D8420A8193B9007A5754 /* Japanese */,
-				2CF0D8470A819414007A5754 /* Italian */,
+				2C542ABF0C9C526B009F8634 /* Italian */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -256,6 +275,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				29B97319FDCFA39411CA2CEA /* English */,
+				2CCDB4750BCF25F900C9963C /* Japanese */,
+				2C542AC10C9C52AC009F8634 /* Italian */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";
@@ -264,8 +285,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				2CF0D8430A8193C6007A5754 /* English */,
-				2CF0D8400A8193A7007A5754 /* Italian */,
 				2CF0D8460A8193FE007A5754 /* Japanese */,
+				2C542AC00C9C5279009F8634 /* Italian */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

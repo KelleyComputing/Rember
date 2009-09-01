@@ -1,36 +1,36 @@
 /* Test button value */
-"Test" = "Test";
+"Test" = "Prova";
 
 /* Stop button value */
-"Stop" = "Stop";
+"Stop" = "Ferma";
 
 /* Errors detected dialog box */
-"Errors" = "Errors were detected.  See log for more details.";
+"Errors" = "Sono stati rilevati degli errori.  Vedi il registro per i dettagli.";
 
 /* Failure dialog box */
-"Failure" = "FAILURE - see log for more info";
+"Failure" = "ERRORE - Vedi il registro per i dettagli";
 
 /* Tests passed status */
-"Passed" = "All tests passed";
+"Passed" = "Tutte le prove sono riuscite";
 
 /* Initializing status*/
-"Initializing" = "Initializing...";
+"Initializing" = "Inizializzo...";
 
 /* Testing status*/
-"Testing" = "Testing";
+"Testing" = "Provo";
 
 /* Idle status*/
-"Idle" = "Idle";
+"Idle" = "In attesa";
 
 /* OK button value*/
 "OK" = "OK";
 
 /* Cancel button value*/
-"Cancel" = "Cancel";
+"Cancel" = "Annulla";
 
 /* Memory tests in progress dialogd */
-"InProgress" = "Memory tests are still in progress.  Are you sure you want to quit?";
+"InProgress" = "Le prove di memoria sono in corso. Sicuro di voler uscire?";
 
 /* */
-"Running" = "Running test: ";
+"Running" = "Eseguo prova: ";
 
