@@ -57,8 +57,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		@"Walking Ones",
 		@"Walking Zeroes", nil];
 	
-	// these are strings that i have deemed the "verbose" information, 
-	//		that if a users pleases, can be with-held.
+	// these are strings that I have deemed the "verbose" information, 
+	// if a user pleases, these strings can be witheld from logs.
 	progressList =[[NSArray alloc] initWithObjects: 
 		@"\b\b\b\b\b\b\b\b\b\b\b           \b\b\b\b\b\b\b\b\b\b\b",
 		@"\b\b\b\b\b\b\b\b\b\b\b", 
@@ -71,30 +71,30 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		@"setting",
 		@"testing", nil];
 	
+	[amountFormatter setUsesSignificantDigits:NO];
+	[loopFormatter setUsesSignificantDigits:NO];
+	
 	memoryInfo = [[NSArray alloc] initWithArray:[self memoryInfo]];
-
-	// register for system power event changes (disable system sleep)
-	root_port = IORegisterForSystemPower (0,&notify,callback,&anIterator); 
-	if ( &root_port == NULL ) { 
-		printf("IORegisterForSystemPower failed\n"); 
-	} 
-	CFRunLoopAddSource(CFRunLoopGetCurrent(), 
-					   IONotificationPortGetRunLoopSource(notify), 
-					   kCFRunLoopDefaultMode);
 	
 	// Dictionary to store report information in
 	reportDict = [[NSMutableDictionary alloc] initWithCapacity:1];
+	
+	processController = [[ProcessController alloc] init];
+}
+
+- (void) applicationDidFinishLaunching:(NSNotification *)notification{
 	
 	// Determine if the user has chosen to display memory info at program startup
 	if(showMemoryInfo)
 	{
 		NSTimer *timer;
-		timer = [NSTimer scheduledTimerWithTimeInterval:1 
+		timer = [NSTimer scheduledTimerWithTimeInterval:0.5
 												 target:self 
 											   selector:@selector(showMemoryInfoPanel) 
 											   userInfo:nil 
 												repeats:NO];	
 	}
+
 }
 
 
@@ -158,7 +158,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	{
 		quitAll = [defaults boolForKey:@"quitAll"];
 		[quitAllButton setState:quitAll];
-		[quitAllButton2 setState:quitAll];
 	}
 	else
 	{
@@ -201,13 +200,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		
 		if(maxLoops == YES){
 			[loopTextField setEnabled:FALSE];
-			[loopTextField setDoubleValue:255];
-			[loopsTextField setDoubleValue:255];
+			[loopTextField setIntValue:255];
+			[loopsTextField setIntValue:255];
 		}
 		else{
 			[loopTextField setEnabled:TRUE];
-			[loopTextField setDoubleValue:[[defaults objectForKey:@"totalLoops"] intValue]];
-			[loopsTextField setDoubleValue:[[defaults objectForKey:@"totalLoops"] intValue]];
+			[loopTextField setIntValue:[[defaults objectForKey:@"totalLoops"] intValue]];
+			[loopsTextField setIntValue:[[defaults objectForKey:@"totalLoops"] intValue]];
 		}
 	}
 	else
@@ -258,11 +257,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 {
 	NSString * infoPlistPath = [NSString stringWithString:[@"system_profiler SPMemoryDataType -xml > " stringByAppendingString:[NSHomeDirectory() stringByAppendingString:@"/Library/Preferences/net.kelleycomputing.Rember.memoryInfo.plist"]]];
 	NSString * builtInPlistPath = [NSString stringWithString:[@"system_profiler SPHardwareDataType | grep Memory | sed s/.*Memory..// > " stringByAppendingString:[NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Preferences/net.kelleycomputing.Rember.builtInMemory.txt"]]];	
-	int status = system([infoPlistPath cString]);
-	status += system([builtInPlistPath cString]);
+	int status = system([infoPlistPath UTF8String]);
+	status += system([builtInPlistPath UTF8String]);
 	return status;
 }
-
 
 - (NSArray *) memoryInfo
 {
@@ -273,8 +271,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	if([fileManager fileExistsAtPath:infoPlistPath])
 	{
 		if(![self isSnowLeopard]){
+			// system is running 10.5 - memory info is in a different place
 			NSArray *info = [NSArray arrayWithContentsOfFile:infoPlistPath];
-			NSDictionary *memoryDict = [NSDictionary dictionaryWithDictionary:[info objectAtIndex:0]];
+			NSDictionary *infoDict = [NSDictionary dictionaryWithDictionary:[info objectAtIndex:0]];
+			NSDictionary *memoryDict = [[infoDict objectForKey:@"_items"] objectAtIndex:0];
 			NSArray *items = [memoryDict objectForKey:@"_items"];
 			return items;	
 		}
@@ -293,18 +293,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 }
 
 - (BOOL) isSnowLeopard{
-	NSString *operatingSystemVersion = [[NSProcessInfo processInfo] operatingSystemVersionString], *temp = [NSString stringWithString:@""];
-	NSScanner *versionScanner = [NSScanner scannerWithString:operatingSystemVersion];
-	
-	if([versionScanner scanUpToString:@"(" intoString:&temp]){
-		versionScanner = [NSScanner scannerWithString:temp];
-		if([versionScanner scanString:@"Version 10.6" intoString:&temp])
-			return TRUE;
-		else
-			return FALSE;
-	}
-	else
+	NSString *operatingSystemVersion = [[NSProcessInfo processInfo] operatingSystemVersionString];
+	NSRange osRange = [operatingSystemVersion rangeOfString:@"Version 10.6"];
+	if(osRange.location == NSNotFound)
 		return FALSE;
+	else
+		return TRUE;
 }
 
 - (void) showTestResults
@@ -315,28 +309,39 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	if([defaults boolForKey:@"showReport"]){
 		NSMutableDictionary *reportAttrs = [NSMutableDictionary dictionaryWithCapacity:1];
 		NSMutableAttributedString * report = [[NSMutableAttributedString alloc] initWithPath:[[NSBundle mainBundle] pathForResource:@"Report.rtf" ofType:nil] documentAttributes:&reportAttrs];
-		[[report mutableString] replaceOccurrencesOfString:@"TEST_RESULTS" withString:[reportDict objectForKey:@"testResults"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+		[[report mutableString] replaceOccurrencesOfString:@"TEST_RESULTS" withString:[reportDict objectForKey:@"testResults"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
 		if([reportDict objectForKey:@"availableAmount"] != nil)
-			[[report mutableString] replaceOccurrencesOfString:@"AVAILABLE_MEMORY" withString:[reportDict objectForKey:@"availableAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+			[[report mutableString] replaceOccurrencesOfString:@"AVAILABLE_MEMORY" withString:[reportDict objectForKey:@"availableAmount"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
 		if([reportDict objectForKey:@"builtInAmount"] != nil)
-			[[report mutableString] replaceOccurrencesOfString:@"BUILT_IN_MEMORY" withString:[reportDict objectForKey:@"builtInAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+			[[report mutableString] replaceOccurrencesOfString:@"BUILT_IN_MEMORY" withString:[reportDict objectForKey:@"builtInAmount"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
 		if([reportDict objectForKey:@"requestedAmount"] != nil)
-			[[report mutableString] replaceOccurrencesOfString:@"MEMORY_REQUESTED" withString:[reportDict objectForKey:@"requestedAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+			[[report mutableString] replaceOccurrencesOfString:@"MEMORY_REQUESTED" withString:[reportDict objectForKey:@"requestedAmount"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
 		if([reportDict objectForKey:@"allocatedAmount"] != nil)
-			[[report mutableString] replaceOccurrencesOfString:@"MEMORY_ALLOCATED" withString:[reportDict objectForKey:@"allocatedAmount"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+			[[report mutableString] replaceOccurrencesOfString:@"MEMORY_ALLOCATED" withString:[reportDict objectForKey:@"allocatedAmount"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
 		if([reportDict objectForKey:@"loops"] != nil)
-			[[report mutableString] replaceOccurrencesOfString:@"LOOPS_SELECTED" withString:[reportDict objectForKey:@"loops"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+			[[report mutableString] replaceOccurrencesOfString:@"LOOPS_SELECTED" withString:[reportDict objectForKey:@"loops"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
 		if([reportDict objectForKey:@"loopsCompleted"] != nil)
-			[[report mutableString] replaceOccurrencesOfString:@"LOOPS_COMPLETED" withString:[reportDict objectForKey:@"loopsCompleted"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+			[[report mutableString] replaceOccurrencesOfString:@"LOOPS_COMPLETED" withString:[reportDict objectForKey:@"loopsCompleted"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
 		if([reportDict objectForKey:@"executionTime"] != nil)
-			[[report mutableString] replaceOccurrencesOfString:@"EXECUTION_TIME" withString:[reportDict objectForKey:@"executionTime"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+			[[report mutableString] replaceOccurrencesOfString:@"EXECUTION_TIME" withString:[reportDict objectForKey:@"executionTime"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
 		if([reportDict objectForKey:@"startTime"] != nil)
-			[[report mutableString] replaceOccurrencesOfString:@"TEST_START_TIME" withString:[reportDict objectForKey:@"startTime"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
+			[[report mutableString] replaceOccurrencesOfString:@"TEST_START_TIME" withString:[reportDict objectForKey:@"startTime"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
 		if([reportDict objectForKey:@"stopTime"] != nil)
-			[[report mutableString] replaceOccurrencesOfString:@"TEST_END_TIME" withString:[reportDict objectForKey:@"stopTime"] options:nil range:NSMakeRange(0,[[report mutableString] length])];
-		[[reportTextView textStorage] setAttributedString:[report autorelease]];
+			[[report mutableString] replaceOccurrencesOfString:@"TEST_END_TIME" withString:[reportDict objectForKey:@"stopTime"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
+		[[reportTextView textStorage] setAttributedString:report];
+
+		[report release];
 		
 		[self beginReportPanel:self];
+	}
+}
+
+- (void)disableEnableIdleSleep{
+	if (!assertionID) {
+		IOPMAssertionCreate(kIOPMAssertionTypeNoIdleSleep, kIOPMAssertionLevelOn, &assertionID);
+	} else {
+		IOPMAssertionRelease(assertionID);
+		assertionID = 0;
 	}
 }
 
@@ -407,7 +412,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 -(IBAction) beginMemoryInfoPanel:(id)sender
 {
-	[self updateMemoryInfoPanel:self];
 	[NSApp beginSheet:MemoryInfo
 	   modalForWindow:[NSApp mainWindow]
 		modalDelegate:self
@@ -428,24 +432,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 -(IBAction) infoOKButtonAction:(id)sender
 {
 	[self endMemoryInfoPanel:(id)sender];
-}
-
-- (IBAction) updateMemoryInfoPanel:(id)sender
-{
-
-}
-
-- (IBAction) slotImageViewAction:(id)sender
-{
-
-	// update info for infoSlotTextField, infoSizeTextField, infoSpeedTextField, infoStatusTextField, infoTypeTextField
-	[infoSlotTextField setStringValue:[[memoryInfo objectAtIndex:[sender tag]] objectForKey:@"_name"]];
-	[infoSizeTextField setStringValue:[[memoryInfo objectAtIndex:[sender tag]] objectForKey:@"dimm_size"]];
-	[infoSpeedTextField setStringValue:[[memoryInfo objectAtIndex:[sender tag]] objectForKey:@"dimm_speed"]];
-	[infoStatusTextField setStringValue:[[memoryInfo objectAtIndex:[sender tag]] objectForKey:@"dimm_status"]];
-	[infoTypeTextField setStringValue:[[memoryInfo objectAtIndex:[sender tag]] objectForKey:@"dimm_type"]];
-
-	NSLog(@"Sender tag: %i", [sender tag]);
 }
 
 - (IBAction) quitAllButtonAction:(id)sender
@@ -601,7 +587,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	[panel setExtensionHidden:NO];
     if ([panel runModal] == NSOKButton) {
 		filename = [NSString stringWithString:[panel filename]];
-		[[[testLog textStorage] string] writeToFile:filename atomically:YES];
+		[[[testLog textStorage] string] writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:nil];
 	}
 }
 
@@ -614,22 +600,32 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	[panel setExtensionHidden:NO];
     if ([panel runModal] == NSOKButton) {
 		filename = [NSString stringWithString:[panel filename]];
-		[[[reportTextView textStorage] string] writeToFile:filename atomically:YES];
+		[[[reportTextView textStorage] string] writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:nil];
 	}
 }
 
 - (IBAction)testButtonAction:(id)sender
 {
 	if(![remberTask isRunning]){
+		
+		if ([amountTextField doubleValue] < 1){
+			NSRunAlertPanel(@"Please enlarge memory request", @"The amount of memory to be tested must be greater than 1MB", @"OK", nil, nil);
+			return;
+		}
+		else if([loopsTextField doubleValue] < 1){
+			NSRunAlertPanel(@"Invaid loop number request", @"The number of loops to perform must be at least 1", @"OK", nil, nil);
+			return;
+		}
+		
 		// variables
 		NSString *loopsString, *amountString;
 		
 		// if the user has chosen, quit Finder and all Apps
 		
 		if([quitAllButton state] == 1)
-			KillEveryone(false);
+			[processController quitAllProcessesAndFinder:FALSE];
 		if([quitFinderButton state] == 1)
-			KillEveryone(true);
+			[processController quitAllProcessesAndFinder:TRUE];
 		
 		// reset session counters
 		loopsCompleted = 0;
@@ -648,7 +644,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 			amountString = [NSString stringWithString:@"all"];
 		else
 			amountString = [NSString stringWithString:[amountTextField stringValue]];
-		
+			
 		// open the memtest task and capture it's processID
 		processID = [self openTask:[[NSBundle mainBundle] pathForResource:@"memtest" ofType:nil] 
 					 withArguments:[NSArray arrayWithObjects:amountString, loopsString, nil]];
@@ -720,8 +716,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		// variables
 		int i = 0;
 		BOOL display = YES;
-		NSMutableString *temp = [[NSMutableString alloc] init];
-		
 		
 		// determine if we're in verbose mode
 		if(!verbose){
@@ -742,14 +736,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		NSRange range = [output rangeOfString:@"Memtest version"];
 		if(range.location != NSNotFound){
 			display = YES;
-			temp = [NSString stringWithString:[[[[output componentsSeparatedByString:@"Allocated memory: "] objectAtIndex:1] componentsSeparatedByString:@"MB ("] objectAtIndex:0]];
-			[reportDict setObject:temp forKey:@"allocatedAmount"];
-			
-			temp = [NSString stringWithString:[[[[output componentsSeparatedByString:@"Available memory: "] objectAtIndex:1] componentsSeparatedByString:@"MB ("] objectAtIndex:0]];
-			[reportDict setObject:temp forKey:@"availableAmount"];
-			
+			[reportDict setValue:[[[[output componentsSeparatedByString:@"Allocated memory: "] objectAtIndex:1] componentsSeparatedByString:@"MB ("] objectAtIndex:0] forKey:@"allocatedAmount"];			 
+			[reportDict setValue:[[[[output componentsSeparatedByString:@"Available memory: "] objectAtIndex:1] componentsSeparatedByString:@"MB ("] objectAtIndex:0] forKey:@"availableAmount"];
 		}
-	
+		
 		// Get test sequence string, increase loopsCompleted number
 		range = [output rangeOfString:@"Test sequence"];
 		if(range.location != NSNotFound){
@@ -778,7 +768,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 			else
 				i++;
 		}
-
+		
 		// Get 'All tests passed' string.  Re-assure user of tests passing.
 		range = [output rangeOfString:@"All tests passed!"];
 		if(range.location != NSNotFound)
@@ -788,7 +778,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 				loopsCompleted++;
 				[loopsCompletedTextField setStringValue:[[NSNumber numberWithInt:(loopsCompleted - 1)] stringValue]];
 			}
-			[reportDict setObject:@"All tests passed!" forKey:@"testResults"];
+			[reportDict setValue:@"All tests passed!" forKey:@"testResults"];
 			[statusTextField setStringValue:NSLocalizedString(@"Passed", @"All tests passed!")];
 		}
 		
@@ -802,7 +792,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 				[remberTask stopProcess];
 				NSRunAlertPanel(@"Rember", NSLocalizedString(@"Errors", @"Errors were detected.  See log for more details."), @"OK", @"", @"");
 			}
-			[reportDict setObject:@"FAILURE!" forKey:@"testResults"];
+			[reportDict setValue:@"FAILURE!" forKey:@"testResults"];	
+			[[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:@"Rember_bad.icns"]];
+			
 		}
 		
 		// Get '*** Address Test Failed ***' string for legacy versions of memtest. 
@@ -815,7 +807,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 				[remberTask stopProcess];
 				NSRunAlertPanel(@"Rember", NSLocalizedString(@"Errors", @"Errors were detected.  See log for more details."), @"OK", @"", @"");
 			}
-			[reportDict setObject:output forKey:@"testResults"];
+			[reportDict setValue:output forKey:@"testResults"];
+			[[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:@"Rember_bad.icns"]];
+			
 		}
 		
 		// Get '*** Memory Test Failed ***' string for newer versions of memtest. 
@@ -828,7 +822,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 				[remberTask stopProcess];
 				NSRunAlertPanel(@"Rember", NSLocalizedString(@"Errors", @"Errors were detected.  See log for more details."), @"OK", @"", @"");
 			}
-			[reportDict setObject:@"*** Memory Test Failed ***" forKey:@"testResults"];
+			[reportDict setValue:@"*** Memory Test Failed ***" forKey:@"testResults"];
+			[[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:@"Rember_bad.icns"]];
+			
 		}
 		
 		// Get 'Execution time:' string.
@@ -836,9 +832,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		if(range.location != NSNotFound){
 			display = YES;
 			NSScanner *outputScanner = [NSScanner scannerWithString:output];
+			NSMutableString *temp = [[[NSMutableString alloc] initWithCapacity:1] autorelease];
 			if([outputScanner scanUpToString:@"seconds." intoString:&temp])
-				[reportDict setObject:temp forKey:@"executionTime"];
-			
+				[reportDict setValue:temp forKey:@"executionTime"];
 		}
 		
 		
@@ -848,16 +844,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		
 		if(display)
 			[[testLog textStorage] appendAttributedString: [[[NSAttributedString alloc]
-								initWithString: output] autorelease]];
+															 initWithString: output] autorelease]];
 		// setup a selector to be called the next time through the event loop to scroll
 		// the view to the just pasted text.  We don't want to scroll right now,
 		// because of a bug in Mac OS X version 10.1 that causes scrolling in the context
 		// of a text storage update to starve the app of events
 		[self performSelector:@selector(scrollToVisible:) withObject:nil afterDelay:0];
-		
-		
-		temp = nil;
-		[temp release];
+
 	}
 }
 
@@ -876,6 +869,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	loopsCompleted = 0; 
     remberRunning = YES;
 
+	// disable sleep while testing
+	[self disableEnableIdleSleep];
+	
 	// disable other user controls while testing
 	[loopTextField setEnabled:NO];
 	[amountTextField setEnabled:NO];
@@ -896,7 +892,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     // change the "Test" button to say "Stop"
     [testButton setTitle:NSLocalizedString(@"Stop", @"Stop button value")];
 	
-	[reportDict setObject:[[NSDate date] description] forKey:@"startTime"];
+	[reportDict setValue:[[NSDate date] description] forKey:@"startTime"];
 
 	if(!maxLoops && ([loopsTextField doubleValue] >= 1) && ([loopsTextField doubleValue] < 256)){
 			[testProgress setIndeterminate:FALSE];
@@ -910,61 +906,75 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		
 	}
 	
+	[[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:@"Rember_wait.icns"]];
+	
 }
 
 // A callback that gets called when a TaskWrapper is completed, allowing us to do any cleanup
 // that is needed from the app side.  This method is implemented as a part of conforming
 // to the ProcessController protocol.
 - (void)processFinished
-{
-
+{	
     remberRunning=NO;
 	
-	[testProgress setIndeterminate:YES];
-	[testProgress startAnimation:self];
-	
-	//[statusTextField setStringValue:NSLocalizedString(@"Idle", @"Status Idle")];
-    
-	// change the button's title back for the next search
-    [testButton setTitle:NSLocalizedString(@"Test", @"Test button value")];
-	
-	//re-enable user controls (to pre-test state)
-	if([maxButton state] == 1)
-		[loopTextField setEnabled:NO];
-	else
-		[loopTextField setEnabled:YES];
-	if([allButton state] == 1)
-		[amountTextField setEnabled:NO];
-	else
-		[amountTextField setEnabled:YES];
-	[maxButton setEnabled:YES];
-	[memoryMatrix setEnabled:YES];
-	[quitAllButton setEnabled:YES];
-	if([quitAllButton state] == 1){
-		[quitFinderButton setEnabled:YES];
-	}
+	// re-enable idle sleep
+	[self disableEnableIdleSleep];
 	
 	terminationStatus = [remberTask terminationStatus];
+	//NSLog(@"Termination status:%d", terminationStatus);
 	
-	if((terminationStatus != 0) && (terminationStatus != 15))
-	{
-		NSRunAlertPanel(@"Rember", NSLocalizedString(@"Errors", @"Errors detected dialog box"), @"OK", @"", @"");
+	// if the user has cancelled testing (15), exit...
+	if(terminationStatus != 15){
+		
+		// check for test failure
+		if(terminationStatus != 0)
+		{
+			NSRunAlertPanel(@"Rember", NSLocalizedString(@"Errors", @"Errors detected dialog box"), @"OK", @"", @"");
+			[[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:@"Rember_bad.icns"]];
+		}
+		
+		// reset testing environment
+		[testProgress setIndeterminate:YES];
+	    
+		// change the button's title back for the next search
+		[testButton setTitle:NSLocalizedString(@"Test", @"Test button value")];
+		
+		//re-enable user controls (to pre-test state)
+		if([maxButton state] == 1)
+			[loopTextField setEnabled:NO];
+		else
+			[loopTextField setEnabled:YES];
+		if([allButton state] == 1)
+			[amountTextField setEnabled:NO];
+		else
+			[amountTextField setEnabled:YES];
+		[maxButton setEnabled:YES];
+		[memoryMatrix setEnabled:YES];
+		[quitAllButton setEnabled:YES];
+		if([quitAllButton state] == 1){
+			[quitFinderButton setEnabled:YES];
+		}
+		
+		
+		// set report values
+		[reportDict setValue:[[NSNumber numberWithInt:[loopsCompletedTextField intValue]] stringValue] forKey:@"loopsCompleted"];
+		[reportDict setValue:[[NSNumber numberWithInt:[loopsTextField intValue]] stringValue] forKey:@"loops"];
+		[reportDict setValue:[NSString stringWithContentsOfFile:[NSHomeDirectory() stringByAppendingString:@"/Library/Preferences/net.kelleycomputing.Rember.builtInMemory.txt"] encoding:NSUTF8StringEncoding error:nil] forKey:@"builtInAmount"];
+		
+		if([allButton state] == 1)
+			[reportDict setValue:@"All" forKey:@"requestedAmount"];
+		else
+			[reportDict setValue:[amountTextField stringValue] forKey:@"requestedAmount"];
+		[reportDict setValue:[[NSDate date] description] forKey:@"stopTime"];
+				
+		[[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:@"Rember.icns"]];
+
+		[self showTestResults];
 	}
 	
-	// set report values
-	[reportDict setObject:[[NSNumber numberWithInt:[loopsCompletedTextField intValue]] stringValue] forKey:@"loopsCompleted"];
-	[reportDict setObject:[[NSNumber numberWithInt:[loopsTextField intValue]] stringValue] forKey:@"loops"];
-	[reportDict setObject:[NSString stringWithContentsOfFile:[NSHomeDirectory() stringByAppendingString:@"/Library/Preferences/net.kelleycomputing.Rember.builtInMemory.txt"]] forKey:@"builtInAmount"];
-
-	if([allButton state] == 1)
-		[reportDict setObject:@"All" forKey:@"requestedAmount"];
-	else
-		[reportDict setObject:[amountTextField stringValue] forKey:@"requestedAmount"];
-	[reportDict setObject:[[NSDate date] description] forKey:@"stopTime"];
-
-	[testProgress stopAnimation:self];
-
-	[self showTestResults];
+	[remberTask release];
+	remberTask = nil;
+	
 }
 
 #pragma mark Other delegate methods
@@ -988,7 +998,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         }
 		else
 		{
-			[remberTask stopProcess];
+			if(remberRunning)
+				[remberTask stopProcess];
 			[NSApp terminate:self];
 			return YES;
 		}
@@ -1010,7 +1021,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 			[remberTask stopProcess];
 		}
     }
+	
     return NSTerminateNow;
+}
+
+- (IBAction)terminate:(id)sender
+{
+	// just in case a panel is open, close both
+	[self endReportPanel];
+	[self endPreferencesPanel];
+	[self endMemoryInfoPanel:self];
+	
+	[NSApp terminate:sender];
 }
 
 - (void) dealloc
@@ -1020,59 +1042,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	if(progressList != nil){[progressList release]; progressList = nil;}
 	if(reportDict != nil){[reportDict release]; reportDict = nil;}
 	
-	IODeregisterForSystemPower(&root_port);
+	[processController release];
 	
 	[super dealloc];
 }
 
-void callback(void *x,io_service_t y,natural_t messageType,void* messageArgument) 
-{ 
-	printf("messageType %08lx,arg %08lx\n",(long unsigned int)messageType, 
-		   (long unsigned int)messageArgument); 
-	switch(messageType){ 
-		case kIOMessageSystemWillSleep: 
-			// Handle demand sleep (such as  sleep caused by running out of 
-			// batteries, closing the lid of a laptop, or selecting 
-			// sleep from the Apple menu. 
-			IOCancelPowerChange(root_port,(long)messageArgument); 
-			NSLog(@"System Will Sleep");
-			break; 
-		case kIOMessageCanSystemSleep: 
-			// In this case, the computer has been idle for several minutes 
-			// and will sleep soon so you must either allow or cancel 
-			// this notification. Important: if you don't respond, there will 
-			// be a 30-second timeout before the computer sleeps. 
-			// IOCancelPowerChange(root_port,(long)messageArgument); 
-			IOCancelPowerChange(root_port,(long)messageArgument); 
-			NSLog(@"Can System Sleep");
-			break; 
-		case kIOMessageSystemHasPoweredOn: 
-			// Handle wakeup. 
-			
-			NSLog(@"System Has Powered On");
-			break; 
-		default:
-			
-			NSLog(@"Unrecognized Power Change Message");
-			break;
-	} 
-} 		
 #pragma mark TableView controls
 
--(int)numberOfRowsInTableView:(NSTableView *)aTableView
+-(NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
 	return [memoryInfo count];
 }
 
 // Stop the table's rows from being editable when we double-click on them
-- (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(int)row
+- (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {  
     return FALSE;
 }
 
-- (id)tableView:(NSTableView *)aTableView
-    objectValueForTableColumn:(NSTableColumn *)aTableColumn
-            row:(int)rowIndex
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
 	NSString  *ident;
     NSObject  *object;
@@ -1116,22 +1104,6 @@ void callback(void *x,io_service_t y,natural_t messageType,void* messageArgument
 	}
 
 	return object;
-}
-
-- (void)tableView:(NSTableView *)aTableView	setObjectValue:anObject
-   forTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
-{
-    return;
-}
-
-- (void)tableViewSelectionDidChange:(NSNotification *)aNotification
-{
-	
-}
-
-- (NSDragOperation)tableView:(NSTableView*)tv validateDrop:(id <NSDraggingInfo>)info proposedRow:(int)row proposedDropOperation:(NSTableViewDropOperation)op
-{
-	
 }
 
 @end

@@ -63,8 +63,6 @@
 // tear things down
 - (void)dealloc
 {
-    [self stopProcess];
-
     [arguments release];
     [task release];
     [super dealloc];

@@ -1,1021 +1,0 @@
-TRember
-v7
-r0
-t273518004.252166
-cCheck dependencies
-cProcessInfoPlistFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Info.plist Info.plist
-cStripNIB /Users/eddie/Desktop/Rember/English.lproj/MainMenu.nib
-cStripNIB /Users/eddie/Desktop/Rember/Japanese.lproj/MainMenu.nib
-cStripNIB /Users/eddie/Desktop/Rember/Italian.lproj/MainMenu.nib
-cStripNIB /Users/eddie/Desktop/Rember/Russian.lproj/MainMenu.nib
-cCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
-cCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj/InfoPlist.strings Japanese.lproj/InfoPlist.strings
-cCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj/InfoPlist.strings Italian.lproj/InfoPlist.strings
-cCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj/InfoPlist.strings Russian.lproj/InfoPlist.strings
-cCpResource build/Deployment/Rember.app/Contents/Resources/TaskWrapper.h TaskWrapper.h
-cCpResource build/Deployment/Rember.app/Contents/Resources/RemberController.h RemberController.h
-cCpResource build/Deployment/Rember.app/Contents/Resources/killEveryoneButMe.h killEveryoneButMe.h
-cCopyPlistFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Info.plist Info.plist
-cCpResource build/Deployment/Rember.app/Contents/Resources/Rember.icns Rember.icns
-cCpResource build/Deployment/Rember.app/Contents/Resources/Help Help
-cCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj/Localizable.strings English.lproj/Localizable.strings
-cCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj/Localizable.strings Japanese.lproj/Localizable.strings
-cCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj/Localizable.strings Italian.lproj/Localizable.strings
-cCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj/Localizable.strings Russian.lproj/Localizable.strings
-cCpResource build/Deployment/Rember.app/Contents/Resources/memtest memtest
-cCopyTiffFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/greenStatus.tiff greenStatus.tiff
-cCopyTiffFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/redStatus.tiff redStatus.tiff
-cCopyTiffFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/whiteStatus.tiff whiteStatus.tiff
-cCopyTiffFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/yellowStatus.tiff yellowStatus.tiff
-cCpResource build/Deployment/Rember.app/Contents/Resources/Report.rtf Report.rtf
-cCpResource build/Deployment/Rember.app/Contents/Resources/Rember_64.png Rember_64.png
-cProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dmpbivwyrawnznflhwhrryrvxlmx/Rember_Prefix.pch.gch Rember_Prefix.pch normal ppc objective-c com.apple.compilers.gcc.4_0
-cProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-gpglvpksameliofatxvgvblsiltx/Rember_Prefix.pch.gch Rember_Prefix.pch normal ppc c com.apple.compilers.gcc.4_0
-cProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-ecxjdoqjbjqnvsdrvkgkunpzmpke/Rember_Prefix.pch.gch Rember_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_0
-cProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dfbnllidqgcuzlavihqdtzgrrohc/Rember_Prefix.pch.gch Rember_Prefix.pch normal i386 c com.apple.compilers.gcc.4_0
-cCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/main.o /Users/eddie/Desktop/Rember/main.m normal ppc objective-c com.apple.compilers.gcc.4_0
-cCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/TaskWrapper.o /Users/eddie/Desktop/Rember/TaskWrapper.m normal ppc objective-c com.apple.compilers.gcc.4_0
-cCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/RemberController.o /Users/eddie/Desktop/Rember/RemberController.m normal ppc objective-c com.apple.compilers.gcc.4_0
-cCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/killEveryoneButMe.o /Users/eddie/Desktop/Rember/killEveryoneButMe.c normal ppc c com.apple.compilers.gcc.4_0
-cCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/main.o /Users/eddie/Desktop/Rember/main.m normal i386 objective-c com.apple.compilers.gcc.4_0
-cCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/TaskWrapper.o /Users/eddie/Desktop/Rember/TaskWrapper.m normal i386 objective-c com.apple.compilers.gcc.4_0
-cCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/RemberController.o /Users/eddie/Desktop/Rember/RemberController.m normal i386 objective-c com.apple.compilers.gcc.4_0
-cLd /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/Rember normal ppc
-cCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/killEveryoneButMe.o /Users/eddie/Desktop/Rember/killEveryoneButMe.c normal i386 c com.apple.compilers.gcc.4_0
-cLd /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/Rember normal i386
-cCreateUniversalBinary /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/MacOS/Rember normal "ppc i386"
-cTouch /Users/eddie/Desktop/Rember/build/Deployment/Rember.app
-
-N/Developer/SDKs/MacOSX10.4u.sdk
-c000000004A1199E200000000000000EE
-t1242667490
-s238
-
-N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Carbon.framework/Headers/Carbon.h
-c000000004A1199E400000000000005BF
-t1242667492
-s1471
-
-N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
-c0000000040C4AA6800000000000001E5
-t1086630504
-s485
-
-N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/CoreServices.framework/Headers/CoreServices.h
-c000000004A1199E300000000000003DC
-t1242667491
-s988
-
-N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c00000000462EB9B00000000000001382
-t1177467312
-s4994
-
-N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/IOKit.framework/Headers/IOMessage.h
-c0000000046F234EF0000000000000C14
-t1190278383
-s3092
-
-N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/IOKit.framework/Headers/pwr_mgt/IOPMLib.h
-c0000000046F2350C0000000000002DC4
-t1190278412
-s11716
-
-N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/ctype.h
-c00000000463BAA5B0000000000002627
-t1178315355
-s9767
-
-N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach-o/arch.h
-c0000000046F232B5000000000000105A
-t1190277813
-s4186
-
-N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/mach_init.h
-c00000000463BAA5B0000000000000E1F
-t1178315355
-s3615
-
-N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/mach_interface.h
-c00000000463BAA5B00000000000006C8
-t1178315355
-s1736
-
-N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/mach_port.h
-c00000000463BAA5B0000000000006D94
-t1178315355
-s28052
-
-N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/stdio.h
-c00000000463BAA5A0000000000003B7F
-t1178315354
-s15231
-
-N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/stdlib.h
-c00000000463BAA5A0000000000002647
-t1178315354
-s9799
-
-N/System/Library/Frameworks/Carbon.framework/Carbon
-c000000004A7680C1000000000000A5F0
-t1249280193
-s42480
-
-N/System/Library/Frameworks/Cocoa.framework/Cocoa
-c000000004A1F2D63000000000000A5E0
-t1243557219
-s42464
-
-N/System/Library/Frameworks/CoreServices.framework/CoreServices
-c000000004A11F09A0000000000021710
-t1242689690
-s136976
-
-N/System/Library/Frameworks/IOKit.framework/IOKit
-c000000004A4D5233000000000016E510
-t1246581299
-s1500432
-
-N/Users/eddie/Desktop/Rember/English.lproj/InfoPlist.strings
-c000000004A9D53F400000000000001E2
-t1251824628
-s482
-
-N/Users/eddie/Desktop/Rember/English.lproj/Localizable.strings
-c0000000044D2AB6200000000000002BA
-t1154657122
-s698
-
-N/Users/eddie/Desktop/Rember/English.lproj/MainMenu.nib
-c000000004A9D50370000000000000088
-t1251823671
-s136
-
-N/Users/eddie/Desktop/Rember/Help
-c0000000046EDB26B0000000000000154
-t1189982827
-s340
-
-N/Users/eddie/Desktop/Rember/Info.plist
-c000000004A9D50E80000000000000387
-t1251823848
-s903
-
-N/Users/eddie/Desktop/Rember/Italian.lproj/InfoPlist.strings
-c0000000046EBBE6800000000000001E4
-t1189854824
-s484
-
-N/Users/eddie/Desktop/Rember/Italian.lproj/Localizable.strings
-c0000000046EBBEF000000000000002DE
-t1189854960
-s734
-
-N/Users/eddie/Desktop/Rember/Italian.lproj/MainMenu.nib
-c0000000046EBBE3700000000000000AA
-t1189854775
-s170
-
-N/Users/eddie/Desktop/Rember/Japanese.lproj/InfoPlist.strings
-c0000000044D15C6500000000000001E2
-t1154571365
-s482
-
-N/Users/eddie/Desktop/Rember/Japanese.lproj/Localizable.strings
-c0000000044D2B61000000000000004BA
-t1154659856
-s1210
-
-N/Users/eddie/Desktop/Rember/Japanese.lproj/MainMenu.nib
-c0000000044D2B4D100000000000000AA
-t1154659537
-s170
-
-N/Users/eddie/Desktop/Rember/Rember.icns
-c000000004893CF3F0000000000036577
-t1217646399
-s222583
-
-N/Users/eddie/Desktop/Rember/RemberController.h
-c000000004A9D50C600000000000017A5
-t1251823814
-s6053
-i<Cocoa/Cocoa.h>
-i"TaskWrapper.h"
-i"killEveryoneButMe.h"
-i<mach-o/arch.h>
-i<ctype.h>
-i<stdlib.h>
-i<stdio.h>
-i<mach/mach_port.h>
-i<mach/mach_interface.h>
-i<mach/mach_init.h>
-i<IOKit/pwr_mgt/IOPMLib.h>
-i<IOKit/IOMessage.h>
-
-N/Users/eddie/Desktop/Rember/RemberController.m
-c000000004A9D56260000000000008DD1
-t1251825190
-s36305
-i"RemberController.h"
-
-N/Users/eddie/Desktop/Rember/Rember_64.png
-c000000004899F0FE0000000000001BD6
-t1218048254
-s7126
-
-N/Users/eddie/Desktop/Rember/Rember_64.tif
-c0000000045EB2A800000000000008640
-t1173039744
-s34368
-
-N/Users/eddie/Desktop/Rember/Rember_Prefix.pch
-c000000004136BA49000000000000008F
-t1094105673
-s143
-i<Cocoa/Cocoa.h>
-
-N/Users/eddie/Desktop/Rember/Report.rtf
-c0000000046E899C10000000000001247
-t1189648833
-s4679
-
-N/Users/eddie/Desktop/Rember/Russian.lproj/InfoPlist.strings
-c000000004882264A00000000000001F6
-t1216489034
-s502
-
-N/Users/eddie/Desktop/Rember/Russian.lproj/Localizable.strings
-c0000000048CB624F0000000000002792
-t1221288527
-s10130
-
-N/Users/eddie/Desktop/Rember/Russian.lproj/MainMenu.nib
-c0000000048CB75D000000000000000AA
-t1221293520
-s170
-
-N/Users/eddie/Desktop/Rember/TaskWrapper.h
-c0000000044D667CB000000000000088B
-t1154901963
-s2187
-i<Foundation/Foundation.h>
-
-N/Users/eddie/Desktop/Rember/TaskWrapper.m
-c0000000044DABBEE0000000000001A13
-t1155185646
-s6675
-i"TaskWrapper.h"
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app
-t1251825204
-s102
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Info.plist
-t1251825191
-s903
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/MacOS/Rember
-t1251825204
-s105340
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/PkgInfo
-t1251825191
-s8
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj/InfoPlist.strings
-t1251825194
-s482
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj/Localizable.strings
-t1251825194
-s1398
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj/MainMenu.nib
-t1251825191
-s72448
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Help
-t1251825194
-s306
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Info.plist
-t1251825194
-s903
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj/InfoPlist.strings
-t1251825194
-s484
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj/Localizable.strings
-t1251825194
-s1470
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj/MainMenu.nib
-t1251825192
-s49307
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj/InfoPlist.strings
-t1251825193
-s482
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj/Localizable.strings
-t1251825194
-s1210
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj/MainMenu.nib
-t1251825191
-s38904
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Rember.icns
-t1251825194
-s222583
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/RemberController.h
-t1251825194
-s6053
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Rember_64.png
-t1251825195
-s7126
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Rember_64.tif
-t1251823492
-s34368
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Report.rtf
-t1251825195
-s4679
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj/InfoPlist.strings
-t1251825194
-s502
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj/Localizable.strings
-t1251825194
-s15464
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj/MainMenu.nib
-t1251825192
-s163473
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/TaskWrapper.h
-t1251825194
-s2187
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/greenStatus.tiff
-t1251825194
-s870
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/killEveryoneButMe.h
-t1251825194
-s1046
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/memtest
-t1251825194
-s161352
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/redStatus.tiff
-t1251825194
-s870
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/whiteStatus.tiff
-t1251825194
-s870
-
-N/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/yellowStatus.tiff
-t1251825194
-s870
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/Rember
-t1251825204
-s52092
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/Rember.LinkFileList
-c000000004A9D562600000000000001A8
-t1251825190
-s424
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/RemberController.o
-t1251825201
-s51880
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/TaskWrapper.o
-t1251825200
-s6824
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/killEveryoneButMe.o
-t1251825203
-s1500
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/main.o
-t1251825200
-s1912
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/Rember
-t1251825203
-s48228
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/Rember.LinkFileList
-c000000004A9D562600000000000001A4
-t1251825190
-s420
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/RemberController.o
-t1251825197
-s62300
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/TaskWrapper.o
-t1251825195
-s8028
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/killEveryoneButMe.o
-t1251825201
-s2420
-
-N/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/main.o
-t1251825195
-s2076
-
-N/Users/eddie/Desktop/Rember/greenStatus.tiff
-c0000000044A78C700000000000000366
-t1151831152
-s870
-
-N/Users/eddie/Desktop/Rember/killEveryoneButMe.c
-c00000000414D1E510000000000001C55
-t1095573073
-s7253
-i"killEveryoneButMe.h"
-
-N/Users/eddie/Desktop/Rember/killEveryoneButMe.h
-c00000000414D1E490000000000000416
-t1095573065
-s1046
-i<Carbon/Carbon.h>
-i<CoreServices/CoreServices.h>
-
-N/Users/eddie/Desktop/Rember/main.m
-c00000000413BA19F000000000000039E
-t1094427039
-s926
-i<Cocoa/Cocoa.h>
-
-N/Users/eddie/Desktop/Rember/memtest
-c000000004838B19E0000000000027620
-t1211675038
-s161312
-
-N/Users/eddie/Desktop/Rember/redStatus.tiff
-c0000000044A78C710000000000000366
-t1151831153
-s870
-
-N/Users/eddie/Desktop/Rember/whiteStatus.tiff
-c0000000044A78C700000000000000366
-t1151831152
-s870
-
-N/Users/eddie/Desktop/Rember/yellowStatus.tiff
-c0000000044A78C770000000000000366
-t1151831159
-s870
-
-N/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-asheaimdbgxszkeirthfrhsmiovh/Rember_Prefix.pch.gch
-t2
-s0
-
-N/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-cgyhgzfgbekeiqcsaimqlenjckab/Rember_Prefix.pch.gch
-t2
-s0
-
-N/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dfbnllidqgcuzlavihqdtzgrrohc/Rember_Prefix.pch.gch
-t1251824558
-s1069248
-
-N/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dmpbivwyrawnznflhwhrryrvxlmx/Rember_Prefix.pch.gch
-t1251824557
-s20919796
-
-N/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-ecxjdoqjbjqnvsdrvkgkunpzmpke/Rember_Prefix.pch.gch
-t1251824558
-s22509156
-
-N/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-fubjdvsvgasgxdavcqgoasxiobch/Rember_Prefix.pch.gch
-t2
-s0
-
-N/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-gmtwdjhligfskmeqmdddzbycohhn/Rember_Prefix.pch.gch
-t2
-s0
-
-N/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-gpglvpksameliofatxvgvblsiltx/Rember_Prefix.pch.gch
-t1251824555
-s807104
-
-NInfo.plist
-c000000004A9D50E80000000000000387
-t1251823848
-s903
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies273517990#273517991#0(106"[WARN]Warning: The Copy Bundle Resources build phase contains this target's Info.plist file 'Info.plist'.1(22@99"Warning: The Copy Bundle Resources build phase contains this target's Info.plist file 'Info.plist'.273517990#4294967295#0#0(1@0"0(0#1#0"2447199552#0"0#
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/RemberController.o /Users/eddie/Desktop/Rember/RemberController.m normal i386 objective-c com.apple.compilers.gcc.4_0
-s273518000.449453
-e273518001.592731
-r1
-xCompileC
-xbuild/Rember.build/Deployment/Rember.build/Objects-normal/i386/RemberController.o
-x/Users/eddie/Desktop/Rember/RemberController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@54"Compile /Users/eddie/Desktop/Rember/RemberController.m273518000#273518001#0(0"0(0#0#46"/Users/eddie/Desktop/Rember/RemberController.m2447199552#1001"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/i386 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -include /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-ecxjdoqjbjqnvsdrvkgkunpzmpke/Rember_Prefix.pch -c /Users/eddie/Desktop/Rember/RemberController.m -o /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/RemberController.o0#
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/RemberController.o /Users/eddie/Desktop/Rember/RemberController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/TaskWrapper.o /Users/eddie/Desktop/Rember/TaskWrapper.m normal i386 objective-c com.apple.compilers.gcc.4_0
-s273518000.243939
-e273518000.449310
-r1
-xCompileC
-xbuild/Rember.build/Deployment/Rember.build/Objects-normal/i386/TaskWrapper.o
-x/Users/eddie/Desktop/Rember/TaskWrapper.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@49"Compile /Users/eddie/Desktop/Rember/TaskWrapper.m273518000#273518000#0(0"0(0#0#41"/Users/eddie/Desktop/Rember/TaskWrapper.m2447199552#991"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/i386 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -include /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-ecxjdoqjbjqnvsdrvkgkunpzmpke/Rember_Prefix.pch -c /Users/eddie/Desktop/Rember/TaskWrapper.m -o /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/TaskWrapper.o0#
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/TaskWrapper.o /Users/eddie/Desktop/Rember/TaskWrapper.m normal i386 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/killEveryoneButMe.o /Users/eddie/Desktop/Rember/killEveryoneButMe.c normal i386 c com.apple.compilers.gcc.4_0
-s273518001.592870
-e273518003.817757
-r1
-xCompileC
-xbuild/Rember.build/Deployment/Rember.build/Objects-normal/i386/killEveryoneButMe.o
-x/Users/eddie/Desktop/Rember/killEveryoneButMe.c
-xnormal
-xi386
-xc
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@55"Compile /Users/eddie/Desktop/Rember/killEveryoneButMe.c273518001#273518003#0(0"0(0#0#47"/Users/eddie/Desktop/Rember/killEveryoneButMe.c2447199552#993"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/i386 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -include /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dfbnllidqgcuzlavihqdtzgrrohc/Rember_Prefix.pch -c /Users/eddie/Desktop/Rember/killEveryoneButMe.c -o /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/killEveryoneButMe.o0#
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/killEveryoneButMe.o /Users/eddie/Desktop/Rember/killEveryoneButMe.c normal i386 c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/main.o /Users/eddie/Desktop/Rember/main.m normal i386 objective-c com.apple.compilers.gcc.4_0
-s273517997.095084
-e273518000.243746
-r1
-xCompileC
-xbuild/Rember.build/Deployment/Rember.build/Objects-normal/i386/main.o
-x/Users/eddie/Desktop/Rember/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@42"Compile /Users/eddie/Desktop/Rember/main.m273517997#273518000#0(0"0(0#0#34"/Users/eddie/Desktop/Rember/main.m2447199552#977"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/i386 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -include /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-ecxjdoqjbjqnvsdrvkgkunpzmpke/Rember_Prefix.pch -c /Users/eddie/Desktop/Rember/main.m -o /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/main.o0#
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/i386/main.o /Users/eddie/Desktop/Rember/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/RemberController.o /Users/eddie/Desktop/Rember/RemberController.m normal ppc objective-c com.apple.compilers.gcc.4_0
-s273517995.300507
-e273517997.094947
-r1
-xCompileC
-xbuild/Rember.build/Deployment/Rember.build/Objects-normal/ppc/RemberController.o
-x/Users/eddie/Desktop/Rember/RemberController.m
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@54"Compile /Users/eddie/Desktop/Rember/RemberController.m273517995#273517997#0(0"0(0#0#46"/Users/eddie/Desktop/Rember/RemberController.m2447199552#995"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mtune=G4 -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/ppc -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -include /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dmpbivwyrawnznflhwhrryrvxlmx/Rember_Prefix.pch -c /Users/eddie/Desktop/Rember/RemberController.m -o /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/RemberController.o0#
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/RemberController.o /Users/eddie/Desktop/Rember/RemberController.m normal ppc objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/TaskWrapper.o /Users/eddie/Desktop/Rember/TaskWrapper.m normal ppc objective-c com.apple.compilers.gcc.4_0
-s273517995.055118
-e273517996.126663
-r1
-xCompileC
-xbuild/Rember.build/Deployment/Rember.build/Objects-normal/ppc/TaskWrapper.o
-x/Users/eddie/Desktop/Rember/TaskWrapper.m
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@49"Compile /Users/eddie/Desktop/Rember/TaskWrapper.m273517995#273517996#0(0"0(0#0#41"/Users/eddie/Desktop/Rember/TaskWrapper.m2447199552#985"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mtune=G4 -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/ppc -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -include /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dmpbivwyrawnznflhwhrryrvxlmx/Rember_Prefix.pch -c /Users/eddie/Desktop/Rember/TaskWrapper.m -o /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/TaskWrapper.o0#
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/TaskWrapper.o /Users/eddie/Desktop/Rember/TaskWrapper.m normal ppc objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/killEveryoneButMe.o /Users/eddie/Desktop/Rember/killEveryoneButMe.c normal ppc c com.apple.compilers.gcc.4_0
-s273517996.126853
-e273518001.229507
-r1
-xCompileC
-xbuild/Rember.build/Deployment/Rember.build/Objects-normal/ppc/killEveryoneButMe.o
-x/Users/eddie/Desktop/Rember/killEveryoneButMe.c
-xnormal
-xppc
-xc
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@55"Compile /Users/eddie/Desktop/Rember/killEveryoneButMe.c273517996#273518001#0(0"0(0#0#47"/Users/eddie/Desktop/Rember/killEveryoneButMe.c2447199552#987"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mtune=G4 -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/ppc -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -include /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-gpglvpksameliofatxvgvblsiltx/Rember_Prefix.pch -c /Users/eddie/Desktop/Rember/killEveryoneButMe.c -o /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/killEveryoneButMe.o0#
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/killEveryoneButMe.o /Users/eddie/Desktop/Rember/killEveryoneButMe.c normal ppc c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/main.o /Users/eddie/Desktop/Rember/main.m normal ppc objective-c com.apple.compilers.gcc.4_0
-s273517995.053666
-e273517995.300373
-r1
-xCompileC
-xbuild/Rember.build/Deployment/Rember.build/Objects-normal/ppc/main.o
-x/Users/eddie/Desktop/Rember/main.m
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@42"Compile /Users/eddie/Desktop/Rember/main.m273517995#273517995#0(0"0(0#0#34"/Users/eddie/Desktop/Rember/main.m2447199552#971"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mtune=G4 -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/ppc -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -include /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dmpbivwyrawnznflhwhrryrvxlmx/Rember_Prefix.pch -c /Users/eddie/Desktop/Rember/main.m -o /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/main.o0#
-
-CCompileC build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/main.o /Users/eddie/Desktop/Rember/main.m normal ppc objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCopyPlistFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Info.plist Info.plist
-s273517994.054221
-e273517994.233183
-r1
-xCopyPlistFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Info.plist
-xInfo.plist
-lSLF07#2@15"Copy Info.plist273517994#273517994#0(0"0(0#0#38"/Users/eddie/Desktop/Rember/Info.plist2447199552#221"    cd /Users/eddie/Desktop/Rember    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copyplist Info.plist --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
-s273517992.212660
-e273517994.017606
-r1
-xCopyStringsFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj/InfoPlist.strings
-xEnglish.lproj/InfoPlist.strings
-lSLF07#2@36"Copy English.lproj/InfoPlist.strings273517992#273517994#0(0"0(0#0#59"/Users/eddie/Desktop/Rember/English.lproj/InfoPlist.strings2447199552#348"    cd /Users/eddie/Desktop/Rember    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-16 --outputencoding UTF-16 English.lproj/InfoPlist.strings --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj0#
-
-CCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj/Localizable.strings English.lproj/Localizable.strings
-s273517994.239941
-e273517994.433651
-r1
-xCopyStringsFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj/Localizable.strings
-xEnglish.lproj/Localizable.strings
-lSLF07#2@38"Copy English.lproj/Localizable.strings273517994#273517994#0(0"0(0#0#61"/Users/eddie/Desktop/Rember/English.lproj/Localizable.strings2447199552#349"    cd /Users/eddie/Desktop/Rember    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 English.lproj/Localizable.strings --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj0#
-
-CCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj/InfoPlist.strings Italian.lproj/InfoPlist.strings
-s273517993.971626
-e273517994.049817
-r1
-xCopyStringsFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj/InfoPlist.strings
-xItalian.lproj/InfoPlist.strings
-oItalian.lproj/InfoPlist.strings: warning: the specified encoding is utf-8, but file contents appear to be UTF-16; treating as UTF-16
-lSLF07#2@36"Copy Italian.lproj/InfoPlist.strings273517993#273517994#0(133"Italian.lproj/InfoPlist.strings: warning: the specified encoding is utf-8, but file contents appear to be UTF-16; treating as UTF-160(0#0#59"/Users/eddie/Desktop/Rember/Italian.lproj/InfoPlist.strings2447199552#347"    cd /Users/eddie/Desktop/Rember    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 Italian.lproj/InfoPlist.strings --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj0#
-
-CCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj/Localizable.strings Italian.lproj/Localizable.strings
-s273517994.560463
-e273517994.702729
-r1
-xCopyStringsFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj/Localizable.strings
-xItalian.lproj/Localizable.strings
-lSLF07#2@38"Copy Italian.lproj/Localizable.strings273517994#273517994#0(0"0(0#0#61"/Users/eddie/Desktop/Rember/Italian.lproj/Localizable.strings2447199552#349"    cd /Users/eddie/Desktop/Rember    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 Italian.lproj/Localizable.strings --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj0#
-
-CCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj/InfoPlist.strings Japanese.lproj/InfoPlist.strings
-s273517992.263864
-e273517993.971374
-r1
-xCopyStringsFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj/InfoPlist.strings
-xJapanese.lproj/InfoPlist.strings
-oJapanese.lproj/InfoPlist.strings: warning: the specified encoding is utf-8, but file contents appear to be UTF-16; treating as UTF-16
-lSLF07#2@37"Copy Japanese.lproj/InfoPlist.strings273517992#273517993#0(134"Japanese.lproj/InfoPlist.strings: warning: the specified encoding is utf-8, but file contents appear to be UTF-16; treating as UTF-160(0#0#60"/Users/eddie/Desktop/Rember/Japanese.lproj/InfoPlist.strings2447199552#349"    cd /Users/eddie/Desktop/Rember    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 Japanese.lproj/InfoPlist.strings --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj0#
-
-CCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj/Localizable.strings Japanese.lproj/Localizable.strings
-s273517994.433778
-e273517994.560331
-r1
-xCopyStringsFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj/Localizable.strings
-xJapanese.lproj/Localizable.strings
-lSLF07#2@39"Copy Japanese.lproj/Localizable.strings273517994#273517994#0(0"0(0#0#62"/Users/eddie/Desktop/Rember/Japanese.lproj/Localizable.strings2447199552#352"    cd /Users/eddie/Desktop/Rember    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-16 --outputencoding UTF-16 Japanese.lproj/Localizable.strings --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj0#
-
-CCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj/InfoPlist.strings Russian.lproj/InfoPlist.strings
-s273517994.017742
-e273517994.088842
-r1
-xCopyStringsFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj/InfoPlist.strings
-xRussian.lproj/InfoPlist.strings
-oRussian.lproj/InfoPlist.strings: warning: the specified encoding is utf-8, but file contents appear to be UTF-16; treating as UTF-16
-lSLF07#2@36"Copy Russian.lproj/InfoPlist.strings273517994#273517994#0(133"Russian.lproj/InfoPlist.strings: warning: the specified encoding is utf-8, but file contents appear to be UTF-16; treating as UTF-160(0#0#59"/Users/eddie/Desktop/Rember/Russian.lproj/InfoPlist.strings2447199552#347"    cd /Users/eddie/Desktop/Rember    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 Russian.lproj/InfoPlist.strings --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj0#
-
-CCopyStringsFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj/Localizable.strings Russian.lproj/Localizable.strings
-s273517994.702855
-e273517994.807596
-r1
-xCopyStringsFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj/Localizable.strings
-xRussian.lproj/Localizable.strings
-lSLF07#2@38"Copy Russian.lproj/Localizable.strings273517994#273517994#0(0"0(0#0#61"/Users/eddie/Desktop/Rember/Russian.lproj/Localizable.strings2447199552#349"    cd /Users/eddie/Desktop/Rember    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 Russian.lproj/Localizable.strings --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj0#
-
-CCopyTiffFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Rember_64.tif Rember_64.tif
-s273516292.660225
-e273516292.789382
-r1
-xCopyTiffFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Rember_64.tif
-xRember_64.tif
-lSLF07#2@18"Copy Rember_64.tif273516292#273516292#0(0"0(0#0#41"/Users/eddie/Desktop/Rember/Rember_64.tif2447199552#223"    cd /Users/eddie/Desktop/Rember    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copytiff Rember_64.tif --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCopyTiffFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/greenStatus.tiff greenStatus.tiff
-s273517994.771655
-e273517994.851480
-r1
-xCopyTiffFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/greenStatus.tiff
-xgreenStatus.tiff
-lSLF07#2@21"Copy greenStatus.tiff273517994#273517994#0(0"0(0#0#44"/Users/eddie/Desktop/Rember/greenStatus.tiff2447199552#226"    cd /Users/eddie/Desktop/Rember    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copytiff greenStatus.tiff --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCopyTiffFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/redStatus.tiff redStatus.tiff
-s273517994.851603
-e273517994.917817
-r1
-xCopyTiffFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/redStatus.tiff
-xredStatus.tiff
-lSLF07#2@19"Copy redStatus.tiff273517994#273517994#0(0"0(0#0#42"/Users/eddie/Desktop/Rember/redStatus.tiff2447199552#224"    cd /Users/eddie/Desktop/Rember    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copytiff redStatus.tiff --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCopyTiffFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/whiteStatus.tiff whiteStatus.tiff
-s273517994.883190
-e273517994.955201
-r1
-xCopyTiffFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/whiteStatus.tiff
-xwhiteStatus.tiff
-lSLF07#2@21"Copy whiteStatus.tiff273517994#273517994#0(0"0(0#0#44"/Users/eddie/Desktop/Rember/whiteStatus.tiff2447199552#226"    cd /Users/eddie/Desktop/Rember    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copytiff whiteStatus.tiff --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCopyTiffFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/yellowStatus.tiff yellowStatus.tiff
-s273517994.917942
-e273517994.991117
-r1
-xCopyTiffFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/yellowStatus.tiff
-xyellowStatus.tiff
-lSLF07#2@22"Copy yellowStatus.tiff273517994#273517994#0(0"0(0#0#45"/Users/eddie/Desktop/Rember/yellowStatus.tiff2447199552#227"    cd /Users/eddie/Desktop/Rember    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copytiff yellowStatus.tiff --outdir /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCpResource build/Deployment/Rember.app/Contents/Resources/Help Help
-s273517994.234299
-e273517994.767329
-r1
-xCpResource
-xbuild/Deployment/Rember.app/Contents/Resources/Help
-xHelp
-lSLF07#2@9"Copy Help273517994#273517994#0(0"0(0#0#32"/Users/eddie/Desktop/Rember/Help2447199552#312"    cd /Users/eddie/Desktop/Rember    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/eddie/Desktop/Rember/Help /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCpResource build/Deployment/Rember.app/Contents/Resources/Rember.icns Rember.icns
-s273517994.233316
-e273517994.298307
-r1
-xCpResource
-xbuild/Deployment/Rember.app/Contents/Resources/Rember.icns
-xRember.icns
-lSLF07#2@16"Copy Rember.icns273517994#273517994#0(0"0(0#0#39"/Users/eddie/Desktop/Rember/Rember.icns2447199552#319"    cd /Users/eddie/Desktop/Rember    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/eddie/Desktop/Rember/Rember.icns /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCpResource build/Deployment/Rember.app/Contents/Resources/RemberController.h RemberController.h
-s273517994.050971
-e273517994.198856
-r1
-xCpResource
-xbuild/Deployment/Rember.app/Contents/Resources/RemberController.h
-xRemberController.h
-lSLF07#2@23"Copy RemberController.h273517994#273517994#0(0"0(0#0#46"/Users/eddie/Desktop/Rember/RemberController.h2447199552#326"    cd /Users/eddie/Desktop/Rember    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/eddie/Desktop/Rember/RemberController.h /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCpResource build/Deployment/Rember.app/Contents/Resources/Rember_64.png Rember_64.png
-s273517994.957504
-e273517995.053020
-r1
-xCpResource
-xbuild/Deployment/Rember.app/Contents/Resources/Rember_64.png
-xRember_64.png
-lSLF07#2@18"Copy Rember_64.png273517994#273517995#0(0"0(0#0#41"/Users/eddie/Desktop/Rember/Rember_64.png2447199552#321"    cd /Users/eddie/Desktop/Rember    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/eddie/Desktop/Rember/Rember_64.png /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCpResource build/Deployment/Rember.app/Contents/Resources/Report.rtf Report.rtf
-s273517994.955330
-e273517995.020931
-r1
-xCpResource
-xbuild/Deployment/Rember.app/Contents/Resources/Report.rtf
-xReport.rtf
-lSLF07#2@15"Copy Report.rtf273517994#273517995#0(0"0(0#0#38"/Users/eddie/Desktop/Rember/Report.rtf2447199552#318"    cd /Users/eddie/Desktop/Rember    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/eddie/Desktop/Rember/Report.rtf /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCpResource build/Deployment/Rember.app/Contents/Resources/TaskWrapper.h TaskWrapper.h
-s273517994.049940
-e273517994.169028
-r1
-xCpResource
-xbuild/Deployment/Rember.app/Contents/Resources/TaskWrapper.h
-xTaskWrapper.h
-lSLF07#2@18"Copy TaskWrapper.h273517994#273517994#0(0"0(0#0#41"/Users/eddie/Desktop/Rember/TaskWrapper.h2447199552#321"    cd /Users/eddie/Desktop/Rember    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/eddie/Desktop/Rember/TaskWrapper.h /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCpResource build/Deployment/Rember.app/Contents/Resources/killEveryoneButMe.h killEveryoneButMe.h
-s273517994.052067
-e273517994.282024
-r1
-xCpResource
-xbuild/Deployment/Rember.app/Contents/Resources/killEveryoneButMe.h
-xkillEveryoneButMe.h
-lSLF07#2@24"Copy killEveryoneButMe.h273517994#273517994#0(0"0(0#0#47"/Users/eddie/Desktop/Rember/killEveryoneButMe.h2447199552#327"    cd /Users/eddie/Desktop/Rember    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/eddie/Desktop/Rember/killEveryoneButMe.h /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCpResource build/Deployment/Rember.app/Contents/Resources/memtest memtest
-s273517994.767452
-e273517994.883065
-r1
-xCpResource
-xbuild/Deployment/Rember.app/Contents/Resources/memtest
-xmemtest
-lSLF07#2@12"Copy memtest273517994#273517994#0(0"0(0#0#35"/Users/eddie/Desktop/Rember/memtest2447199552#315"    cd /Users/eddie/Desktop/Rember    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/eddie/Desktop/Rember/memtest /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources0#
-
-CCreateUniversalBinary /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/MacOS/Rember normal "ppc i386"
-s273518004.166748
-e273518004.224955
-r1
-xCreateUniversalBinary
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/MacOS/Rember
-xnormal
-xppc i386
-lSLF07#2@89"CreateUniversalBinary build/Deployment/Rember.app/Contents/MacOS/Rember normal "ppc i386"273518004#273518004#0(0"0(0#0#36"/Users/eddie/Desktop/Rember/ppc i3862447199552#342"    cd /Users/eddie/Desktop/Rember    /usr/bin/lipo -create /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/Rember /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/Rember -output /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/MacOS/Rember0#
-
-CLd /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/Rember normal i386
-s273518003.817884
-e273518004.166622
-r1
-xLd
-x/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/Rember
-xnormal
-xi386
-lSLF07#2@102"Link /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/Rember273518003#273518004#0(0"0(0#0#0"2447199552#587"    cd /Users/eddie/Desktop/Rember    setenv MACOSX_DEPLOYMENT_TARGET 10.4    /Developer/usr/bin/gcc-4.0 -arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -L/Users/eddie/Desktop/Rember/build/Deployment -F/Users/eddie/Desktop/Rember/build/Deployment -filelist /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/Rember.LinkFileList -mmacosx-version-min=10.4 -framework Cocoa -framework CoreServices -framework Carbon -framework IOKit -prebind -o /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/i386/Rember0#
-
-CLd /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/Rember normal ppc
-s273518001.229626
-e273518003.664773
-r1
-xLd
-x/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/Rember
-xnormal
-xppc
-old: warning: object file compiled with -mlong-branch which is no longer needed. To remove this warning, recompile without -mlong-branch: /Developer/SDKs/MacOSX10.4u.sdk/usr/lib/crt1.o
-lSLF07#2@101"Link /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/Rember273518001#273518003#0(184"ld: warning: object file compiled with -mlong-branch which is no longer needed. To remove this warning, recompile without -mlong-branch: /Developer/SDKs/MacOSX10.4u.sdk/usr/lib/crt1.o1(22@170"Object file compiled with -mlong-branch which is no longer needed. To remove this warning, recompile without -mlong-branch: /Developer/SDKs/MacOSX10.4u.sdk/usr/lib/crt1.o273518003#0#184#0(6@0"273518003#0#0#0#0#0"0(0#0#0"2447199552#584"    cd /Users/eddie/Desktop/Rember    setenv MACOSX_DEPLOYMENT_TARGET 10.4    /Developer/usr/bin/gcc-4.0 -arch ppc -isysroot /Developer/SDKs/MacOSX10.4u.sdk -L/Users/eddie/Desktop/Rember/build/Deployment -F/Users/eddie/Desktop/Rember/build/Deployment -filelist /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/Rember.LinkFileList -mmacosx-version-min=10.4 -framework Cocoa -framework CoreServices -framework Carbon -framework IOKit -prebind -o /Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Objects-normal/ppc/Rember0#
-
-CProcessInfoPlistFile /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Info.plist Info.plist
-s273517991.091900
-e273517991.096072
-r1
-xProcessInfoPlistFile
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Info.plist
-xInfo.plist
-lSLF07#2@18"Process Info.plist273517991#273517991#0(0"0(0#0#38"/Users/eddie/Desktop/Rember/Info.plist2447199552#277"    cd /Users/eddie/Desktop/Rember    builtin-infoPlistUtility Info.plist -genpkginfo /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/PkgInfo -expandbuildsettings -platform macosx -o /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Info.plist0#
-
-CProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-asheaimdbgxszkeirthfrhsmiovh/Rember_Prefix.pch.gch Rember_Prefix.pch normal i386 c com.apple.compilers.gcc.4_2
-r0
-
-CProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-cgyhgzfgbekeiqcsaimqlenjckab/Rember_Prefix.pch.gch Rember_Prefix.pch normal ppc objective-c com.apple.compilers.gcc.4_2
-r0
-
-CProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dfbnllidqgcuzlavihqdtzgrrohc/Rember_Prefix.pch.gch Rember_Prefix.pch normal i386 c com.apple.compilers.gcc.4_0
-s273517358.315469
-e273517358.389983
-r1
-xProcessPCH
-x/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dfbnllidqgcuzlavihqdtzgrrohc/Rember_Prefix.pch.gch
-xRember_Prefix.pch
-xnormal
-xi386
-xc
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@28"Precompile Rember_Prefix.pch273517358#273517358#0(0"0(0#0#45"/Users/eddie/Desktop/Rember/Rember_Prefix.pch2447199552#882"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/i386 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -c /Users/eddie/Desktop/Rember/Rember_Prefix.pch -o /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dfbnllidqgcuzlavihqdtzgrrohc/Rember_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dmpbivwyrawnznflhwhrryrvxlmx/Rember_Prefix.pch.gch Rember_Prefix.pch normal ppc objective-c com.apple.compilers.gcc.4_0
-s273517355.449588
-e273517358.315219
-r1
-xProcessPCH
-x/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dmpbivwyrawnznflhwhrryrvxlmx/Rember_Prefix.pch.gch
-xRember_Prefix.pch
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@28"Precompile Rember_Prefix.pch273517355#273517358#0(0"0(0#0#45"/Users/eddie/Desktop/Rember/Rember_Prefix.pch2447199552#887"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mtune=G4 -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/ppc -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -c /Users/eddie/Desktop/Rember/Rember_Prefix.pch -o /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-dmpbivwyrawnznflhwhrryrvxlmx/Rember_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-ecxjdoqjbjqnvsdrvkgkunpzmpke/Rember_Prefix.pch.gch Rember_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_0
-s273517355.991752
-e273517359.156279
-r1
-xProcessPCH
-x/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-ecxjdoqjbjqnvsdrvkgkunpzmpke/Rember_Prefix.pch.gch
-xRember_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@28"Precompile Rember_Prefix.pch273517355#273517359#0(0"0(0#0#45"/Users/eddie/Desktop/Rember/Rember_Prefix.pch2447199552#892"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/i386 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -c /Users/eddie/Desktop/Rember/Rember_Prefix.pch -o /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-ecxjdoqjbjqnvsdrvkgkunpzmpke/Rember_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-fubjdvsvgasgxdavcqgoasxiobch/Rember_Prefix.pch.gch Rember_Prefix.pch normal ppc c com.apple.compilers.gcc.4_2
-r0
-
-CProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-gmtwdjhligfskmeqmdddzbycohhn/Rember_Prefix.pch.gch Rember_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CProcessPCH /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-gpglvpksameliofatxvgvblsiltx/Rember_Prefix.pch.gch Rember_Prefix.pch normal ppc c com.apple.compilers.gcc.4_0
-s273517355.450855
-e273517355.991519
-r1
-xProcessPCH
-x/var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-gpglvpksameliofatxvgvblsiltx/Rember_Prefix.pch.gch
-xRember_Prefix.pch
-xnormal
-xppc
-xc
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@28"Precompile Rember_Prefix.pch273517355#273517355#0(0"0(0#0#45"/Users/eddie/Desktop/Rember/Rember_Prefix.pch2447199552#877"    cd /Users/eddie/Desktop/Rember    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x c-header -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mtune=G4 -fvisibility=hidden -mmacosx-version-min=10.4 -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/Rember.hmap -F/Users/eddie/Desktop/Rember/build/Deployment -I/Users/eddie/Desktop/Rember/build/Deployment/include -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources/ppc -I/Users/eddie/Desktop/Rember/build/Rember.build/Deployment/Rember.build/DerivedSources -c /Users/eddie/Desktop/Rember/Rember_Prefix.pch -o /var/folders/WK/WKqxRbgvFpyjkPNjnRNqTk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Rember_Prefix-gpglvpksameliofatxvgvblsiltx/Rember_Prefix.pch.gch0#
-
-CStripNIB /Users/eddie/Desktop/Rember/English.lproj/MainMenu.nib
-s273517991.096212
-e273517991.970487
-r1
-xStripNIB
-x/Users/eddie/Desktop/Rember/English.lproj/MainMenu.nib
-o/* com.apple.ibtool.warnings */
-o/Users/eddie/Desktop/Rember/English.lproj/MainMenu.nib: warning: ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.
-o    Underlying Errors:
-o        Description: The bundle “IBCocoaTouchPlugin.ibplugin” couldn’t be loaded because its executable couldn’t be located.
-o        Failure Reason: The bundle’s executable couldn’t be located.
-o        Recovery Suggestion: Try reinstalling the bundle.
-lSLF07#2@35"StripNIB English.lproj/MainMenu.nib273517991#273517991#0(581"/* com.apple.ibtool.warnings *//Users/eddie/Desktop/Rember/English.lproj/MainMenu.nib: warning: ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.    Underlying Errors:        Description: The bundle “IBCocoaTouchPlugin.ibplugin” couldn’t be loaded because its executable couldn’t be located.        Failure Reason: The bundle’s executable couldn’t be located.        Recovery Suggestion: Try reinstalling the bundle.1(22@196"ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.273517991#4294967295#0#0(6@54"/Users/eddie/Desktop/Rember/English.lproj/MainMenu.nib273516471#0#0#0#0#0"0(0#0#54"/Users/eddie/Desktop/Rember/English.lproj/MainMenu.nib2447199552#266"    cd /Users/eddie/Desktop/Rember    /Developer/usr/bin/ibtool --strip /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/English.lproj/MainMenu.nib --output-format human-readable-text /Users/eddie/Desktop/Rember/English.lproj/MainMenu.nib0#
-
-CStripNIB /Users/eddie/Desktop/Rember/Italian.lproj/MainMenu.nib
-s273517991.970598
-e273517992.212533
-r1
-xStripNIB
-x/Users/eddie/Desktop/Rember/Italian.lproj/MainMenu.nib
-o/* com.apple.ibtool.warnings */
-o/Users/eddie/Desktop/Rember/Italian.lproj/MainMenu.nib: warning: ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.
-o    Underlying Errors:
-o        Description: The bundle “IBCocoaTouchPlugin.ibplugin” couldn’t be loaded because its executable couldn’t be located.
-o        Failure Reason: The bundle’s executable couldn’t be located.
-o        Recovery Suggestion: Try reinstalling the bundle.
-lSLF07#2@35"StripNIB Italian.lproj/MainMenu.nib273517991#273517992#0(581"/* com.apple.ibtool.warnings *//Users/eddie/Desktop/Rember/Italian.lproj/MainMenu.nib: warning: ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.    Underlying Errors:        Description: The bundle “IBCocoaTouchPlugin.ibplugin” couldn’t be loaded because its executable couldn’t be located.        Failure Reason: The bundle’s executable couldn’t be located.        Recovery Suggestion: Try reinstalling the bundle.1(22@196"ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.273517992#4294967295#0#0(6@54"/Users/eddie/Desktop/Rember/Italian.lproj/MainMenu.nib211547575#0#0#0#0#0"0(0#0#54"/Users/eddie/Desktop/Rember/Italian.lproj/MainMenu.nib2447199552#266"    cd /Users/eddie/Desktop/Rember    /Developer/usr/bin/ibtool --strip /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Italian.lproj/MainMenu.nib --output-format human-readable-text /Users/eddie/Desktop/Rember/Italian.lproj/MainMenu.nib0#
-
-CStripNIB /Users/eddie/Desktop/Rember/Japanese.lproj/MainMenu.nib
-s273517991.167012
-e273517992.034226
-r1
-xStripNIB
-x/Users/eddie/Desktop/Rember/Japanese.lproj/MainMenu.nib
-o/* com.apple.ibtool.warnings */
-o/Users/eddie/Desktop/Rember/Japanese.lproj/MainMenu.nib: warning: ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.
-o    Underlying Errors:
-o        Description: The bundle “IBCocoaTouchPlugin.ibplugin” couldn’t be loaded because its executable couldn’t be located.
-o        Failure Reason: The bundle’s executable couldn’t be located.
-o        Recovery Suggestion: Try reinstalling the bundle.
-lSLF07#2@36"StripNIB Japanese.lproj/MainMenu.nib273517991#273517992#0(582"/* com.apple.ibtool.warnings *//Users/eddie/Desktop/Rember/Japanese.lproj/MainMenu.nib: warning: ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.    Underlying Errors:        Description: The bundle “IBCocoaTouchPlugin.ibplugin” couldn’t be loaded because its executable couldn’t be located.        Failure Reason: The bundle’s executable couldn’t be located.        Recovery Suggestion: Try reinstalling the bundle.1(22@196"ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.273517992#4294967295#0#0(6@55"/Users/eddie/Desktop/Rember/Japanese.lproj/MainMenu.nib176352337#0#0#0#0#0"0(0#0#55"/Users/eddie/Desktop/Rember/Japanese.lproj/MainMenu.nib2447199552#268"    cd /Users/eddie/Desktop/Rember    /Developer/usr/bin/ibtool --strip /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Japanese.lproj/MainMenu.nib --output-format human-readable-text /Users/eddie/Desktop/Rember/Japanese.lproj/MainMenu.nib0#
-
-CStripNIB /Users/eddie/Desktop/Rember/Russian.lproj/MainMenu.nib
-s273517992.034343
-e273517992.263744
-r1
-xStripNIB
-x/Users/eddie/Desktop/Rember/Russian.lproj/MainMenu.nib
-o/* com.apple.ibtool.warnings */
-o/Users/eddie/Desktop/Rember/Russian.lproj/MainMenu.nib: warning: ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.
-o    Underlying Errors:
-o        Description: The bundle “IBCocoaTouchPlugin.ibplugin” couldn’t be loaded because its executable couldn’t be located.
-o        Failure Reason: The bundle’s executable couldn’t be located.
-o        Recovery Suggestion: Try reinstalling the bundle.
-lSLF07#2@35"StripNIB Russian.lproj/MainMenu.nib273517992#273517992#0(581"/* com.apple.ibtool.warnings *//Users/eddie/Desktop/Rember/Russian.lproj/MainMenu.nib: warning: ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.    Underlying Errors:        Description: The bundle “IBCocoaTouchPlugin.ibplugin” couldn’t be loaded because its executable couldn’t be located.        Failure Reason: The bundle’s executable couldn’t be located.        Recovery Suggestion: Try reinstalling the bundle.1(22@196"ibtool encountered an error while loading the Interface Builder plug-in from /Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Interface Builder/Plug-ins/IBCocoaTouchPlugin.ibplugin.273517992#4294967295#0#0(6@54"/Users/eddie/Desktop/Rember/Russian.lproj/MainMenu.nib242986320#0#0#0#0#0"0(0#0#54"/Users/eddie/Desktop/Rember/Russian.lproj/MainMenu.nib2447199552#266"    cd /Users/eddie/Desktop/Rember    /Developer/usr/bin/ibtool --strip /Users/eddie/Desktop/Rember/build/Deployment/Rember.app/Contents/Resources/Russian.lproj/MainMenu.nib --output-format human-readable-text /Users/eddie/Desktop/Rember/Russian.lproj/MainMenu.nib0#
-
-CTouch /Users/eddie/Desktop/Rember/build/Deployment/Rember.app
-s273518004.225071
-e273518004.252087
-r1
-xTouch
-x/Users/eddie/Desktop/Rember/build/Deployment/Rember.app
-lSLF07#2@61"Touch /Users/eddie/Desktop/Rember/build/Deployment/Rember.app273518004#273518004#0(0"0(0#0#0"2447199552#113"    cd /Users/eddie/Desktop/Rember    /usr/bin/touch -c /Users/eddie/Desktop/Rember/build/Deployment/Rember.app0#
-

@@ -10,6 +10,8 @@
 		2C2A5CB2095C786700A0A13A /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 2C2A5CAB095C786700A0A13A /* Help */; };
 		2C2BC01C0B4EC8B5009BACB7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2BBF7C0B4EC8B5009BACB7 /* IOKit.framework */; };
 		2C2CE8BD104D8765007D4626 /* Rember_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C2CE8BC104D8765007D4626 /* Rember_64.png */; };
+		2C2CE957104DAE9B007D4626 /* Rember_bad.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2C2CE955104DAE9B007D4626 /* Rember_bad.icns */; };
+		2C2CE958104DAE9B007D4626 /* Rember_wait.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2C2CE956104DAE9B007D4626 /* Rember_wait.icns */; };
 		2C63BCF50B9222D400C1C461 /* memtest in Resources */ = {isa = PBXBuildFile; fileRef = 2C63BCF40B9222D400C1C461 /* memtest */; };
 		2C7C0B3406E6F74300915CED /* TaskWrapper.h in Resources */ = {isa = PBXBuildFile; fileRef = 2C7C0B3206E6F74300915CED /* TaskWrapper.h */; };
 		2C7C0B3506E6F74300915CED /* TaskWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C0B3306E6F74300915CED /* TaskWrapper.m */; };
@@ -20,12 +22,10 @@
 		2C9E4C940B9A5FD000B527DC /* redStatus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C9E4C900B9A5FD000B527DC /* redStatus.tiff */; };
 		2C9E4C950B9A5FD000B527DC /* whiteStatus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C9E4C910B9A5FD000B527DC /* whiteStatus.tiff */; };
 		2C9E4C960B9A5FD000B527DC /* yellowStatus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C9E4C920B9A5FD000B527DC /* yellowStatus.tiff */; };
-		2CB02EC006FBF7A800012D93 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* Info.plist */; };
 		2CB362BD06F2A30D00D763CC /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB362BC06F2A30D00D763CC /* CoreServices.framework */; };
-		2CB364E506F2A45500D763CC /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB364E406F2A45500D763CC /* Carbon.framework */; };
 		2CBC1BF40C947F5500348879 /* Report.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBC1BF30C947F5500348879 /* Report.rtf */; };
-		2CD13A8C06F503BC00C527A3 /* killEveryoneButMe.h in Resources */ = {isa = PBXBuildFile; fileRef = 2CD13A8A06F503BC00C527A3 /* killEveryoneButMe.h */; };
-		2CD13A8D06F503BC00C527A3 /* killEveryoneButMe.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CD13A8B06F503BC00C527A3 /* killEveryoneButMe.c */; };
+		2CD13A8C06F503BC00C527A3 /* ProcessController.h in Resources */ = {isa = PBXBuildFile; fileRef = 2CD13A8A06F503BC00C527A3 /* ProcessController.h */; };
+		2CD13A8D06F503BC00C527A3 /* ProcessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD13A8B06F503BC00C527A3 /* ProcessController.m */; };
 		2CF0D8410A8193A7007A5754 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0D83F0A8193A7007A5754 /* Localizable.strings */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -43,12 +43,17 @@
 		2C2A5CAB095C786700A0A13A /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Help; sourceTree = "<group>"; };
 		2C2BBF7C0B4EC8B5009BACB7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		2C2CE8BC104D8765007D4626 /* Rember_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rember_64.png; sourceTree = "<group>"; };
-		2C462FFE0E8EAB9F0057F882 /* Russian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Russian; path = Russian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2C462FFF0E8EABB50057F882 /* Russian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Russian; path = Russian.lproj/Localizable.strings; sourceTree = "<group>"; };
-		2C4630000E8EABCB0057F882 /* Russian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Russian; path = Russian.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		2C2CE955104DAE9B007D4626 /* Rember_bad.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Rember_bad.icns; sourceTree = "<group>"; };
+		2C2CE956104DAE9B007D4626 /* Rember_wait.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Rember_wait.icns; sourceTree = "<group>"; };
+		2C2CE9A1104EEB3E007D4626 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C2CE9A2104EEB4A007D4626 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C2CE9A3104EEB57007D4626 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		2C542ABF0C9C526B009F8634 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C542AC00C9C5279009F8634 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C542AC10C9C52AC009F8634 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		2C5FB54E10FA75E600DDF10E /* Russian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Russian; path = Russian.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		2C5FB54F10FA75F500DDF10E /* Russian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Russian; path = Russian.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C5FB55010FA760800DDF10E /* Russian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Russian; path = Russian.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C63BCF40B9222D400C1C461 /* memtest */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = memtest; sourceTree = "<group>"; };
 		2C7C0B3206E6F74300915CED /* TaskWrapper.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TaskWrapper.h; sourceTree = "<group>"; };
 		2C7C0B3306E6F74300915CED /* TaskWrapper.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TaskWrapper.m; sourceTree = "<group>"; };
@@ -63,8 +68,8 @@
 		2CB364E406F2A45500D763CC /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		2CBC1BF30C947F5500348879 /* Report.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Report.rtf; sourceTree = "<group>"; };
 		2CCDB4750BCF25F900C9963C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		2CD13A8A06F503BC00C527A3 /* killEveryoneButMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = killEveryoneButMe.h; sourceTree = "<group>"; };
-		2CD13A8B06F503BC00C527A3 /* killEveryoneButMe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = killEveryoneButMe.c; sourceTree = "<group>"; };
+		2CD13A8A06F503BC00C527A3 /* ProcessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessController.h; sourceTree = "<group>"; };
+		2CD13A8B06F503BC00C527A3 /* ProcessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessController.m; sourceTree = "<group>"; };
 		2CF0D8420A8193B9007A5754 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2CF0D8430A8193C6007A5754 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2CF0D8460A8193FE007A5754 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -80,7 +85,6 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2CB362BD06F2A30D00D763CC /* CoreServices.framework in Frameworks */,
-				2CB364E506F2A45500D763CC /* Carbon.framework in Frameworks */,
 				2C2BC01C0B4EC8B5009BACB7 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,10 +95,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2CD13A8A06F503BC00C527A3 /* killEveryoneButMe.h */,
-				2CD13A8B06F503BC00C527A3 /* killEveryoneButMe.c */,
 				2C7C0B5006E6FB5000915CED /* RemberController.h */,
 				2C7C0B5106E6FB5000915CED /* RemberController.m */,
+				2CD13A8A06F503BC00C527A3 /* ProcessController.h */,
+				2CD13A8B06F503BC00C527A3 /* ProcessController.m */,
 				2C7C0B3206E6F74300915CED /* TaskWrapper.h */,
 				2C7C0B3306E6F74300915CED /* TaskWrapper.m */,
 			);
@@ -153,6 +157,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2C2CE955104DAE9B007D4626 /* Rember_bad.icns */,
+				2C2CE956104DAE9B007D4626 /* Rember_wait.icns */,
 				2C2CE8BC104D8765007D4626 /* Rember_64.png */,
 				2CBC1BF30C947F5500348879 /* Report.rtf */,
 				2C9E4C8F0B9A5FD000B527DC /* greenStatus.tiff */,
@@ -235,8 +241,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				2C7C0B3406E6F74300915CED /* TaskWrapper.h in Resources */,
 				2C7C0B5206E6FB5000915CED /* RemberController.h in Resources */,
-				2CD13A8C06F503BC00C527A3 /* killEveryoneButMe.h in Resources */,
-				2CB02EC006FBF7A800012D93 /* Info.plist in Resources */,
+				2CD13A8C06F503BC00C527A3 /* ProcessController.h in Resources */,
 				2C7F12F906FE67E90042684E /* Rember.icns in Resources */,
 				2C2A5CB2095C786700A0A13A /* Help in Resources */,
 				2CF0D8410A8193A7007A5754 /* Localizable.strings in Resources */,
@@ -247,6 +252,8 @@
 				2C9E4C960B9A5FD000B527DC /* yellowStatus.tiff in Resources */,
 				2CBC1BF40C947F5500348879 /* Report.rtf in Resources */,
 				2C2CE8BD104D8765007D4626 /* Rember_64.png in Resources */,
+				2C2CE957104DAE9B007D4626 /* Rember_bad.icns in Resources */,
+				2C2CE958104DAE9B007D4626 /* Rember_wait.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +265,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				2C7C0B3506E6F74300915CED /* TaskWrapper.m in Sources */,
 				2C7C0B5306E6FB5000915CED /* RemberController.m in Sources */,
-				2CD13A8D06F503BC00C527A3 /* killEveryoneButMe.c in Sources */,
+				2C7C0B3506E6F74300915CED /* TaskWrapper.m in Sources */,
+				2CD13A8D06F503BC00C527A3 /* ProcessController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +280,8 @@
 				089C165DFE840E0CC02AAC07 /* English */,
 				2CF0D8420A8193B9007A5754 /* Japanese */,
 				2C542ABF0C9C526B009F8634 /* Italian */,
-				2C462FFE0E8EAB9F0057F882 /* Russian */,
+				2C2CE9A1104EEB3E007D4626 /* French */,
+				2C5FB55010FA760800DDF10E /* Russian */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -284,7 +292,8 @@
 				29B97319FDCFA39411CA2CEA /* English */,
 				2CCDB4750BCF25F900C9963C /* Japanese */,
 				2C542AC10C9C52AC009F8634 /* Italian */,
-				2C4630000E8EABCB0057F882 /* Russian */,
+				2C2CE9A3104EEB57007D4626 /* French */,
+				2C5FB54E10FA75E600DDF10E /* Russian */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";
@@ -295,7 +304,8 @@
 				2CF0D8430A8193C6007A5754 /* English */,
 				2CF0D8460A8193FE007A5754 /* Japanese */,
 				2C542AC00C9C5279009F8634 /* Italian */,
-				2C462FFF0E8EABB50057F882 /* Russian */,
+				2C2CE9A2104EEB4A007D4626 /* French */,
+				2C5FB54F10FA75F500DDF10E /* Russian */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -358,7 +368,7 @@
 					i386,
 				);
 				GCC_ENABLE_OBJC_GC = YES;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 				VALID_ARCHS = "ppc7400 ppc64 ppc970 x86_64 ppc i386";
 			};
 			name = Development;
@@ -366,12 +376,10 @@
 		2C940DDE08B580DA00466A1D /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				GCC_VERSION = 4.0;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				GCC_VERSION = "";
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Deployment;
 		};
@@ -382,7 +390,7 @@
 					ppc,
 					i386,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Default;
 		};

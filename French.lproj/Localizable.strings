@@ -1,0 +1,35 @@
+﻿/* Test button value */
+"Test" = "Tester";
+
+/* Stop button value */
+"Stop" = "Arrêter";
+
+/* Errors detected dialog box */
+"Errors" = "Des erreurs ont été détectées. Consultez le journal pour plus de détails.";
+
+/* Failure dialog box */
+"Failure" = "DÉFAILLANCE - voir le journal pour plus d'infos";
+
+/* Tests passed status */
+"Passed" = "Tous les tests sont réussi";
+
+/* Initializing status*/
+"Initializing" = "Initialisation…";
+
+/* Testing status*/
+"Testing" = "Tests en cours";
+
+/* Idle status*/
+"Idle" = "Inactif";
+
+/* OK button value*/
+"OK" = "OK";
+
+/* Cancel button value*/
+"Cancel" = "Annuler";
+
+/* Memory tests in progress dialogd */
+"InProgress" = "Les tests de mémoire sont encore en cours. Êtes-vous sûr de vouloir quitter?";
+
+/* */
+"Running" = "Exécution du test :";

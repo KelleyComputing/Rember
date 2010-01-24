@@ -66,22 +66,26 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		¥ New icon and images
 		¥ Memory info window now compatible with Snow Leopard
 		¥ Improved progress display and output parsing
+		¥ Uses new version of memtest executable (4.22)
+		¥ Provides status via Dock icon while testing or on error
+ 
+	0.3.6b
+		¥ No longer accepts decimal input for loop for memory allotment
+		¥ Regression regarding memory info and early versions of Snow Leopard fixed
+		¥ Modernized (not classic 9) ProcessController class (used to quit other running apps before testing)
+		¥ Modernized power management functions for delaying idle system sleep (Rember now requires Mac OS X v.10.5 or later)
+		¥ Now localized in Russian and French Languages
+		¥ No longer limited to arbitrary limit of 8GB when allocating memory for testing
 */
 
 #import <Cocoa/Cocoa.h>
+
 #import "TaskWrapper.h"
-#import "killEveryoneButMe.h"
-#include <mach-o/arch.h>
+#import "ProcessController.h"
 
 // includes for system power notifications
-#include <ctype.h> 
-#include <stdlib.h> 
-#include <stdio.h> 
-#include <mach/mach_port.h> 
-#include <mach/mach_interface.h> 
-#include <mach/mach_init.h> 
-#include <IOKit/pwr_mgt/IOPMLib.h> 
-#include <IOKit/IOMessage.h> 
+#import <IOKit/IOMessage.h> 
+#import <IOKit/pwr_mgt/IOPMLib.h>
 
 @interface RemberController : NSObject <TaskWrapperController>
 {
@@ -89,9 +93,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     IBOutlet NSTextField *amountTextField, *loopTextField, *loopsTextField, *loopsCompletedTextField;
     IBOutlet id statusTextField;
 	
+	// NSNumberFormatters
+	IBOutlet NSNumberFormatter *amountFormatter, *loopFormatter;
+	
 	// NSButtons
 	IBOutlet id maxButton, allButton, mbButton, testButton, verboseButton, quitAllButton, 
-		quitFinderButton, verboseButton2, verboseButton3, quitAllButton2, quitFinderButton2, 
+		quitFinderButton, verboseButton2, verboseButton3, 
 		saveButton, okButton, errorButton, reportButton;
 	
 	// NSMatrix
@@ -106,10 +113,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	IBOutlet id Preferences;
 	// memory info window
 	IBOutlet id MemoryInfo;
-	
-	IBOutlet id MemoryView1, MemoryView2, MemoryView3, MemoryView4, MemoryView8, infoStatusView1, infoStatusView2, infoStatusView3, infoStatusView4, infoStatusView8, InfoStatusView;
-	
-	IBOutlet id infoSlotTextField, infoSizeTextField, infoSpeedTextField, infoStatusTextField, infoTypeTextField;
 	
 	IBOutlet id memoryInfoButton, memoryInfoButton2;
 	
@@ -142,6 +145,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	
 	// number of total loops, and loops completed
 	int totalLoops, loopsCompleted, amount;
+	
+	// power management assertion (prevent sleep)
+	IOPMAssertionID assertionID;
+
+	// process controller (used to quit other applications before testing)
+	ProcessController *processController;
 
 }
 
@@ -149,24 +158,13 @@ NSArray * testList, * progressList;
 BOOL verbose, showMemoryInfo;
 int terminationStatus;
 int processID;
-	
-// system power change notification variables
-io_connect_t root_port; 
-IONotificationPortRef notify; 
-io_object_t anIterator; 
-
-// system power change event notification callback
-void callback(void *x,io_service_t y,natural_t messageType,void* messageArgument);
-
-// kill everyone but me declaration
-void KillEveryone(Boolean KillFinderToo);
 
 - (id) updatePreferencesPanel;
 - (int) openTask:(NSString*)path withArguments:(NSArray*)arguments;
 
-- (IBAction)amountTextFieldAction:(id)sender;
-- (IBAction)loopTextFieldAction:(id)sender;
-- (IBAction)testButtonAction:(id)sender;
+- (IBAction) amountTextFieldAction:(id)sender;
+- (IBAction) loopTextFieldAction:(id)sender;
+- (IBAction) testButtonAction:(id)sender;
 - (IBAction) maxButtonAction:(id)sender;
 - (IBAction) allButtonAction:(id)sender;
 - (IBAction) mbButtonAction:(id)sender;
@@ -177,12 +175,12 @@ void KillEveryone(Boolean KillFinderToo);
 - (IBAction) reportSaveButtonAction:(id)sender;
 - (IBAction) errorButtonAction:(id)sender;
 - (IBAction) infoOKButtonAction:(id)sender;
-- (IBAction) updateMemoryInfoPanel:(id)sender;
 - (IBAction) reportSaveButtonAction:(id)sender;
 - (IBAction) reportOKButtonAction:(id)sender;
 - (IBAction) reportButtonAction:(id)sender;
 - (IBAction) memoryInfoButtonAction:(id)sender;
-
+- (IBAction) terminate:(id)sender;
+- (IBAction) beginMemoryInfoPanel:(id)sender;
 - (IBAction) beginReportPanel:(id)self;
 - (NSArray *) memoryInfo;
 - (int) updateMemoryInfo;
