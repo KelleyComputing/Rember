@@ -24,6 +24,7 @@
 		2C9E4C960B9A5FD000B527DC /* yellowStatus.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C9E4C920B9A5FD000B527DC /* yellowStatus.tiff */; };
 		2CB362BD06F2A30D00D763CC /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB362BC06F2A30D00D763CC /* CoreServices.framework */; };
 		2CBC1BF40C947F5500348879 /* Report.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBC1BF30C947F5500348879 /* Report.rtf */; };
+		2CCECB6B1167927300D736C5 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CCECB6A1167927300D736C5 /* Credits.rtf */; };
 		2CD13A8C06F503BC00C527A3 /* ProcessController.h in Resources */ = {isa = PBXBuildFile; fileRef = 2CD13A8A06F503BC00C527A3 /* ProcessController.h */; };
 		2CD13A8D06F503BC00C527A3 /* ProcessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD13A8B06F503BC00C527A3 /* ProcessController.m */; };
 		2CF0D8410A8193A7007A5754 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0D83F0A8193A7007A5754 /* Localizable.strings */; };
@@ -68,6 +69,7 @@
 		2CB364E406F2A45500D763CC /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		2CBC1BF30C947F5500348879 /* Report.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Report.rtf; sourceTree = "<group>"; };
 		2CCDB4750BCF25F900C9963C /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		2CCECB6A1167927300D736C5 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		2CD13A8A06F503BC00C527A3 /* ProcessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessController.h; sourceTree = "<group>"; };
 		2CD13A8B06F503BC00C527A3 /* ProcessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessController.m; sourceTree = "<group>"; };
 		2CF0D8420A8193B9007A5754 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2CCECB6A1167927300D736C5 /* Credits.rtf */,
 				2C2CE955104DAE9B007D4626 /* Rember_bad.icns */,
 				2C2CE956104DAE9B007D4626 /* Rember_wait.icns */,
 				2C2CE8BC104D8765007D4626 /* Rember_64.png */,
@@ -254,6 +257,7 @@
 				2C2CE8BD104D8765007D4626 /* Rember_64.png in Resources */,
 				2C2CE957104DAE9B007D4626 /* Rember_bad.icns in Resources */,
 				2C2CE958104DAE9B007D4626 /* Rember_wait.icns in Resources */,
+				2CCECB6B1167927300D736C5 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

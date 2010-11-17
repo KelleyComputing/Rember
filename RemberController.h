@@ -76,6 +76,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		¥ Modernized power management functions for delaying idle system sleep (Rember now requires Mac OS X v.10.5 or later)
 		¥ Now localized in Russian and French Languages
 		¥ No longer limited to arbitrary limit of 8GB when allocating memory for testing
+
+	0.3.7b
+		¥ Uses new Japanese localization thanks to Norio Ikawa at MacMem dot com
+		¥ Report now displays Rember version
+		¥ Bug fix (cancelling testing would not reset user interface)
 */
 
 #import <Cocoa/Cocoa.h>

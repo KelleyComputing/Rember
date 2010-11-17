@@ -272,6 +272,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 	{
 		if(![self isSnowLeopard]){
 			// system is running 10.5 - memory info is in a different place
+			
 			NSArray *info = [NSArray arrayWithContentsOfFile:infoPlistPath];
 			NSDictionary *infoDict = [NSDictionary dictionaryWithDictionary:[info objectAtIndex:0]];
 			NSDictionary *memoryDict = [[infoDict objectForKey:@"_items"] objectAtIndex:0];
@@ -328,6 +329,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 			[[report mutableString] replaceOccurrencesOfString:@"TEST_START_TIME" withString:[reportDict objectForKey:@"startTime"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
 		if([reportDict objectForKey:@"stopTime"] != nil)
 			[[report mutableString] replaceOccurrencesOfString:@"TEST_END_TIME" withString:[reportDict objectForKey:@"stopTime"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
+		
+		if([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] != nil)
+			[[report mutableString] replaceOccurrencesOfString:@"REMBER_VERSION" withString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
+		if ([reportDict objectForKey:@"memtestVersion"] != nil)
+			[[report mutableString] replaceOccurrencesOfString:@"MEMTEST_VERSION" withString:[reportDict objectForKey:@"memtestVersion"] options:NSCaseInsensitiveSearch range:NSMakeRange(0,[[report mutableString] length])];
+		
 		[[reportTextView textStorage] setAttributedString:report];
 
 		[report release];
@@ -735,6 +742,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		
 		NSRange range = [output rangeOfString:@"Memtest version"];
 		if(range.location != NSNotFound){
+			NSMutableString *memtestVersionString;
+			NSString *temp;
+			NSScanner *memtestVersionScanner = [NSScanner scannerWithString:output];
+			if ([memtestVersionScanner scanUpToString:@"(" intoString:&temp]) {
+				memtestVersionString = [NSMutableString stringWithString:[temp stringByReplacingOccurrencesOfString:@"Memtest version" withString:@""]];
+				[reportDict setValue:memtestVersionString forKey:@"memtestVersion"];
+			}
 			display = YES;
 			[reportDict setValue:[[[[output componentsSeparatedByString:@"Allocated memory: "] objectAtIndex:1] componentsSeparatedByString:@"MB ("] objectAtIndex:0] forKey:@"allocatedAmount"];			 
 			[reportDict setValue:[[[[output componentsSeparatedByString:@"Available memory: "] objectAtIndex:1] componentsSeparatedByString:@"MB ("] objectAtIndex:0] forKey:@"availableAmount"];
@@ -932,29 +946,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 			NSRunAlertPanel(@"Rember", NSLocalizedString(@"Errors", @"Errors detected dialog box"), @"OK", @"", @"");
 			[[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:@"Rember_bad.icns"]];
 		}
-		
-		// reset testing environment
-		[testProgress setIndeterminate:YES];
-	    
-		// change the button's title back for the next search
-		[testButton setTitle:NSLocalizedString(@"Test", @"Test button value")];
-		
-		//re-enable user controls (to pre-test state)
-		if([maxButton state] == 1)
-			[loopTextField setEnabled:NO];
 		else
-			[loopTextField setEnabled:YES];
-		if([allButton state] == 1)
-			[amountTextField setEnabled:NO];
-		else
-			[amountTextField setEnabled:YES];
-		[maxButton setEnabled:YES];
-		[memoryMatrix setEnabled:YES];
-		[quitAllButton setEnabled:YES];
-		if([quitAllButton state] == 1){
-			[quitFinderButton setEnabled:YES];
-		}
-		
+			[[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:@"Rember.icns"]];
 		
 		// set report values
 		[reportDict setValue:[[NSNumber numberWithInt:[loopsCompletedTextField intValue]] stringValue] forKey:@"loopsCompleted"];
@@ -967,9 +960,33 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 			[reportDict setValue:[amountTextField stringValue] forKey:@"requestedAmount"];
 		[reportDict setValue:[[NSDate date] description] forKey:@"stopTime"];
 				
-		[[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:@"Rember.icns"]];
-
 		[self showTestResults];
+	}
+	
+	// reset testing environment
+	[testProgress setIndeterminate:YES];
+	[statusTextField setStringValue:NSLocalizedString(@"Idle", @"Idle")];
+	[testProgress stopAnimation:self];
+	
+	[[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:@"Rember.icns"]];
+	
+	// change the button's title back for the next search
+	[testButton setTitle:NSLocalizedString(@"Test", @"Test button value")];
+	
+	//re-enable user controls (to pre-test state)
+	if([maxButton state] == 1)
+		[loopTextField setEnabled:NO];
+	else
+		[loopTextField setEnabled:YES];
+	if([allButton state] == 1)
+		[amountTextField setEnabled:NO];
+	else
+		[amountTextField setEnabled:YES];
+	[maxButton setEnabled:YES];
+	[memoryMatrix setEnabled:YES];
+	[quitAllButton setEnabled:YES];
+	if([quitAllButton state] == 1){
+		[quitFinderButton setEnabled:YES];
 	}
 	
 	[remberTask release];
